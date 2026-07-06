@@ -1,0 +1,61 @@
+/* jetbrains-mono-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/assets/fonts/jetbrains-mono-v24-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* jetbrains-mono-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/assets/fonts/jetbrains-mono-v24-latin-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* jetbrains-mono-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/assets/fonts/jetbrains-mono-v24-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+:root {
+  --c-neutral-900: hsl(0, 0%, 4%);
+  --c-neutral-700: hsl(240, 4%, 9%);
+  --c-neutral-600: hsl(240, 3%, 13%);
+  --c-neutral-500: hsl(0, 0%, 18%);
+  --c-neutral-400: hsl(0, 0%, 24%);
+  --c-neutral-300: hsl(240, 1%, 27%);
+  --c-neutral-200: hsl(0, 0%, 62%);
+  --c-neutral-100: hsl(0, 0%, 78%);
+  --c-neutral-50: hsl(0, 0%, 100%);
+
+  --c-lime-800: hsl(73, 100%, 10%);
+  --c-lime-500: hsl(71, 92%, 60%);
+
+  --c-green-500: hsl(104, 96%, 47%);
+
+  --c-red-500: hsl(0, 100%, 63%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  font-family: "JetBrains Mono", Arial, Helvetica, sans-serif;
+}

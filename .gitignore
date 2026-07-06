@@ -1,3 +1,12 @@
+# Design files (please do not remove 🙂)
+*.sketch
+*.fig
+*.xd
+
+# Misc
+.DS_Store
+*.pem
+
 ### Node ###
 # Logs
 logs
