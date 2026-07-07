@@ -33,13 +33,50 @@
   --c-neutral-200: hsl(0, 0%, 62%);
   --c-neutral-100: hsl(0, 0%, 78%);
   --c-neutral-50: hsl(0, 0%, 100%);
-
   --c-lime-800: hsl(73, 100%, 10%);
   --c-lime-500: hsl(71, 92%, 60%);
-
   --c-green-500: hsl(104, 96%, 47%);
-
   --c-red-500: hsl(0, 100%, 63%);
+
+  --color-main-bg: var(--c-neutral-900);
+  --color-ticker-bg: var(--c-neutral-700);
+  --color-ticker-live-market-bg: var(--c-lime-500);
+  --color-converter-bg: var(--c-neutral-700);
+  --color-send-receive-arrows-bg: var(--c-neutral-600);
+  --color-send-receive-arrows-border: var(--c-neutral-500);
+  --color-arrows-hover: var(--c-neutral-400);
+  --color-currency-dd-bg: var(--c-neutral-500);
+  --color-currency-dd-border: var(--c-neutral-400);
+  --color-currency--dd-hover: var(--c-neutral-400);
+  --color-log-btn-bg: var(--c-neutral-700);
+  --color-log-btn-border: var(--c-lime-500);
+  --color-log-btn-hover-bg: var(--c-lime-800);
+  --color-log-btn-selected-bg: var(--c-lime-500);
+
+  --color-btn-mainfav-bg: var(--c-neutral-600);
+  --color-btn-mainfav-border: var(--c-neutral-300);
+  --color-btn-mainfav-selected-bg: var(--c-lime-500);
+  --color-btn-mainfav-selected-border: var(--c-lime-500);
+
+  --color-dd-bg: var(--c-neutral-700);
+  --color-four-cards-bg: var(--c-neutral-700);
+  --color-four-cards-border: var(--c-neutral-600);
+  --color-range-selector-bg: var(--c-neutral-700);
+  --color-chart-bg: var(--c-neutral-700);
+  --color-chart-border: var(--c-neutral-600);
+  --color-compare-fav-log-bg: var(--c-neutral-700);
+  --color-compare-fav-log-border: var(--c-neutral-600);
+  --color-compare-fav-log-cards: var(--c-neutral-600);
+  --color-compare-fav-log-cards-border: var(--c-neutral-500);
+  --color-compare-fav-log-cards-border-hover: var(--c-neutral-300);
+  --color-clearAll-btn-bg: var(--c-neutral-600);
+  --color-clearAll-btn-border: var(--c-neutral-400);
+  --color-favs-btn-bg: var(--c-neutral-600);
+  --color-favs-btn-border: var(--c-neutral-500);
+  --color-favs-btn-selected-border: var(--c-lime-500);
+
+  --color-text-light: var(--c-neutral-50);
+  --color-text-med-light: var(--c-neutral-200);
 }
 
 *,
@@ -58,4 +95,5 @@ img {
 
 body {
   font-family: "JetBrains Mono", Arial, Helvetica, sans-serif;
+  line-height: 120%;
 }
