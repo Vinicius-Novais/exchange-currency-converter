@@ -9,8 +9,6 @@
     <title>FX Checker</title>
   </head>
   <body>
-    <h1>title</h1>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim, veniam corrupti unde vero iure dicta, magni eaque cum doloremque quis atque ipsum, eligendi tempore repellendus similique ad. Sint, earum illum?</p>
     <!--
   This file holds the static written content from the design so you don't have to
   retype it. It is intentionally unstructured — building the HTML is your job.
@@ -31,12 +29,68 @@
 
     <!-- Dynamic: number of available currencies, e.g. "55" -->
     <!-- Currencies · EOD · ECB data -->
+    <header class="header wrapper">
+      <div class="header__content">
+        <a class="header__homelink" href="/">
+          <img src="./assets/images/logo.svg" alt="fx checker logo" class="header__logo" width="139" height="26" />
+        </a>
+        <div class="header__meta">55 CURRENCIES · EOD · ECB DATA</div>
+      </div>
+    </header>
 
     <!-- Live markets ticker — auto-scrolls across the page, pauses on hover -->
     <!-- 
 Live markets -->
 
     <!-- Dynamic: scrolling list of currency pairs, each with its rate and 24h change (▲ up / ▼ down) -->
+
+    <div class="ticker">
+      <div class="ticker__label">● LIVE MARKETS</div>
+      <ul class="ticker__ul">
+        <li>
+          <span class="ticker__pair">USD/JPY</span>
+          <span class="ticker__price">157.91</span>
+          <span class="ticker__daily-change">+0.04%</span>
+        </li>
+        <li>
+          <span class="ticker__pair">GBP/USD</span>
+          <span class="ticker__price">1.3575</span>
+          <span class="ticker__daily-change">+0.04%</span>
+        </li>
+        <li>
+          <span class="ticker__pair">USD/CHF</span>
+          <span class="ticker__price">0.9098</span>
+          <span class="ticker__daily-change">+0.04%</span>
+        </li>
+        <li>
+          <span class="ticker__pair">AUS/USD</span>
+          <span class="ticker__price">0.7208</span>
+          <span class="ticker__daily-change">+0.04%</span>
+        </li>
+        <li>
+          <span class="ticker__pair">USD/CAD</span>
+          <span class="ticker__price">1.3815</span>
+          <span class="ticker__daily-change">+0.04%</span>
+        </li>
+        <li>
+          <span class="ticker__pair">USD/JPY</span>
+          <span class="ticker__price">157.91</span>
+          <span class="ticker__daily-change">-0.04%</span>
+        </li>
+        <li>
+          <span class="ticker__pair">USD/GOOG</span>
+          <span class="ticker__price">138.75</span>
+          <span class="ticker__daily-change">+0.031%</span>
+        </li>
+        <li>
+          <span class="ticker__pair">USD/BRL</span>
+          <span class="ticker__price">5.9281</span>
+          <span class="ticker__daily-change">+0.04%</span>
+        </li>
+      </ul>
+    </div>
+
+    <main id="main" class="main"></main>
 
     <!-- Converter -->
 
