@@ -48,15 +48,16 @@
   --color-currency-dd-bg: var(--c-neutral-500);
   --color-currency-dd-border: var(--c-neutral-400);
   --color-currency--dd-hover: var(--c-neutral-400);
+  --color-converter-rate: var(--c-neutral-50);
   --color-log-btn-bg: var(--c-neutral-700);
   --color-log-btn-border: var(--c-lime-500);
   --color-log-btn-hover-bg: var(--c-lime-800);
   --color-log-btn-selected-bg: var(--c-lime-500);
 
-  --color-btn-mainfav-bg: var(--c-neutral-600);
-  --color-btn-mainfav-border: var(--c-neutral-300);
-  --color-btn-mainfav-selected-bg: var(--c-lime-500);
-  --color-btn-mainfav-selected-border: var(--c-lime-500);
+  --color-btn-main-fav-bg: var(--c-neutral-600);
+  --color-btn-main-fav-border: var(--c-neutral-300);
+  --color-btn-main-fav-selected-bg: var(--c-lime-500);
+  --color-btn-main-fav-selected-border: var(--c-lime-500);
 
   --color-dd-bg: var(--c-neutral-700);
   --color-four-cards-bg: var(--c-neutral-700);
@@ -69,14 +70,63 @@
   --color-compare-fav-log-cards: var(--c-neutral-600);
   --color-compare-fav-log-cards-border: var(--c-neutral-500);
   --color-compare-fav-log-cards-border-hover: var(--c-neutral-300);
-  --color-clearAll-btn-bg: var(--c-neutral-600);
-  --color-clearAll-btn-border: var(--c-neutral-400);
+  --color-clear-all-btn-bg: var(--c-neutral-600);
+  --color-clear-all-btn-border: var(--c-neutral-400);
   --color-favs-btn-bg: var(--c-neutral-600);
   --color-favs-btn-border: var(--c-neutral-500);
   --color-favs-btn-selected-border: var(--c-lime-500);
 
   --color-text-light: var(--c-neutral-50);
   --color-text-med-light: var(--c-neutral-200);
+
+  --fs-40: calc(40/16 * 1rem);
+  --fs-32: calc(32/16 * 1rem);
+  --fs-20: calc(20/16 * 1rem);
+  --fs-16: calc(16/16 * 1rem);
+  --fs-14: calc(14/16 * 1rem);
+  --fs-12: calc(12/16 * 1rem);
+  --fs-10: calc(10/16 * 1rem);
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  --fs-header-meta: var(--fs-10);
+  --fs-ticker-item: var(--fs-10);
+  --fs-h1: var(--fs-20);
+  --fs-label-send-receive: var(--fs-14);
+  --fs-currency-dd: var(--fs-14);
+  --fs-converter-amount: var(--fs-32);
+  --fs-converter-rate: var(--fs-10);
+  --fs-fav-log-btns: var(--fs-12);
+  --fs-nav: var(--fs-16);
+  --fs-title-four-cards: var(--fs-14);
+  --fs-value-four-cards: var(--fs-20);
+  --fs-range-selector: var(--fs-12);
+  --fs-chart-pair: var(--fs-16);
+  --fs-chart-info: var(--fs-12);
+  --fs-chart-axis: var(--fs-10);
+  --fs-panel-title: var(--fs-16);
+  --fs-panel-counter: var(--fs-12);
+  --fs-panel-clear-all: var(--fs-12);
+  --fs-panel-value: var(--fs-16);
+  --fs-panel-rate: var(--fs-10);
+  --fs-panel-market-change: var(--fs-10);
+  --fs-panel-currency: var(--fs-14);
+  --fs-panel-currency-full-name: var(--fs-12);
+  --fs-panel-date: var(--fs-14);
+
+  @media (width >= calc(700 / 16 * 1rem)) {
+    --fs-header-meta: var(--fs-14);
+    --fs-ticker-item: var(--fs-12);
+    --fs-converter-rate: var(--fs-12);
+  }
+  @media (width >= calc(1000 / 16 * 1rem)) {
+    --fs-header-meta: var(--fs-14);
+    --fs-ticker-item: var(--fs-12);
+    --fs-converter-amount: var(--fs-40);
+    --fs-converter-rate: var(--fs-12);
+  }
 }
 
 *,
