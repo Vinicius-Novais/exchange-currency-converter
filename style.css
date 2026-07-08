@@ -195,15 +195,8 @@
     }
 
     .header__meta {
-      font-size: var(--fs-header-meta-mobile);
+      font-size: clamp(var(--fs-header-meta-moblie), 0.564rem + 0.258vw, var(--fs-header-meta-tablet-desktop));
       color: var(--color-text-med);
-
-      @media (width >= calc(700 / 16 * 1rem)) {
-        font-size: var(--fs-header-meta-tablet-desktop);
-      }
-      @media (width >= calc(1000 / 16 * 1rem)) {
-        font-size: var(--fs-header-meta-tablet-desktop);
-      }
     }
   }
 }
