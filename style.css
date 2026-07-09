@@ -140,14 +140,17 @@
 
   * {
     margin: 0;
+    padding: 0;
   }
 
   img {
     max-width: 100%;
+    display: block;
   }
 
   body {
     font-family: "JetBrains Mono", Arial, Helvetica, sans-serif;
+    min-height: 100vh;
     line-height: 1.2;
     background-color: var(--color-main-bg);
     color: var(--color-text-light);
@@ -171,6 +174,10 @@
       height: auto;
     }
   }
+
+  .text-fluid-small {
+    font-size: clamp(0.625rem, 0.48rem + 0.61vw, 0.75rem);
+  }
 }
 
 @layer components {
@@ -179,11 +186,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-inline: 1rem;
-      padding-block: 1rem;
 
-      @media (width >= calc(700 / 16 * 1rem)) {
-      }
+      padding-inline: clamp(1rem, 0.42rem + 2.46vw, 1.5rem);
+
+      padding-block: clamp(1rem, 0.71rem + 1.23vw, 1.25rem);
     }
 
     .header__logo {
@@ -191,12 +197,42 @@
 
       width: 107.15px;
 
-      width: clamp(6.68rem, , 8.68rem);
+      width: clamp(6.68rem, 4.37rem + 9.84vw, 8.68rem);
     }
 
     .header__meta {
-      font-size: clamp(var(--fs-header-meta-moblie), 0.564rem + 0.258vw, var(--fs-header-meta-tablet-desktop));
+      font-size: clamp(var(--fs-header-meta-moblie), 0.33rem + 1.23vw, var(--fs-header-meta-tablet-desktop));
       color: var(--color-text-med);
+    }
+  }
+
+  .ticker {
+    display: flex;
+    font-size: clamp(0.625rem, 0.48rem + 0.61vw, 0.75rem);
+    background-color: var(--color-ticker-bg);
+
+    .ticker__label {
+      background-color: var(--color-ticker-live-market-bg);
+      color: var(--c-neutral-900);
+    }
+
+    .ticker__ul {
+      display: flex;
+      justify-content: space-between;
+
+      list-style: none;
+    }
+
+    .ticker__li {
+    }
+
+    .ticker__pair {
+    }
+
+    .ticker__price {
+    }
+
+    .ticker__daily-change {
     }
   }
 }
