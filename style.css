@@ -184,14 +184,14 @@
 
       @media (width >= calc(700 / 16 * 1rem)) {
       }
-      @media (width >= calc(1000 / 16 * 1rem)) {
-      }
     }
 
     .header__logo {
       display: block;
-      height: 20px;
+
       width: 107.15px;
+
+      width: clamp(6.68rem, , 8.68rem);
     }
 
     .header__meta {
