@@ -130,28 +130,6 @@
       --fs-converter-amount: var(--fs-40);
       --fs-converter-rate: var(--fs-12);
     }
-
-    :root {
-      --spacing-0: 0;
-      --spacing-025: calc(2 / 16 * 1rem);
-      --spacing-050: calc(4 / 16 * 1rem);
-      --spacing-075: calc(6 / 16 * 1rem);
-      --spacing-100: calc(8 / 16 * 1rem);
-      --spacing-125: calc(10 / 16 * 1rem);
-      --spacing-150: calc(12 / 16 * 1rem);
-      --spacing-200: calc(16 / 16 * 1rem);
-      --spacing-250: calc(20 / 16 * 1rem);
-      --spacing-300: calc(24 / 16 * 1rem);
-      --spacing-400: calc(32 / 16 * 1rem);
-      --spacing-500: calc(40 / 16 * 1rem);
-      --spacing-600: calc(48 / 16 * 1rem);
-      --spacing-800: calc(64 / 16 * 1rem);
-      --spacing-1000: calc(80 / 16 * 1rem);
-      --spacing-1200: calc(96 / 16 * 1rem);
-      --spacing-1400: calc(112 / 16 * 1rem);
-      --spacing-1600: calc(128 / 16 * 1rem);
-      --spacing-1800: calc(140 / 16 * 1rem);
-    }
   }
 
   *,
@@ -230,11 +208,9 @@
 
   .ticker {
     display: flex;
-
     font-size: clamp(0.625rem, 0.48rem + 0.61vw, 0.75rem);
     background-color: var(--color-ticker-bg);
     white-space: nowrap;
-    overflow: hidden;
     user-select: none;
 
     .ticker__label {
@@ -242,28 +218,34 @@
       color: var(--c-neutral-900);
       padding-inline: clamp(0.5rem, -0.07rem + 2.45vw, 1rem);
       padding-block: calc(12 / 16 * 1rem);
-      white-space: nowrap;
       flex-shrink: 0;
     }
 
     .ticker__track {
       display: flex;
-      flex: 1;
       overflow: hidden;
+      &:hover .ticker__ul {
+        animation-play-state: paused;
+      }
     }
 
     .ticker__ul {
       display: flex;
       list-style: none;
-      min-width: 100%;
       flex-shrink: 0;
-      animation: scroll 20s linear infinite;
+      min-width: 100%;
+      animation: scroll 80s linear infinite;
+
+      @media (width >= calc(700/16 * 1rem)) {
+        animation: scroll 100s linear infinite;
+      }
     }
 
     .ticker__li {
       padding-inline: clamp(0.75rem, 0.17rem + 2.46vw, 1.25rem);
       padding-block: calc(12 / 16 * 1rem);
       border-right: 1px solid var(--c-neutral-400);
+
       &:last-child {
         border-right: none;
       }
@@ -273,15 +255,12 @@
       }
     }
 
-    .ticker__li:first-child {
-    }
-
     .ticker__pair {
       color: var(--color-text-med);
     }
 
     .ticker__price {
-      margin-inline: 4px;
+      margin-inline: calc(4 / 16 * 1rem);
     }
 
     .ticker__daily-change {
