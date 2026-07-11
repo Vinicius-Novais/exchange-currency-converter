@@ -23,27 +23,16 @@
   some screen readers. Acronyms and codes (FX, EOD, ECB, USD, EUR…) stay as-is.
 -->
 
-    <!-- Header -->
-
-    <!-- Brand logo — assets/images/logo.svg (the lockup already includes the "FX_CHECKER" wordmark; use alt="FX Checker") -->
-
     <!-- Dynamic: number of available currencies, e.g. "55" -->
-    <!-- Currencies · EOD · ECB data -->
     <a href="#main" class="visually-hidden">Skip to main content</a>
     <header class="header">
       <div class="header__content">
         <a class="header__homelink" href="/">
-          <img src="./assets/images/logo.svg" alt="Fx Checker Home" class="header__logo" width="139" height="26" />
+          <img src="./assets/images/logo.svg" alt="FX Checker" class="header__logo" width="139" height="26" />
         </a>
         <div class="header__meta">55 CURRENCIES · EOD · ECB DATA</div>
       </div>
     </header>
-
-    <!-- Live markets ticker — auto-scrolls across the page, pauses on hover -->
-    <!-- 
-Live markets -->
-
-    <!-- Dynamic: scrolling list of currency pairs, each with its rate and 24h change (▲ up / ▼ down) -->
 
     <div class="ticker">
       <div class="ticker__label">● LIVE MARKETS</div>
@@ -162,9 +151,43 @@ Live markets -->
         </ul>
       </div>
     </div>
-
     <main id="main" class="main">
-      <section class="hero"></section>
+      <section class="converter">
+        <h1 class="converter__title">CHECK THE RATE</h1>
+        <div class="converter__card">
+          <label class="converter__label" for="send-input">SEND</label>
+          <div class="converter__input-group">
+            <input id="send-input" class="converter__amount" type="number" placeholder="0" />
+            <button class="converter__currency-btn">
+              <img class="converter__flag-btn" src="assets/images/flags/br.webp" alt="BR flag" />
+              <span class="converter__arrow-btn">▼</span>
+            </button>
+
+            <!--Picker-->
+            <div class="converter__currency-picker">
+              <input type="text" placeholder="Search currencies..." />
+            </div>
+          </div>
+        </div>
+        <button class="converter__swap-btn">
+          <span class="converter__swap-icon">⇄</span>
+        </button>
+        <div class="converter__card">
+          <label class="converter__label" for="receive-input">RECEIVE</label>
+          <div class="converter__input-group">
+            <input id="receive-input" class="converter__amount" type="number" placeholder="0" />
+            <button class="converter__currency-btn">
+              <img class="converter__flag-btn" src="assets/images/flags/dk.webp" alt="DK flag" />
+              <span class="converter__arrow-btn">▼</span>
+            </button>
+
+            <!--Picker-->
+            <div class="converter__currency-picker">
+              <input type="text" placeholder="Search currencies..." />
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- Converter -->
