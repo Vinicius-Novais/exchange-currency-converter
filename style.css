@@ -178,6 +178,13 @@
   .text-fluid-small {
     font-size: clamp(0.625rem, 0.48rem + 0.61vw, 0.75rem);
   }
+
+  .main {
+    /*16 -24-32     padding inline*/
+    /*32 -48-48     padding block*/
+    padding-inline: clamp(1rem, 0.757rem + 1.03vw, 2rem);
+    padding-block: clamp(2rem, 1.757rem + 1.03vw, 3rem);
+  }
 }
 
 @layer components {
