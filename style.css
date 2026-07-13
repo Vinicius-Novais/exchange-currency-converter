@@ -138,6 +138,12 @@
     box-sizing: border-box;
   }
 
+  h1,
+  h2,
+  h3 {
+    font-weight: inherit; /* herda do body */
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -154,6 +160,7 @@
     line-height: 1.2;
     background-color: var(--color-main-bg);
     color: var(--color-text-light);
+    font-weight: var(--fw-regular);
   }
 
   .visually-hidden {
@@ -294,6 +301,114 @@
       transform: translateX(-100%);
     }
   }
+
+  .converter {
+    display: grid;
+    gap: 1rem;
+
+    .converter__title {
+      font-size: var(--fs-h1);
+      white-space: nowrap;
+    }
+
+    .converter__cards {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(1rem, 0.87rem + 0.51vw, 1.5rem);
+      background-color: var(--color-converter-bg);
+      padding: clamp(1rem, 0.93rem + 0.25vw, 1.25rem);
+      border-radius: 1rem;
+    }
+
+    .converter__card {
+      display: grid;
+      gap: calc(20 / 16 * 1rem);
+      background-color: var(--color-send-receive-arrows-bg);
+      border: 1px solid var(--color-send-receive-arrows-border);
+      padding: clamp(1rem, 0.93rem + 0.25vw, 1.25rem);
+      border-radius: 1rem;
+    }
+
+    .converter__label {
+      font-size: var(--fs-label-send-receive);
+      color: var(--color-text-med-light);
+      letter-spacing: calc(1 / 16 * 1rem);
+    }
+    .converter__input-group {
+      display: flex;
+      align-items: center;
+
+      justify-content: space-between;
+    }
+    .converter__amount {
+      color: var(--color-text-light);
+      background-color: var(--color-send-receive-arrows-bg);
+      border: none;
+      outline: none;
+      font-size: clamp(2rem, 1.87rem + 0.51vw, 2.5rem);
+      font-family: inherit;
+      font-weight: var(--fw-bold);
+      flex: 1;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .converter__amount-receive {
+      color: var(--c-lime-500);
+    }
+
+    .converter__currency-btn {
+      display: flex;
+      gap: calc(8 / 16 * 1rem);
+      color: var(--color-text-light);
+      border: 0.5px solid var(--color-currency-dd-border);
+      border-radius: calc(8 / 16 * 1rem);
+      background-color: var(--color-currency-dd-bg);
+      align-items: center;
+      flex-shrink: 0;
+      padding: calc(10 / 16 * 1rem);
+      font-family: inherit;
+
+      &:hover {
+        background-color: var(--color-currency--dd-hover);
+        cursor: pointer;
+      }
+    }
+    .converter__flag-btn {
+      height: calc(20 / 16 * 1rem);
+
+      border-radius: 50%;
+      overflow: hidden;
+      object-fit: cover;
+      size: calc(20 / 16 * 1rem);
+    }
+
+    .converter__currency-name {
+      font-size: var(--fs-14);
+      letter-spacing: calc(1 / 16 * 1rem);
+    }
+    .converter__chevron {
+    }
+
+    .converter__currency-picker {
+    }
+
+    .converter__swap-btn {
+      background-color: var(--color-send-receive-arrows-bg);
+      border: 0.5px solid var(--color-send-receive-arrows-border);
+      border-radius: calc(8 / 16 * 1rem);
+      padding: calc(14 / 16 * 1rem);
+
+      &:hover {
+        background-color: var(--color-currency--dd-hover);
+        cursor: pointer;
+      }
+    }
+
+    .converter_converter__swap-icon {
+    }
+  }
 }
 
 /*
@@ -301,3 +416,8 @@
 
 
 */
+/* Cria uma borda colorida em absolutamente TUDO no projeto */
+/* 
+* {
+  outline: 1px solid magenta !important;
+} */
