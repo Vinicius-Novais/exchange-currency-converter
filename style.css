@@ -80,6 +80,7 @@
     --color-text-light: var(--c-neutral-50);
     --color-text-med-light: var(--c-neutral-100);
     --color-text-med: var(--c-neutral-200);
+    --color-text-dark: var(--c-neutral-900);
 
     --fs-40: calc(40/16 * 1rem);
     --fs-32: calc(32/16 * 1rem);
@@ -187,8 +188,10 @@
   }
 
   .main {
-    /*16 -24-32     padding inline*/
-    /*32 -48-48     padding block*/
+    display: grid;
+    width: 100%;
+    max-width: calc(1100 / 16 * 1rem);
+    margin-inline: auto;
     padding-inline: clamp(1rem, 0.757rem + 1.03vw, 2rem);
     padding-block: clamp(2rem, 1.757rem + 1.03vw, 3rem);
   }
@@ -312,13 +315,15 @@
     }
 
     .converter__cards {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      display: grid;
       gap: clamp(1rem, 0.87rem + 0.51vw, 1.5rem);
       background-color: var(--color-converter-bg);
       padding: clamp(1rem, 0.93rem + 0.25vw, 1.25rem);
       border-radius: 1rem;
+
+      @media (width>= calc(768/ 16 * 1rem)) {
+        grid-template-columns: 1fr auto 1fr;
+      }
     }
 
     .converter__card {
@@ -399,10 +404,16 @@
       border: 0.5px solid var(--color-send-receive-arrows-border);
       border-radius: calc(8 / 16 * 1rem);
       padding: calc(14 / 16 * 1rem);
-
+      width: fit-content;
+      align-self: center;
+      justify-self: center;
       &:hover {
         background-color: var(--color-currency--dd-hover);
         cursor: pointer;
+      }
+
+      @media (width >= calc(768 / 16 * 1rem)) {
+        transform: rotate(90deg);
       }
     }
 
@@ -413,46 +424,128 @@
       display: grid;
       justify-items: center;
       width: 100%;
-      gap: calc(16 / 10 * 1rem);
-      padding-inline: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+      gap: 1rem;
       padding-block: 1rem;
-      border-top-style: dashed;
       border-color: var(--c-neutral-400);
+      position: relative;
+      padding-block-end: 0;
+
+      &::before {
+        content: "";
+        display: block;
+        border-top: 1px dashed var(--c-neutral-400);
+        position: absolute;
+        top: 0;
+        left: calc(-1 * clamp(1rem, 0.93rem + 0.25vw, 1.25rem));
+        right: calc(-1 * clamp(1rem, 0.93rem + 0.25vw, 1.25rem));
+      }
+
+      @media (width>= calc(768/ 16 * 1rem)) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        grid-column: 1 /-1;
+      }
     }
 
     .converter__rate {
       font-size: clamp(0.625rem, 0.6rem + 0.125vw, 0.75rem);
     }
 
-    .converter__footer-btns {
+    .converter__footer-btns-container {
       display: flex;
       gap: calc(12 / 16 * 1rem);
       font-family: inherit;
       font-size: calc(12 / 16 * 1rem);
     }
 
+    .converter__footer-btn {
+      border: 1px solid var(--color-btn-main-fav-border);
+      border-radius: calc(8 / 16 * 1rem);
+      padding-block: calc(8 / 16 * 1rem);
+      padding-inline: calc(12 / 16 * 1rem);
+      color: var(--color-text-med);
+      font-family: inherit;
+
+      .converter__fav-icon--empty {
+        display: block;
+      }
+      .converter__fav-icon--filled {
+        display: none;
+      }
+
+      &:hover {
+        background-color: var(--color-currency--dd-hover);
+        cursor: pointer;
+      }
+    }
+
     .converter__fav-btn {
       display: flex;
       gap: calc(8 / 16 * 1rem);
       background-color: var(--color-btn-main-fav-bg);
-      color: var(--color-text-med);
-      padding-inline: calc(12 / 16 * 1rem);
-      padding-block: calc(8 / 16 * 1rem);
-      border: 1px solid var(--color-btn-main-fav-border);
-      border-radius: calc(8 / 16 * 1rem);
+      font-weight: var(--fw-medium);
+
+      &::after {
+        content: "FAVORITE";
+      }
+
+      &[aria-pressed="true"] {
+        background-color: var(--color-btn-main-fav-selected-bg);
+        border: 1px solid var(--color-btn-main-fav-selected-border);
+        color: var(--color-text-dark);
+
+        &::after {
+          content: "FAVORITED";
+        }
+
+        .converter__fav-icon--empty {
+          display: none;
+        }
+        .converter__fav-icon--filled {
+          display: block;
+        }
+      }
     }
 
     .converter__log-btn {
-      border: 1px solid var(--color-btn-main-fav-border);
-      border-radius: calc(8 / 16 * 1rem);
       background-color: var(--color-log-btn-bg);
-      color: var(--color-text-med);
-      padding-inline: calc(12 / 16 * 1rem);
-      padding-block: calc(8 / 16 * 1rem);
+      font-weight: var(--fw-bold);
+      min-width: calc(138 / 16 * 1rem);
+
+      &::after {
+        content: "LOG CONVERSION";
+      }
+
+      &:active {
+        background-color: var(--color-log-btn-selected-bg);
+        border-color: var(--color-log-btn-border);
+        color: var(--c-neutral-900);
+
+        &::after {
+          content: "✓ LOGGED";
+        }
+
+        /*
+        Nessa parte eu preciso ativar a borda verde do log conversion assim que tiver um valor no receive
+        */
+      }
+
+      &:not(:disabled) {
+        border-color: var(--color-log-btn-border);
+
+        &:active {
+          background-color: var(--color-log-btn-selected-bg);
+        }
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
     }
   }
 }
-
 /*
 
 

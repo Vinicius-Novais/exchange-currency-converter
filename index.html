@@ -632,16 +632,40 @@
 
           <div class="converter__footer">
             <span class="converter__rate">1 USD = 0.8530 EUR</span>
-            <div class="converter__footer-btns">
-              <button aria-label="Add to favorites" class="converter__fav-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+            <div class="converter__footer-btns-container">
+              <button
+                aria-label="Add to favorites"
+                aria-pressed="false"
+                class="converter__footer-btn converter__fav-btn"
+              >
+                <svg
+                  class="converter__fav-icon--empty"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="none"
+                  viewBox="0 0 16 16"
+                >
                   <path
                     fill="currentColor"
                     d="M13.637 6.02c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492 1.523-3.117c.281-.563 1.078-.54 1.336 0l1.547 3.117zm-3.282 3.305 2.368-2.297-3.258-.469-1.453-2.953L6.535 6.56l-3.258.469 2.367 2.297-.562 3.234 2.93-1.523 2.906 1.523z"
-                  /></svg
-                >FAVORITE
+                  />
+                </svg>
+                <svg
+                  class="converter__fav-icon--filled"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="none"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M7.332 2.41c.281-.562 1.078-.538 1.336 0l1.547 3.118 3.422.492c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492z"
+                  />
+                </svg>
               </button>
-              <button class="converter__log-btn">LOG CONVERSION</button>
+              <button disabled class="converter__footer-btn converter__log-btn"></button>
             </div>
           </div>
         </div>
