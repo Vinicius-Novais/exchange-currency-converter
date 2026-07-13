@@ -154,36 +154,42 @@
     <main id="main" class="main">
       <section class="converter">
         <h1 class="converter__title">CHECK THE RATE</h1>
-        <div class="converter__card">
-          <label class="converter__label" for="send-input">SEND</label>
-          <div class="converter__input-group">
-            <input id="send-input" class="converter__amount" type="number" placeholder="0" />
-            <button class="converter__currency-btn">
-              <img class="converter__flag-btn" src="assets/images/flags/br.webp" alt="BR flag" />
-              <span class="converter__arrow-btn">▼</span>
-            </button>
+        <div class="converter__cards">
+          <div class="converter__card">
+            <label class="converter__label" for="send-input">SEND</label>
+            <div class="converter__input-group">
+              <input id="send-input" class="converter__amount" type="text" inputmode="decimal" placeholder="0" />
+              <button class="converter__currency-btn">
+                <img class="converter__flag-btn" src="assets/images/flags/br.webp" alt="BR flag" />
+                <span class="converter__currency-name">BRL</span>
+                <svg class="converter__chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12"><path fill="#fff" d="M2.988 4.02h6.024c.422 0 .633.515.328.82l-3 3a.48.48 0 0 1-.68 0l-3-3c-.304-.305-.093-.82.328-.82" /></svg>
+              </button>
 
-            <!--Picker-->
-            <div class="converter__currency-picker">
-              <input type="text" placeholder="Search currencies..." />
+              <!--Picker-->
+              <div class="converter__currency-picker" hidden>
+                <input type="text" placeholder="Search currencies..." />
+              </div>
             </div>
           </div>
-        </div>
-        <button class="converter__swap-btn">
-          <span class="converter__swap-icon">⇄</span>
-        </button>
-        <div class="converter__card">
-          <label class="converter__label" for="receive-input">RECEIVE</label>
-          <div class="converter__input-group">
-            <input id="receive-input" class="converter__amount" type="number" placeholder="0" />
-            <button class="converter__currency-btn">
-              <img class="converter__flag-btn" src="assets/images/flags/dk.webp" alt="DK flag" />
-              <span class="converter__arrow-btn">▼</span>
-            </button>
+          <button class="converter__swap-btn">
+            <span class="converter__swap-icon"
+              ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m11 6 4-4 4 4m-4-4v16m-6-4-4 4-4-4m4 4V2" /></svg
+            ></span>
+          </button>
+          <div class="converter__card">
+            <label class="converter__label" for="receive-input">RECEIVE</label>
+            <div class="converter__input-group">
+              <input id="receive-input" class="converter__amount converter__amount-receive" type="text" inputmode="decimal" placeholder="0" />
+              <button class="converter__currency-btn">
+                <img class="converter__flag-btn" src="assets/images/flags/dk.webp" alt="DK flag" />
+                <span class="converter__currency-name">EUR</span>
+                <svg class="converter__chevron xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12"><path fill="#fff" d="M2.988 4.02h6.024c.422 0 .633.515.328.82l-3 3a.48.48 0 0 1-.68 0l-3-3c-.304-.305-.093-.82.328-.82" /></svg>
+              </button>
 
-            <!--Picker-->
-            <div class="converter__currency-picker">
-              <input type="text" placeholder="Search currencies..." />
+              <!--Picker-->
+              <div class="converter__currency-picker" hidden>
+                <input type="text" placeholder="Search currencies..." />
+              </div>
             </div>
           </div>
         </div>
