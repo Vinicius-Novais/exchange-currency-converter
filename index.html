@@ -854,6 +854,45 @@
           </div>
         </div>
       </section>
+      <section class="dashboard">
+        <div class="dashboard__nav">
+          <div class="dashboard__dd">
+            <button class="dashboard__dd-trigger-btn" aria-expanded="false">
+              <span class="dashboard__place-holder">HISTORY</span>
+              <!--badge hidden mostrar apenas quando escolhr fav e log caso tenha já salvos-->
+              <span hidden class="dashboard_badge">10</span>
+            </button>
+            <!--remover o hidden ao click-->
+            <ul hidden class="dashboard__dd-list">
+              <li class="dashboard__dd-item">HISTORY</li>
+              <li class="dashboard__dd-item">COMPARE</li>
+              <li class="dashboard__dd-item">FAVORITES<span class="dashboard_badge">10</span></li>
+              <li class="dashboard__dd-item">LOG<span class="dashboard_badge">8</span></li>
+            </ul>
+          </div>
+
+          <!--desktop: tabs-->
+          <div class="dashboard__tabs">
+            <button class="dashboard__tab dashboard__history-btn" aria-selected="true">HISTORY</button>
+            <button class="dashboard__tab dashboard__compare-btn" aria-selected="false">COMPARE</button>
+            <button class="dashboard__tab dashboard__favorites-btn" aria-selected="false">
+              FAVORITES <span hidden class="dashboard_badge" aria-selected="false">10</span>
+            </button>
+            <button class="dashboard__tab dashboard__log-btn">LOG <span hidden class="dashboard_badge">8</span></button>
+          </div>
+        </div>
+
+        <div class="dashboard__panels">
+          <!--HISTORY: panel padrão sem hidden-->
+          <div class="dashboard__panel dashboard__panel--history" data-tab="history"></div>
+          <!--COMPARE (hidden)-->
+          <div hidden class="dashboard__panel dashboard__panel--compare" data-tab="compare"></div>
+          <!--FAVORITES (hidden)-->
+          <div hidden class="dashboard__panel dashboard__panel--favorites" data-tab="favorites"></div>
+          <!--LOG (hidden)-->
+          <div hidden class="dashboard__panel dashboard__panel--log" data-tab="log"></div>
+        </div>
+      </section>
     </main>
 
     <!-- Converter -->
