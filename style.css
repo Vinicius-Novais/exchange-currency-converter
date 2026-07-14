@@ -333,6 +333,7 @@
       border: 1px solid var(--color-send-receive-arrows-border);
       padding: clamp(1rem, 0.93rem + 0.25vw, 1.25rem);
       border-radius: 1rem;
+      position: relative;
     }
 
     .converter__label {
@@ -506,6 +507,8 @@
           display: block;
         }
       }
+
+      /*Aria-pressed= 'false' no html do btn, só mudare para true para mudar o estado para ativo*/
     }
 
     .converter__log-btn {
@@ -517,7 +520,7 @@
         content: "LOG CONVERSION";
       }
 
-      &:active {
+      &:active:not(:disabled) {
         background-color: var(--color-log-btn-selected-bg);
         border-color: var(--color-log-btn-border);
         color: var(--c-neutral-900);
@@ -525,10 +528,6 @@
         &::after {
           content: "✓ LOGGED";
         }
-
-        /*
-        Nessa parte eu preciso ativar a borda verde do log conversion assim que tiver um valor no receive
-        */
       }
 
       &:not(:disabled) {
@@ -541,16 +540,133 @@
 
       &:disabled {
         cursor: not-allowed;
-        opacity: 0.5;
       }
+    }
+    /*Atributo disabled no btn, só remover ele para ficar clicavél*/
+  }
+
+  /*teste*/
+
+  .converter__picker {
+    position: absolute;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin-block-start: 0.5rem;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+
+    background-color: var(--color-send-receive-arrows-bg);
+    border: 1px solid var(--c-neutral-400);
+    border-radius: calc(8 / 16 * 1rem);
+    overflow: hidden;
+
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .converter__picker-search {
+    position: sticky;
+    top: 0;
+    background-color: var(--color-send-receive-arrows-bg);
+    position: relative;
+
+    padding-inline: calc(12 / 16 * 1rem);
+    padding-block: calc(8 / 16 * 1rem);
+  }
+
+  .converter__picker-search-icon {
+    position: absolute;
+    left: calc(clamp(0.75rem, 0.68rem + 0.25vw, 1rem) + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .converter__picker-input {
+    width: 100%;
+    background-color: var(--color-send-receive-arrows-bg);
+    border: 1px solid var(--c-neutral-200);
+    border-radius: calc(8 / 16 * 1rem);
+    padding: calc(12 / 16 * 1rem);
+    padding-inline-start: calc(35 / 16 * 1rem);
+    color: var(--color-text-light);
+    font-family: inherit;
+    font-size: var(--fs-14);
+    outline: none;
+  }
+
+  .converter__picker-list {
+    list-style: none;
+    padding: calc(8 / 16 * 1rem);
+  }
+
+  .converter__picker-heading {
+    display: flex;
+    justify-content: space-between;
+    padding: calc(8 / 16 * 1rem);
+    font-size: var(--fs-12);
+    color: var(--color-text-med);
+    letter-spacing: calc(1 / 16 * 1rem);
+    border-block-end: 0.1px solid var(--c-neutral-400);
+  }
+
+  .converter__picker-item {
+    display: flex;
+    align-items: center;
+    gap: calc(12 / 16 * 1rem);
+    padding-inline: calc(8 / 16 * 1rem);
+    padding-block: calc(12 / 16 * 1rem);
+
+    &:hover {
+      cursor: pointer;
+
+      border: 1px solid var(--color-text-med-light);
+      border-radius: calc(8 / 16 * 1rem);
+    }
+  }
+
+  .converter__picker-flag {
+    width: calc(20 / 16 * 1rem);
+    height: calc(20 / 16 * 1rem);
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .converter__picker-code {
+    font-size: var(--fs-14);
+    font-weight: var(--fw-bold);
+    color: var(--color-text-light);
+    letter-spacing: calc(1 / 16 * 1rem);
+  }
+
+  .converter__picker-name {
+    font-size: var(--fs-14);
+    color: var(--color-text-med);
+    flex: 1;
+  }
+
+  .converter__picker-check {
+    display: none;
+    color: var(--c-lime-500);
+    flex-shrink: 0;
+  }
+
+  .converter__picker-item--selected {
+    .converter__picker-check {
+      display: block;
     }
   }
 }
-/*
 
-
-
-*/
 /* Cria uma borda colorida em absolutamente TUDO no projeto */
 
 /* * {

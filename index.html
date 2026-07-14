@@ -578,8 +578,100 @@
               </button>
 
               <!--Picker-->
-              <div class="converter__currency-picker" hidden>
-                <input type="text" placeholder="Search currencies..." />
+              <div hidden class="converter__picker">
+                <!-- Input de busca — estático, sempre presente -->
+                <div class="converter__picker-search">
+                  <svg
+                    class="converter__picker-search-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="20"
+                    fill="none"
+                    viewBox="0 0 14 20"
+                  >
+                    <path
+                      fill="#fff"
+                      d="M13.89 15.814c.137.137.137.355 0 .465l-.628.629c-.11.136-.328.136-.465 0l-3.309-3.309a.44.44 0 0 1-.082-.246v-.355a5.76 5.76 0 0 1-3.719 1.367A5.683 5.683 0 0 1 0 8.677C0 5.56 2.543 2.99 5.688 2.99c3.117 0 5.687 2.57 5.687 5.687a5.73 5.73 0 0 1-1.395 3.719h.356c.082 0 .164.055.246.11zm-8.202-2.762a4.37 4.37 0 0 0 4.375-4.375 4.39 4.39 0 0 0-4.376-4.375 4.37 4.37 0 0 0-4.374 4.375 4.353 4.353 0 0 0 4.375 4.375"
+                    />
+                  </svg>
+                  <input
+                    type="text"
+                    class="converter__picker-input"
+                    placeholder="Search currencies..."
+                    autocomplete="off"
+                  />
+                </div>
+
+                <!-- Lista — conteúdo temporário para testar CSS, será gerado pelo JS -->
+                <ul class="converter__picker-list">
+                  <li class="converter__picker-heading">
+                    <span>POPULAR</span>
+                    <span class="converter__picker-count">3</span>
+                  </li>
+
+                  <li class="converter__picker-item converter__picker-item--selected">
+                    <img class="converter__picker-flag" src="assets/images/flags/us.webp" alt="US flag" />
+                    <span class="converter__picker-code">USD</span>
+                    <span class="converter__picker-name">US Dollar</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="none"
+                      viewBox="0 0 16 16"
+                      class="converter__picker-check"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="M2 8l4 4 8-8"
+                      />
+                    </svg>
+                  </li>
+
+                  <li class="converter__picker-item">
+                    <img class="converter__picker-flag" src="assets/images/flags/eu.webp" alt="EU flag" />
+                    <span class="converter__picker-code">EUR</span>
+                    <span class="converter__picker-name">Euro</span>
+                  </li>
+
+                  <li class="converter__picker-item">
+                    <img class="converter__picker-flag" src="assets/images/flags/gb.webp" alt="GB flag" />
+                    <span class="converter__picker-code">GBP</span>
+                    <span class="converter__picker-name">British Pound</span>
+                  </li>
+
+                  <li class="converter__picker-heading">
+                    <span>OTHER CURRENCIES</span>
+                    <span class="converter__picker-count">52</span>
+                  </li>
+
+                  <li class="converter__picker-item">
+                    <img class="converter__picker-flag" src="assets/images/flags/ae.webp" alt="AE flag" />
+                    <span class="converter__picker-code">AED</span>
+                    <span class="converter__picker-name">UAE Dirham</span>
+                  </li>
+
+                  <li class="converter__picker-item">
+                    <img class="converter__picker-flag" src="assets/images/flags/ar.webp" alt="AR flag" />
+                    <span class="converter__picker-code">ARS</span>
+                    <span class="converter__picker-name">Argentine Peso</span>
+                  </li>
+
+                  <li class="converter__picker-item">
+                    <img class="converter__picker-flag" src="assets/images/flags/au.webp" alt="AU flag" />
+                    <span class="converter__picker-code">AUD</span>
+                    <span class="converter__picker-name">Australian Dollar</span>
+                  </li>
+
+                  <li class="converter__picker-item">
+                    <img class="converter__picker-flag" src="assets/images/flags/bd.webp" alt="BD flag" />
+                    <span class="converter__picker-code">BDT</span>
+                    <span class="converter__picker-name">Bangladeshi Taka</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -624,8 +716,100 @@
               </button>
 
               <!--Picker-->
-              <div class="converter__currency-picker" hidden>
-                <input type="text" placeholder="Search currencies..." />
+              <div hidden class="converter__picker">
+                <!-- Input de busca — estático, sempre presente -->
+                <div class="converter__picker-search">
+                  <svg
+                    class="converter__picker-search-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="20"
+                    fill="none"
+                    viewBox="0 0 14 20"
+                  >
+                    <path
+                      fill="#fff"
+                      d="M13.89 15.814c.137.137.137.355 0 .465l-.628.629c-.11.136-.328.136-.465 0l-3.309-3.309a.44.44 0 0 1-.082-.246v-.355a5.76 5.76 0 0 1-3.719 1.367A5.683 5.683 0 0 1 0 8.677C0 5.56 2.543 2.99 5.688 2.99c3.117 0 5.687 2.57 5.687 5.687a5.73 5.73 0 0 1-1.395 3.719h.356c.082 0 .164.055.246.11zm-8.202-2.762a4.37 4.37 0 0 0 4.375-4.375 4.39 4.39 0 0 0-4.376-4.375 4.37 4.37 0 0 0-4.374 4.375 4.353 4.353 0 0 0 4.375 4.375"
+                    />
+                  </svg>
+                  <input
+                    type="text"
+                    class="converter__picker-input"
+                    placeholder="Search currencies..."
+                    autocomplete="off"
+                  />
+                </div>
+
+                <!-- Lista — conteúdo temporário para testar CSS, será gerado pelo JS -->
+                <ul class="converter__picker-list">
+                  <li class="converter__picker-heading">
+                    <span>POPULAR</span>
+                    <span class="converter__picker-count">3</span>
+                  </li>
+
+                  <li class="converter__picker-item converter__picker-item--selected">
+                    <img class="converter__picker-flag" src="assets/images/flags/us.webp" alt="US flag" />
+                    <span class="converter__picker-code">USD</span>
+                    <span class="converter__picker-name">US Dollar</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="none"
+                      viewBox="0 0 16 16"
+                      class="converter__picker-check"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="M2 8l4 4 8-8"
+                      />
+                    </svg>
+                  </li>
+
+                  <li class="converter__picker-item">
+                    <img class="converter__picker-flag" src="assets/images/flags/eu.webp" alt="EU flag" />
+                    <span class="converter__picker-code">EUR</span>
+                    <span class="converter__picker-name">Euro</span>
+                  </li>
+
+                  <li class="converter__picker-item">
+                    <img class="converter__picker-flag" src="assets/images/flags/gb.webp" alt="GB flag" />
+                    <span class="converter__picker-code">GBP</span>
+                    <span class="converter__picker-name">British Pound</span>
+                  </li>
+
+                  <li class="converter__picker-heading">
+                    <span>OTHER CURRENCIES</span>
+                    <span class="converter__picker-count">52</span>
+                  </li>
+
+                  <li class="converter__picker-item">
+                    <img class="converter__picker-flag" src="assets/images/flags/ae.webp" alt="AE flag" />
+                    <span class="converter__picker-code">AED</span>
+                    <span class="converter__picker-name">UAE Dirham</span>
+                  </li>
+
+                  <li class="converter__picker-item">
+                    <img class="converter__picker-flag" src="assets/images/flags/ar.webp" alt="AR flag" />
+                    <span class="converter__picker-code">ARS</span>
+                    <span class="converter__picker-name">Argentine Peso</span>
+                  </li>
+
+                  <li class="converter__picker-item">
+                    <img class="converter__picker-flag" src="assets/images/flags/au.webp" alt="AU flag" />
+                    <span class="converter__picker-code">AUD</span>
+                    <span class="converter__picker-name">Australian Dollar</span>
+                  </li>
+
+                  <li class="converter__picker-item">
+                    <img class="converter__picker-flag" src="assets/images/flags/bd.webp" alt="BD flag" />
+                    <span class="converter__picker-code">BDT</span>
+                    <span class="converter__picker-name">Bangladeshi Taka</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
