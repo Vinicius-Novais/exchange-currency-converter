@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js" type="module"></script>
     <title>FX Checker</title>
   </head>
   <body>
@@ -873,8 +874,8 @@
 
           <!--desktop: tabs-->
           <div class="dashboard__tabs">
-            <button class="dashboard__tab dashboard__history-btn" aria-selected="true">HISTORY</button>
-            <button class="dashboard__tab dashboard__compare-btn" aria-selected="false">COMPARE</button>
+            <button class="dashboard__tab dashboard__history-btn" aria-selected="false">HISTORY</button>
+            <button class="dashboard__tab dashboard__compare-btn" aria-selected="true">COMPARE</button>
             <button class="dashboard__tab dashboard__favorites-btn" aria-selected="false">
               FAVORITES <span hidden class="dashboard_badge" aria-selected="false">10</span>
             </button>
@@ -884,7 +885,7 @@
 
         <div class="dashboard__panels">
           <!--HISTORY: panel padrão sem hidden-->
-          <div class="dashboard__panel dashboard__panel--history" data-tab="history">
+          <div hidden class="dashboard__panel dashboard__panel--history" data-tab="history">
             <div class="dashboard__chart-header">
               <div class="dashboard__info-cards">
                 <div class="dashboard__info-card dashboard__open-card">
@@ -904,6 +905,7 @@
                   <span class="dashboard__value-card dashboard__value--positive">+0.16%</span>
                 </div>
               </div>
+
               <div class="dashboard__range-selector" role="group" aria-label="Date range">
                 <button class="dashboard__range-btn" aria-selected="false">1D</button>
                 <button class="dashboard__range-btn" aria-selected="false">1W</button>
@@ -913,9 +915,20 @@
                 <button class="dashboard__range-btn" aria-selected="false">5Y</button>
               </div>
             </div>
+
+            <div class="dashboard__chart">
+              <div class="dashboard__chart-top-bar">
+                <span class="dashboard__chart-pair">USD/EUR</span>
+                <div class="dashboard__chart-info">
+                  <span class="dashboard__chart-current-value">0.8530</span> ·
+                  <span class="dashboard__chart-date">MAY 14 16:00 CET</span>
+                </div>
+              </div>
+              <canvas class="dashboard__chart-canvas" id="rate-chart"></canvas>
+            </div>
           </div>
           <!--COMPARE (hidden)-->
-          <div hidden class="dashboard__panel dashboard__panel--compare" data-tab="compare"></div>
+          <div class="dashboard__panel dashboard__panel--compare" data-tab="compare"></div>
           <!--FAVORITES (hidden)-->
           <div hidden class="dashboard__panel dashboard__panel--favorites" data-tab="favorites"></div>
           <!--LOG (hidden)-->
