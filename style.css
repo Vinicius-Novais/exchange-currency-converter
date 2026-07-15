@@ -467,6 +467,7 @@
       padding-block: calc(8 / 16 * 1rem);
       padding-inline: calc(12 / 16 * 1rem);
       color: var(--color-text-med);
+      letter-spacing: 0.0625rem;
       font-family: inherit;
 
       .converter__fav-icon--empty {
@@ -515,6 +516,7 @@
     .converter__log-btn {
       background-color: var(--color-log-btn-bg);
       font-weight: var(--fw-bold);
+
       min-width: calc(138 / 16 * 1rem);
 
       &::after {
@@ -544,8 +546,6 @@
       }
     }
     /*Atributo disabled no btn, só remover ele para ficar clicavél*/
-
-    /*teste*/
 
     .converter__picker {
       position: absolute;
@@ -692,6 +692,7 @@
 
       font-family: inherit;
       font-size: var(--fs-16);
+      letter-spacing: 0.0625rem;
       padding-block: calc(10.5 / 16 * 1rem);
       padding-inline-start: calc(12 / 16 * 1rem);
 
@@ -724,6 +725,8 @@
 
     .dashboard__dd-item {
       display: flex;
+      font-size: var(--fs-16);
+      letter-spacing: 0.0625rem;
       justify-content: space-between;
       padding-block: calc(8 / 16 * 1rem);
       padding-inline: calc(10 / 16 * 1rem);
@@ -753,7 +756,7 @@
     .dashboard__tab {
       font-size: 1rem;
       border: none;
-
+      letter-spacing: 0.0625rem;
       padding-block: calc(10.5 / 16 * 1rem);
       padding-inline: 1rem;
       background-color: var(--color-main-bg);
@@ -782,7 +785,60 @@
     .dashboard__panel {
     }
 
-    .dashboard__panel--history {
+    . .dashboard__panel--history {
+    }
+
+    .dashboard__info-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(0.625rem, 0.35rem + 1.33vw, 1rem);
+    }
+
+    .dashboard__info-card {
+      background-color: var(--color-four-cards-bg);
+      border: 1px solid var(--color-four-cards-border);
+      border-radius: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: space-between;
+      padding-inline: calc(20 / 16 * 1rem);
+      padding-block: calc(12 / 16 * 1rem);
+    }
+
+    .dashboard_open-card {
+    }
+    .dashboard_last-card {
+    }
+
+    .dashboard_change-card {
+    }
+
+    .dashboard__value--positive {
+      color: var(--c-green-500);
+    }
+    .dashboard__value--negative {
+      color: var(--c-red-500);
+    }
+
+    .dashboard__percentage-card {
+      .dashboard__value--positive::before {
+        content: "▲ ";
+      }
+
+      .dashboard__value--negative::before {
+        content: "▼ ";
+      }
+    }
+
+    .dashboard__title-card {
+      font-size: var(--fs-14);
+      letter-spacing: 0.0625rem;
+      color: var(--color-text-med-light);
+    }
+
+    .dashboard__value-card {
+      font-size: 1.25rem;
     }
 
     .dashboard__panel--compare {
