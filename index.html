@@ -859,16 +859,16 @@
         <div class="dashboard__nav">
           <div class="dashboard__dd">
             <button class="dashboard__dd-trigger-btn" aria-expanded="false">
-              <span class="dashboard__place-holder">HISTORY</span>
+              <span class="dashboard__place-holder">COMPARE</span>
               <!--badge hidden mostrar apenas quando escolhr fav e log caso tenha já salvos-->
-              <span hidden class="dashboard_badge">10</span>
+              <span hidden class="dashboard__badge">10</span>
             </button>
             <!--remover o hidden ao click-->
             <ul hidden class="dashboard__dd-list">
               <li class="dashboard__dd-item">HISTORY</li>
               <li class="dashboard__dd-item">COMPARE</li>
-              <li class="dashboard__dd-item">FAVORITES<span class="dashboard_badge">10</span></li>
-              <li class="dashboard__dd-item">LOG<span class="dashboard_badge">8</span></li>
+              <li class="dashboard__dd-item">FAVORITES<span class="dashboard__badge">10</span></li>
+              <li class="dashboard__dd-item">LOG<span class="dashboard__badge">8</span></li>
             </ul>
           </div>
 
@@ -877,9 +877,11 @@
             <button class="dashboard__tab dashboard__history-btn" aria-selected="false">HISTORY</button>
             <button class="dashboard__tab dashboard__compare-btn" aria-selected="true">COMPARE</button>
             <button class="dashboard__tab dashboard__favorites-btn" aria-selected="false">
-              FAVORITES <span hidden class="dashboard_badge" aria-selected="false">10</span>
+              FAVORITES <span hidden class="dashboard__badge" aria-selected="false">10</span>
             </button>
-            <button class="dashboard__tab dashboard__log-btn">LOG <span hidden class="dashboard_badge">8</span></button>
+            <button class="dashboard__tab dashboard__log-btn">
+              LOG <span hidden class="dashboard__badge">8</span>
+            </button>
           </div>
         </div>
 
@@ -928,7 +930,137 @@
             </div>
           </div>
           <!--COMPARE (hidden)-->
-          <div class="dashboard__panel dashboard__panel--compare" data-tab="compare"></div>
+          <div class="dashboard__panel dashboard__panel--compare" data-tab="compare">
+            <div class="dashboard__compare-header">
+              <div class="dashboard__compare-title-from">
+                <span class="dashboard__compare-title">MULTI-CURRENCY</span>
+                <span class="dashboard__compare-from">1,000 FROM USD</span>
+              </div>
+              <span class="dashboard__compare-pairs">8 PAIRS</span>
+            </div>
+            <ul class="dashboard__compare-list">
+              <li class="dashboard__compare-item">
+                <div class="dashboard__compare-left">
+                  <img src="/assets/images/flags/br.webp" alt="country flag" class="dashboard__compare-flag" />
+                  <div class="dashboard__compare-currency">
+                    <span class="dashboard__compare-code">GBP</span>
+                    <span class="dashboard__compare-name">British Pound</span>
+                  </div>
+                </div>
+                <div class="dashboard__compare-right">
+                  <div class="dashboard__compare-value-rate">
+                    <span class="dashboard__compare-value">736.65</span>
+                    <span class="dashboard__compare-rate">@ 0.7366</span>
+                  </div>
+                  <button class="dashboard__compare-fav-btn">
+                    <svg
+                      class="dashboard__compare-icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M13.637 6.02c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492 1.523-3.117c.281-.563 1.078-.54 1.336 0l1.547 3.117zm-3.282 3.305 2.368-2.297-3.258-.469-1.453-2.953L6.535 6.56l-3.258.469 2.367 2.297-.562 3.234 2.93-1.523 2.906 1.523z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </li>
+              <li class="dashboard__compare-item">
+                <div class="dashboard__compare-left">
+                  <img src="/assets/images/flags/br.webp" alt="country flag" class="dashboard__compare-flag" />
+                  <div class="dashboard__compare-currency">
+                    <span class="dashboard__compare-code">GBP</span>
+                    <span class="dashboard__compare-name">British Pound</span>
+                  </div>
+                </div>
+                <div class="dashboard__compare-right">
+                  <div class="dashboard__compare-value-rate">
+                    <span class="dashboard__compare-value">736.65</span>
+                    <span class="dashboard__compare-rate">@ 0.7366</span>
+                  </div>
+                  <button class="dashboard__compare-fav-btn">
+                    <svg
+                      class="dashboard__compare-icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M13.637 6.02c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492 1.523-3.117c.281-.563 1.078-.54 1.336 0l1.547 3.117zm-3.282 3.305 2.368-2.297-3.258-.469-1.453-2.953L6.535 6.56l-3.258.469 2.367 2.297-.562 3.234 2.93-1.523 2.906 1.523z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </li>
+              <li class="dashboard__compare-item">
+                <div class="dashboard__compare-left">
+                  <img src="/assets/images/flags/br.webp" alt="country flag" class="dashboard__compare-flag" />
+                  <div class="dashboard__compare-currency">
+                    <span class="dashboard__compare-code">GBP</span>
+                    <span class="dashboard__compare-name">British Pound</span>
+                  </div>
+                </div>
+                <div class="dashboard__compare-right">
+                  <div class="dashboard__compare-value-rate">
+                    <span class="dashboard__compare-value">736.65</span>
+                    <span class="dashboard__compare-rate">@ 0.7366</span>
+                  </div>
+                  <button class="dashboard__compare-fav-btn">
+                    <svg
+                      class="dashboard__compare-icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M13.637 6.02c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492 1.523-3.117c.281-.563 1.078-.54 1.336 0l1.547 3.117zm-3.282 3.305 2.368-2.297-3.258-.469-1.453-2.953L6.535 6.56l-3.258.469 2.367 2.297-.562 3.234 2.93-1.523 2.906 1.523z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </li>
+              <li class="dashboard__compare-item">
+                <div class="dashboard__compare-left">
+                  <img src="/assets/images/flags/br.webp" alt="country flag" class="dashboard__compare-flag" />
+                  <div class="dashboard__compare-currency">
+                    <span class="dashboard__compare-code">GBP</span>
+                    <span class="dashboard__compare-name">British Pound</span>
+                  </div>
+                </div>
+                <div class="dashboard__compare-right">
+                  <div class="dashboard__compare-value-rate">
+                    <span class="dashboard__compare-value">736.65</span>
+                    <span class="dashboard__compare-rate">@ 0.7366</span>
+                  </div>
+                  <button class="dashboard__compare-fav-btn">
+                    <svg
+                      class="dashboard__compare-icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M13.637 6.02c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492 1.523-3.117c.281-.563 1.078-.54 1.336 0l1.547 3.117zm-3.282 3.305 2.368-2.297-3.258-.469-1.453-2.953L6.535 6.56l-3.258.469 2.367 2.297-.562 3.234 2.93-1.523 2.906 1.523z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
           <!--FAVORITES (hidden)-->
           <div hidden class="dashboard__panel dashboard__panel--favorites" data-tab="favorites"></div>
           <!--LOG (hidden)-->
