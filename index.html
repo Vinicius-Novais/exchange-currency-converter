@@ -887,7 +887,7 @@
 
         <div class="dashboard__panels">
           <!--HISTORY: panel padrão sem hidden-->
-          <div hidden class="dashboard__panel dashboard__panel--history" data-tab="history">
+          <div class="dashboard__panel dashboard__panel--history" data-tab="history">
             <div class="dashboard__chart-header">
               <div class="dashboard__info-cards">
                 <div class="dashboard__info-card dashboard__open-card">
@@ -930,7 +930,7 @@
             </div>
           </div>
           <!--COMPARE (hidden)-->
-          <div class="dashboard__panel dashboard__panel--compare" data-tab="compare">
+          <div hidden class="dashboard__panel dashboard__panel--compare" data-tab="compare">
             <div class="dashboard__compare-header">
               <div class="dashboard__compare-title-from">
                 <span class="dashboard__compare-title">MULTI-CURRENCY</span>
@@ -938,8 +938,8 @@
               </div>
               <span class="dashboard__compare-pairs">8 PAIRS</span>
             </div>
-            <ul class="dashboard__compare-list">
-              <li class="dashboard__compare-item">
+            <ul class="dashboard__compare-list dashboard__list">
+              <li class="dashboard__compare-item dashboard__item">
                 <div class="dashboard__compare-left">
                   <img src="/assets/images/flags/br.webp" alt="country flag" class="dashboard__compare-flag" />
                   <div class="dashboard__compare-currency">
@@ -952,7 +952,7 @@
                     <span class="dashboard__compare-value">736.65</span>
                     <span class="dashboard__compare-rate">@ 0.7366</span>
                   </div>
-                  <button aria-pressed="false" class="dashboard__compare-fav-btn">
+                  <button aria-pressed="false" class="dashboard__compare-fav-btn dashboard__fav-btn">
                     <svg
                       class="dashboard__compare-icon-empty"
                       xmlns="http://www.w3.org/2000/svg"
@@ -982,7 +982,7 @@
                   </button>
                 </div>
               </li>
-              <li class="dashboard__compare-item">
+              <li class="dashboard__compare-item dashboard__item">
                 <div class="dashboard__compare-left">
                   <img src="/assets/images/flags/br.webp" alt="country flag" class="dashboard__compare-flag" />
                   <div class="dashboard__compare-currency">
@@ -995,7 +995,7 @@
                     <span class="dashboard__compare-value">736.65</span>
                     <span class="dashboard__compare-rate">@ 0.7366</span>
                   </div>
-                  <button aria-pressed="false" class="dashboard__compare-fav-btn">
+                  <button aria-pressed="false" class="dashboard__compare-fav-btn dashboard__fav-btn">
                     <svg
                       class="dashboard__compare-icon-empty"
                       xmlns="http://www.w3.org/2000/svg"
@@ -1025,7 +1025,7 @@
                   </button>
                 </div>
               </li>
-              <li class="dashboard__compare-item">
+              <li class="dashboard__compare-item dashboard__item">
                 <div class="dashboard__compare-left">
                   <img src="/assets/images/flags/br.webp" alt="country flag" class="dashboard__compare-flag" />
                   <div class="dashboard__compare-currency">
@@ -1038,7 +1038,7 @@
                     <span class="dashboard__compare-value">736.65</span>
                     <span class="dashboard__compare-rate">@ 0.7366</span>
                   </div>
-                  <button aria-pressed="false" class="dashboard__compare-fav-btn">
+                  <button aria-pressed="false" class="dashboard__compare-fav-btn dashboard__fav-btn">
                     <svg
                       class="dashboard__compare-icon-empty"
                       xmlns="http://www.w3.org/2000/svg"
@@ -1068,7 +1068,7 @@
                   </button>
                 </div>
               </li>
-              <li class="dashboard__compare-item">
+              <li class="dashboard__compare-item dashboard__item">
                 <div class="dashboard__compare-left">
                   <img src="/assets/images/flags/br.webp" alt="country flag" class="dashboard__compare-flag" />
                   <div class="dashboard__compare-currency">
@@ -1081,7 +1081,7 @@
                     <span class="dashboard__compare-value">736.65</span>
                     <span class="dashboard__compare-rate">@ 0.7366</span>
                   </div>
-                  <button aria-pressed="true" class="dashboard__compare-fav-btn">
+                  <button aria-pressed="true" class="dashboard__compare-fav-btn dashboard__fav-btn">
                     <svg
                       class="dashboard__compare-icon-empty"
                       xmlns="http://www.w3.org/2000/svg"
@@ -1119,8 +1119,8 @@
               <span class="dashboard__favorites-title">PINNED PAIRS</span>
               <span class="dashboard__favorites-count">10 FAVORITES</span>
             </div>
-            <ul class="dashboard__favorites-list">
-              <li class="dashboard__favorites-item">
+            <ul class="dashboard__favorites-list dashboard__list">
+              <li class="dashboard__favorites-item dashboard__item">
                 <span class="dashboard__favorites-pair"
                   >USD
                   <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 11 11">
@@ -1135,7 +1135,7 @@
                   <span class="dashboard__favorites-rate">0.8530</span>
                   <span class="dashboard__favorites-change dashboard__value--positive">+0.16%</span>
                 </div>
-                <button aria-pressed="true" class="dashboard__favorites-fav-btn">
+                <button aria-pressed="true" class="dashboard__favorites-fav-btn dashboard__fav-btn">
                   <svg
                     class="dashboard__favorites-icon-empty"
                     xmlns="http://www.w3.org/2000/svg"
@@ -1164,7 +1164,7 @@
                   </svg>
                 </button>
               </li>
-              <li class="dashboard__favorites-item">
+              <li class="dashboard__favorites-item dashboard__item">
                 <span class="dashboard__favorites-pair"
                   >USD
                   <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 11 11">
@@ -1177,9 +1177,9 @@
                 >
                 <div class="dashboard__favorites-data">
                   <span class="dashboard__favorites-rate">0.8530</span>
-                  <span class="dashboard__favorites-change dashboard__value--positive">+0.16%</span>
+                  <span class="dashboard__favorites-change dashboard__value--negative">+0.16%</span>
                 </div>
-                <button aria-pressed="true" class="dashboard__favorites-fav-btn">
+                <button aria-pressed="true" class="dashboard__favorites-fav-btn dashboard__fav-btn">
                   <svg
                     class="dashboard__favorites-icon-empty"
                     xmlns="http://www.w3.org/2000/svg"
@@ -1208,7 +1208,7 @@
                   </svg>
                 </button>
               </li>
-              <li class="dashboard__favorites-item">
+              <li class="dashboard__favorites-item dashboard__item">
                 <span class="dashboard__favorites-pair"
                   >USD
                   <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 11 11">
@@ -1223,7 +1223,7 @@
                   <span class="dashboard__favorites-rate">0.8530</span>
                   <span class="dashboard__favorites-change dashboard__value--positive">+0.16%</span>
                 </div>
-                <button aria-pressed="true" class="dashboard__favorites-fav-btn">
+                <button aria-pressed="true" class="dashboard__favorites-fav-btn dashboard__fav-btn">
                   <svg
                     class="dashboard__favorites-icon-empty"
                     xmlns="http://www.w3.org/2000/svg"
@@ -1264,8 +1264,8 @@
               </div>
             </div>
 
-            <ul class="dashboard__log-list">
-              <li class="dashboard__log-item">
+            <ul class="dashboard__log-list dashboard__list">
+              <li class="dashboard__log-item dashboard__item">
                 <div class="dashboard__log-left">
                   <span class="dashboard__log-time">20M May</span>
                   <div class="dashboard__log-pair">
@@ -1321,7 +1321,7 @@
                   </button>
                 </div>
               </li>
-              <li class="dashboard__log-item">
+              <li class="dashboard__log-item dashboard__item">
                 <div class="dashboard__log-left">
                   <span class="dashboard__log-time">20M May</span>
                   <div class="dashboard__log-pair">
@@ -1377,7 +1377,7 @@
                   </button>
                 </div>
               </li>
-              <li class="dashboard__log-item">
+              <li class="dashboard__log-item dashboard__item">
                 <div class="dashboard__log-left">
                   <span class="dashboard__log-time">20M May</span>
                   <div class="dashboard__log-pair">
@@ -1433,7 +1433,7 @@
                   </button>
                 </div>
               </li>
-              <li class="dashboard__log-item">
+              <li class="dashboard__log-item dashboard__item">
                 <div class="dashboard__log-left">
                   <span class="dashboard__log-time">20M May</span>
                   <div class="dashboard__log-pair">
