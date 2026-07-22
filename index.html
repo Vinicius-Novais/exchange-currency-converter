@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/main.js" type="module"></script>
+    <script src="js/api.js" type="module"></script>
     <title>FX Checker</title>
   </head>
   <body>
@@ -563,18 +563,8 @@
               <button class="converter__currency-btn">
                 <img class="converter__flag-btn" src="assets/images/flags/br.webp" alt="BR flag" />
                 <span class="converter__currency-name">BRL</span>
-                <svg
-                  class="converter__chevron"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="12"
-                  height="12"
-                  fill="none"
-                  viewBox="0 0 12 12"
-                >
-                  <path
-                    fill="#fff"
-                    d="M2.988 4.02h6.024c.422 0 .633.515.328.82l-3 3a.48.48 0 0 1-.68 0l-3-3c-.304-.305-.093-.82.328-.82"
-                  />
+                <svg class="converter__chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+                  <path fill="#fff" d="M2.988 4.02h6.024c.422 0 .633.515.328.82l-3 3a.48.48 0 0 1-.68 0l-3-3c-.304-.305-.093-.82.328-.82" />
                 </svg>
               </button>
 
@@ -582,25 +572,13 @@
               <div hidden class="converter__picker">
                 <!-- Input de busca — estático, sempre presente -->
                 <div class="converter__picker-search">
-                  <svg
-                    class="converter__picker-search-icon"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="20"
-                    fill="none"
-                    viewBox="0 0 14 20"
-                  >
+                  <svg class="converter__picker-search-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="20" fill="none" viewBox="0 0 14 20">
                     <path
                       fill="#fff"
                       d="M13.89 15.814c.137.137.137.355 0 .465l-.628.629c-.11.136-.328.136-.465 0l-3.309-3.309a.44.44 0 0 1-.082-.246v-.355a5.76 5.76 0 0 1-3.719 1.367A5.683 5.683 0 0 1 0 8.677C0 5.56 2.543 2.99 5.688 2.99c3.117 0 5.687 2.57 5.687 5.687a5.73 5.73 0 0 1-1.395 3.719h.356c.082 0 .164.055.246.11zm-8.202-2.762a4.37 4.37 0 0 0 4.375-4.375 4.39 4.39 0 0 0-4.376-4.375 4.37 4.37 0 0 0-4.374 4.375 4.353 4.353 0 0 0 4.375 4.375"
                     />
                   </svg>
-                  <input
-                    type="text"
-                    class="converter__picker-input"
-                    placeholder="Search currencies..."
-                    autocomplete="off"
-                  />
+                  <input type="text" class="converter__picker-input" placeholder="Search currencies..." autocomplete="off" />
                 </div>
 
                 <!-- Lista — conteúdo temporário para testar CSS, será gerado pelo JS -->
@@ -614,21 +592,8 @@
                     <img class="converter__picker-flag" src="assets/images/flags/us.webp" alt="US flag" />
                     <span class="converter__picker-code">USD</span>
                     <span class="converter__picker-name">US Dollar</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      viewBox="0 0 16 16"
-                      class="converter__picker-check"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="1.5"
-                        d="M2 8l4 4 8-8"
-                      />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" class="converter__picker-check">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2 8l4 4 8-8" />
                     </svg>
                   </li>
 
@@ -679,40 +644,18 @@
           <button aria-label="Swap currencies" class="converter__swap-btn">
             <span class="converter__swap-icon"
               ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
-                <path
-                  stroke="#fff"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="m11 6 4-4 4 4m-4-4v16m-6-4-4 4-4-4m4 4V2"
-                /></svg
+                <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m11 6 4-4 4 4m-4-4v16m-6-4-4 4-4-4m4 4V2" /></svg
             ></span>
           </button>
           <div class="converter__card">
             <label class="converter__label" for="receive-input">RECEIVE</label>
             <div class="converter__input-group">
-              <input
-                id="receive-input"
-                class="converter__amount converter__amount-receive"
-                type="text"
-                inputmode="decimal"
-                placeholder="0"
-              />
+              <input id="receive-input" class="converter__amount converter__amount-receive" type="text" inputmode="decimal" placeholder="0" />
               <button class="converter__currency-btn">
                 <img class="converter__flag-btn" src="assets/images/flags/dk.webp" alt="DK flag" />
                 <span class="converter__currency-name">EUR</span>
-                <svg
-                  class="converter__chevron"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="12"
-                  height="12"
-                  fill="none"
-                  viewBox="0 0 12 12"
-                >
-                  <path
-                    fill="#fff"
-                    d="M2.988 4.02h6.024c.422 0 .633.515.328.82l-3 3a.48.48 0 0 1-.68 0l-3-3c-.304-.305-.093-.82.328-.82"
-                  />
+                <svg class="converter__chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+                  <path fill="#fff" d="M2.988 4.02h6.024c.422 0 .633.515.328.82l-3 3a.48.48 0 0 1-.68 0l-3-3c-.304-.305-.093-.82.328-.82" />
                 </svg>
               </button>
 
@@ -720,25 +663,13 @@
               <div hidden class="converter__picker">
                 <!-- Input de busca — estático, sempre presente -->
                 <div class="converter__picker-search">
-                  <svg
-                    class="converter__picker-search-icon"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="20"
-                    fill="none"
-                    viewBox="0 0 14 20"
-                  >
+                  <svg class="converter__picker-search-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="20" fill="none" viewBox="0 0 14 20">
                     <path
                       fill="#fff"
                       d="M13.89 15.814c.137.137.137.355 0 .465l-.628.629c-.11.136-.328.136-.465 0l-3.309-3.309a.44.44 0 0 1-.082-.246v-.355a5.76 5.76 0 0 1-3.719 1.367A5.683 5.683 0 0 1 0 8.677C0 5.56 2.543 2.99 5.688 2.99c3.117 0 5.687 2.57 5.687 5.687a5.73 5.73 0 0 1-1.395 3.719h.356c.082 0 .164.055.246.11zm-8.202-2.762a4.37 4.37 0 0 0 4.375-4.375 4.39 4.39 0 0 0-4.376-4.375 4.37 4.37 0 0 0-4.374 4.375 4.353 4.353 0 0 0 4.375 4.375"
                     />
                   </svg>
-                  <input
-                    type="text"
-                    class="converter__picker-input"
-                    placeholder="Search currencies..."
-                    autocomplete="off"
-                  />
+                  <input type="text" class="converter__picker-input" placeholder="Search currencies..." autocomplete="off" />
                 </div>
 
                 <!-- Lista — conteúdo temporário para testar CSS, será gerado pelo JS -->
@@ -752,21 +683,8 @@
                     <img class="converter__picker-flag" src="assets/images/flags/us.webp" alt="US flag" />
                     <span class="converter__picker-code">USD</span>
                     <span class="converter__picker-name">US Dollar</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      viewBox="0 0 16 16"
-                      class="converter__picker-check"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="1.5"
-                        d="M2 8l4 4 8-8"
-                      />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" class="converter__picker-check">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2 8l4 4 8-8" />
                     </svg>
                   </li>
 
@@ -818,36 +736,15 @@
           <div class="converter__footer">
             <span class="converter__rate">1 USD = 0.8530 EUR</span>
             <div class="converter__footer-btns-container">
-              <button
-                aria-label="Add to favorites"
-                aria-pressed="false"
-                class="converter__footer-btn converter__fav-btn"
-              >
-                <svg
-                  class="converter__fav-icon--empty"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="none"
-                  viewBox="0 0 16 16"
-                >
+              <button aria-label="Add to favorites" aria-pressed="false" class="converter__footer-btn converter__fav-btn">
+                <svg class="converter__fav-icon--empty" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
                   <path
                     fill="currentColor"
                     d="M13.637 6.02c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492 1.523-3.117c.281-.563 1.078-.54 1.336 0l1.547 3.117zm-3.282 3.305 2.368-2.297-3.258-.469-1.453-2.953L6.535 6.56l-3.258.469 2.367 2.297-.562 3.234 2.93-1.523 2.906 1.523z"
                   />
                 </svg>
-                <svg
-                  class="converter__fav-icon--filled"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="none"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M7.332 2.41c.281-.562 1.078-.538 1.336 0l1.547 3.118 3.422.492c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492z"
-                  />
+                <svg class="converter__fav-icon--filled" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                  <path fill="currentColor" d="M7.332 2.41c.281-.562 1.078-.538 1.336 0l1.547 3.118 3.422.492c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492z" />
                 </svg>
               </button>
               <button disabled class="converter__footer-btn converter__log-btn"></button>
@@ -876,18 +773,14 @@
           <div class="dashboard__tabs">
             <button class="dashboard__tab dashboard__history-btn" aria-selected="false">HISTORY</button>
             <button class="dashboard__tab dashboard__compare-btn" aria-selected="false">COMPARE</button>
-            <button class="dashboard__tab dashboard__favorites-btn" aria-selected="true">
-              FAVORITES <span hidden class="dashboard__badge" aria-selected="false">10</span>
-            </button>
-            <button class="dashboard__tab dashboard__log-btn">
-              LOG <span hidden class="dashboard__badge">8</span>
-            </button>
+            <button class="dashboard__tab dashboard__favorites-btn" aria-selected="true">FAVORITES <span hidden class="dashboard__badge" aria-selected="false">10</span></button>
+            <button class="dashboard__tab dashboard__log-btn">LOG <span hidden class="dashboard__badge">8</span></button>
           </div>
         </div>
 
         <div class="dashboard__panels">
           <!--HISTORY: panel padrão sem hidden-->
-          <div class="dashboard__panel dashboard__panel--history" data-tab="history">
+          <div class="dashboard__panel--history" data-tab="history">
             <div class="dashboard__chart-header">
               <div class="dashboard__info-cards">
                 <div class="dashboard__info-card dashboard__open-card">
@@ -953,31 +846,14 @@
                     <span class="dashboard__compare-rate">@ 0.7366</span>
                   </div>
                   <button aria-pressed="false" class="dashboard__compare-fav-btn dashboard__fav-btn">
-                    <svg
-                      class="dashboard__compare-icon-empty"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      viewBox="0 0 16 16"
-                    >
+                    <svg class="dashboard__compare-icon-empty" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                       <path
                         fill="currentColor"
                         d="M13.637 6.02c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492 1.523-3.117c.281-.563 1.078-.54 1.336 0l1.547 3.117zm-3.282 3.305 2.368-2.297-3.258-.469-1.453-2.953L6.535 6.56l-3.258.469 2.367 2.297-.562 3.234 2.93-1.523 2.906 1.523z"
                       />
                     </svg>
-                    <svg
-                      class="dashboard__compare-icon-filled"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill="#cef739"
-                        d="M7.332 2.41c.281-.562 1.078-.538 1.336 0l1.547 3.118 3.422.492c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492z"
-                      />
+                    <svg class="dashboard__compare-icon-filled" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                      <path fill="#cef739" d="M7.332 2.41c.281-.562 1.078-.538 1.336 0l1.547 3.118 3.422.492c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492z" />
                     </svg>
                   </button>
                 </div>
@@ -996,31 +872,14 @@
                     <span class="dashboard__compare-rate">@ 0.7366</span>
                   </div>
                   <button aria-pressed="false" class="dashboard__compare-fav-btn dashboard__fav-btn">
-                    <svg
-                      class="dashboard__compare-icon-empty"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      viewBox="0 0 16 16"
-                    >
+                    <svg class="dashboard__compare-icon-empty" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                       <path
                         fill="currentColor"
                         d="M13.637 6.02c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492 1.523-3.117c.281-.563 1.078-.54 1.336 0l1.547 3.117zm-3.282 3.305 2.368-2.297-3.258-.469-1.453-2.953L6.535 6.56l-3.258.469 2.367 2.297-.562 3.234 2.93-1.523 2.906 1.523z"
                       />
                     </svg>
-                    <svg
-                      class="dashboard__compare-icon-filled"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill="#cef739"
-                        d="M7.332 2.41c.281-.562 1.078-.538 1.336 0l1.547 3.118 3.422.492c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492z"
-                      />
+                    <svg class="dashboard__compare-icon-filled" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                      <path fill="#cef739" d="M7.332 2.41c.281-.562 1.078-.538 1.336 0l1.547 3.118 3.422.492c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492z" />
                     </svg>
                   </button>
                 </div>
@@ -1039,31 +898,14 @@
                     <span class="dashboard__compare-rate">@ 0.7366</span>
                   </div>
                   <button aria-pressed="false" class="dashboard__compare-fav-btn dashboard__fav-btn">
-                    <svg
-                      class="dashboard__compare-icon-empty"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      viewBox="0 0 16 16"
-                    >
+                    <svg class="dashboard__compare-icon-empty" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                       <path
                         fill="currentColor"
                         d="M13.637 6.02c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492 1.523-3.117c.281-.563 1.078-.54 1.336 0l1.547 3.117zm-3.282 3.305 2.368-2.297-3.258-.469-1.453-2.953L6.535 6.56l-3.258.469 2.367 2.297-.562 3.234 2.93-1.523 2.906 1.523z"
                       />
                     </svg>
-                    <svg
-                      class="dashboard__compare-icon-filled"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill="#cef739"
-                        d="M7.332 2.41c.281-.562 1.078-.538 1.336 0l1.547 3.118 3.422.492c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492z"
-                      />
+                    <svg class="dashboard__compare-icon-filled" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                      <path fill="#cef739" d="M7.332 2.41c.281-.562 1.078-.538 1.336 0l1.547 3.118 3.422.492c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492z" />
                     </svg>
                   </button>
                 </div>
@@ -1082,31 +924,14 @@
                     <span class="dashboard__compare-rate">@ 0.7366</span>
                   </div>
                   <button aria-pressed="true" class="dashboard__compare-fav-btn dashboard__fav-btn">
-                    <svg
-                      class="dashboard__compare-icon-empty"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      viewBox="0 0 16 16"
-                    >
+                    <svg class="dashboard__compare-icon-empty" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                       <path
                         fill="currentColor"
                         d="M13.637 6.02c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492 1.523-3.117c.281-.563 1.078-.54 1.336 0l1.547 3.117zm-3.282 3.305 2.368-2.297-3.258-.469-1.453-2.953L6.535 6.56l-3.258.469 2.367 2.297-.562 3.234 2.93-1.523 2.906 1.523z"
                       />
                     </svg>
-                    <svg
-                      class="dashboard__compare-icon-filled"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill="#cef739"
-                        d="M7.332 2.41c.281-.562 1.078-.538 1.336 0l1.547 3.118 3.422.492c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492z"
-                      />
+                    <svg class="dashboard__compare-icon-filled" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                      <path fill="#cef739" d="M7.332 2.41c.281-.562 1.078-.538 1.336 0l1.547 3.118 3.422.492c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492z" />
                     </svg>
                   </button>
                 </div>
@@ -1124,10 +949,7 @@
                 <span class="dashboard__favorites-pair"
                   >USD
                   <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 11 11">
-                    <path
-                      fill="#9d9d9d"
-                      d="M5.11.088c.093-.117.28-.117.398 0l4.898 4.898a.27.27 0 0 1 0 .399l-4.898 4.898c-.117.117-.305.117-.399 0l-.468-.445c-.118-.117-.118-.305 0-.399l3.632-3.656H.281A.27.27 0 0 1 0 5.502v-.656c0-.14.117-.282.281-.282h7.992L4.641.932c-.118-.094-.118-.282 0-.399z"
-                    />
+                    <path fill="#9d9d9d" d="M5.11.088c.093-.117.28-.117.398 0l4.898 4.898a.27.27 0 0 1 0 .399l-4.898 4.898c-.117.117-.305.117-.399 0l-.468-.445c-.118-.117-.118-.305 0-.399l3.632-3.656H.281A.27.27 0 0 1 0 5.502v-.656c0-.14.117-.282.281-.282h7.992L4.641.932c-.118-.094-.118-.282 0-.399z" />
                   </svg>
                   EUR</span
                 >
@@ -1136,31 +958,14 @@
                   <span class="dashboard__favorites-change dashboard__value--positive">+0.16%</span>
                 </div>
                 <button aria-pressed="true" class="dashboard__favorites-fav-btn dashboard__fav-btn">
-                  <svg
-                    class="dashboard__favorites-icon-empty"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                  >
+                  <svg class="dashboard__favorites-icon-empty" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path
                       fill="currentColor"
                       d="M13.637 6.02c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492 1.523-3.117c.281-.563 1.078-.54 1.336 0l1.547 3.117zm-3.282 3.305 2.368-2.297-3.258-.469-1.453-2.953L6.535 6.56l-3.258.469 2.367 2.297-.562 3.234 2.93-1.523 2.906 1.523z"
                     />
                   </svg>
-                  <svg
-                    class="dashboard__favorites-icon-filled"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="none"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fill="#cef739"
-                      d="M7.332 2.41c.281-.562 1.078-.538 1.336 0l1.547 3.118 3.422.492c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492z"
-                    />
+                  <svg class="dashboard__favorites-icon-filled" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                    <path fill="#cef739" d="M7.332 2.41c.281-.562 1.078-.538 1.336 0l1.547 3.118 3.422.492c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492z" />
                   </svg>
                 </button>
               </li>
@@ -1168,10 +973,7 @@
                 <span class="dashboard__favorites-pair"
                   >USD
                   <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 11 11">
-                    <path
-                      fill="#9d9d9d"
-                      d="M5.11.088c.093-.117.28-.117.398 0l4.898 4.898a.27.27 0 0 1 0 .399l-4.898 4.898c-.117.117-.305.117-.399 0l-.468-.445c-.118-.117-.118-.305 0-.399l3.632-3.656H.281A.27.27 0 0 1 0 5.502v-.656c0-.14.117-.282.281-.282h7.992L4.641.932c-.118-.094-.118-.282 0-.399z"
-                    />
+                    <path fill="#9d9d9d" d="M5.11.088c.093-.117.28-.117.398 0l4.898 4.898a.27.27 0 0 1 0 .399l-4.898 4.898c-.117.117-.305.117-.399 0l-.468-.445c-.118-.117-.118-.305 0-.399l3.632-3.656H.281A.27.27 0 0 1 0 5.502v-.656c0-.14.117-.282.281-.282h7.992L4.641.932c-.118-.094-.118-.282 0-.399z" />
                   </svg>
                   EUR</span
                 >
@@ -1180,31 +982,14 @@
                   <span class="dashboard__favorites-change dashboard__value--negative">+0.16%</span>
                 </div>
                 <button aria-pressed="true" class="dashboard__favorites-fav-btn dashboard__fav-btn">
-                  <svg
-                    class="dashboard__favorites-icon-empty"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                  >
+                  <svg class="dashboard__favorites-icon-empty" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path
                       fill="currentColor"
                       d="M13.637 6.02c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492 1.523-3.117c.281-.563 1.078-.54 1.336 0l1.547 3.117zm-3.282 3.305 2.368-2.297-3.258-.469-1.453-2.953L6.535 6.56l-3.258.469 2.367 2.297-.562 3.234 2.93-1.523 2.906 1.523z"
                     />
                   </svg>
-                  <svg
-                    class="dashboard__favorites-icon-filled"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="none"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fill="#cef739"
-                      d="M7.332 2.41c.281-.562 1.078-.538 1.336 0l1.547 3.118 3.422.492c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492z"
-                    />
+                  <svg class="dashboard__favorites-icon-filled" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                    <path fill="#cef739" d="M7.332 2.41c.281-.562 1.078-.538 1.336 0l1.547 3.118 3.422.492c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492z" />
                   </svg>
                 </button>
               </li>
@@ -1212,10 +997,7 @@
                 <span class="dashboard__favorites-pair"
                   >USD
                   <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 11 11">
-                    <path
-                      fill="#9d9d9d"
-                      d="M5.11.088c.093-.117.28-.117.398 0l4.898 4.898a.27.27 0 0 1 0 .399l-4.898 4.898c-.117.117-.305.117-.399 0l-.468-.445c-.118-.117-.118-.305 0-.399l3.632-3.656H.281A.27.27 0 0 1 0 5.502v-.656c0-.14.117-.282.281-.282h7.992L4.641.932c-.118-.094-.118-.282 0-.399z"
-                    />
+                    <path fill="#9d9d9d" d="M5.11.088c.093-.117.28-.117.398 0l4.898 4.898a.27.27 0 0 1 0 .399l-4.898 4.898c-.117.117-.305.117-.399 0l-.468-.445c-.118-.117-.118-.305 0-.399l3.632-3.656H.281A.27.27 0 0 1 0 5.502v-.656c0-.14.117-.282.281-.282h7.992L4.641.932c-.118-.094-.118-.282 0-.399z" />
                   </svg>
                   EUR</span
                 >
@@ -1224,31 +1006,14 @@
                   <span class="dashboard__favorites-change dashboard__value--positive">+0.16%</span>
                 </div>
                 <button aria-pressed="true" class="dashboard__favorites-fav-btn dashboard__fav-btn">
-                  <svg
-                    class="dashboard__favorites-icon-empty"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                  >
+                  <svg class="dashboard__favorites-icon-empty" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path
                       fill="currentColor"
                       d="M13.637 6.02c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492 1.523-3.117c.281-.563 1.078-.54 1.336 0l1.547 3.117zm-3.282 3.305 2.368-2.297-3.258-.469-1.453-2.953L6.535 6.56l-3.258.469 2.367 2.297-.562 3.234 2.93-1.523 2.906 1.523z"
                     />
                   </svg>
-                  <svg
-                    class="dashboard__favorites-icon-filled"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="none"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fill="#cef739"
-                      d="M7.332 2.41c.281-.562 1.078-.538 1.336 0l1.547 3.118 3.422.492c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492z"
-                    />
+                  <svg class="dashboard__favorites-icon-filled" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                    <path fill="#cef739" d="M7.332 2.41c.281-.562 1.078-.538 1.336 0l1.547 3.118 3.422.492c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492z" />
                   </svg>
                 </button>
               </li>
@@ -1270,18 +1035,8 @@
                   <span class="dashboard__log-time">20M May</span>
                   <div class="dashboard__log-pair">
                     <span class="dashboard__log-pair-from">USD</span>
-                    <svg
-                      class="dashboard__log-arrow"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="11"
-                      height="11"
-                      fill="none"
-                      viewBox="0 0 11 11"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M5.11.088c.093-.117.28-.117.398 0l4.898 4.898a.27.27 0 0 1 0 .399l-4.898 4.898c-.117.117-.305.117-.399 0l-.468-.445c-.118-.117-.118-.305 0-.399l3.632-3.656H.281A.27.27 0 0 1 0 5.502v-.656c0-.14.117-.282.281-.282h7.992L4.641.932c-.118-.094-.118-.282 0-.399z"
-                      />
+                    <svg class="dashboard__log-arrow" xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 11 11">
+                      <path fill="currentColor" d="M5.11.088c.093-.117.28-.117.398 0l4.898 4.898a.27.27 0 0 1 0 .399l-4.898 4.898c-.117.117-.305.117-.399 0l-.468-.445c-.118-.117-.118-.305 0-.399l3.632-3.656H.281A.27.27 0 0 1 0 5.502v-.656c0-.14.117-.282.281-.282h7.992L4.641.932c-.118-.094-.118-.282 0-.399z" />
                     </svg>
                     <span class="dashboard__log-pair-to">EUR</span>
                   </div>
@@ -1292,31 +1047,14 @@
                     <span class="dashboard__log-receive-amount">123,853.02</span>
                   </div>
                   <button class="dashboard__log-delete-btn">
-                    <svg
-                      class="dashboard__log-delete-icon dashboard__log-delete-icon--outline"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      viewBox="0 0 16 16"
-                    >
+                    <svg class="dashboard__log-delete-icon dashboard__log-delete-icon--outline" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
                       <path
                         fill="currentColor"
                         d="M12.875 3.875c.188 0 .375.188.375.375v.375c0 .21-.187.375-.375.375H12.5l-.516 7.945c-.023.586-.539 1.055-1.125 1.055H5.117c-.586 0-1.101-.469-1.125-1.055L3.5 5h-.375a.37.37 0 0 1-.375-.375V4.25c0-.187.164-.375.375-.375h1.922l.797-1.312c.187-.305.61-.563.96-.563h2.368c.351 0 .773.258.96.563l.798 1.312zm-6.07-.75-.446.75h3.258l-.445-.75zm4.054 9.75L11.352 5H4.625l.492 7.875z"
                       />
                     </svg>
-                    <svg
-                      class="dashboard__log-delete-icon dashboard__log-delete-icon--filled"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M12.875 2.75c.188 0 .375.188.375.375v.75c0 .21-.187.375-.375.375h-9.75a.37.37 0 0 1-.375-.375v-.75c0-.187.164-.375.375-.375h2.813l.21-.422c.07-.187.305-.328.493-.328h2.695c.187 0 .398.14.492.328l.235.422zM3.992 12.945 3.5 5h9l-.516 7.945c-.023.586-.539 1.055-1.125 1.055H5.117c-.586 0-1.101-.469-1.125-1.055"
-                      />
+                    <svg class="dashboard__log-delete-icon dashboard__log-delete-icon--filled" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                      <path fill="currentColor" d="M12.875 2.75c.188 0 .375.188.375.375v.75c0 .21-.187.375-.375.375h-9.75a.37.37 0 0 1-.375-.375v-.75c0-.187.164-.375.375-.375h2.813l.21-.422c.07-.187.305-.328.493-.328h2.695c.187 0 .398.14.492.328l.235.422zM3.992 12.945 3.5 5h9l-.516 7.945c-.023.586-.539 1.055-1.125 1.055H5.117c-.586 0-1.101-.469-1.125-1.055" />
                     </svg>
                   </button>
                 </div>
@@ -1326,18 +1064,8 @@
                   <span class="dashboard__log-time">20M May</span>
                   <div class="dashboard__log-pair">
                     <span class="dashboard__log-pair-from">USD</span>
-                    <svg
-                      class="dashboard__log-arrow"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="11"
-                      height="11"
-                      fill="none"
-                      viewBox="0 0 11 11"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M5.11.088c.093-.117.28-.117.398 0l4.898 4.898a.27.27 0 0 1 0 .399l-4.898 4.898c-.117.117-.305.117-.399 0l-.468-.445c-.118-.117-.118-.305 0-.399l3.632-3.656H.281A.27.27 0 0 1 0 5.502v-.656c0-.14.117-.282.281-.282h7.992L4.641.932c-.118-.094-.118-.282 0-.399z"
-                      />
+                    <svg class="dashboard__log-arrow" xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 11 11">
+                      <path fill="currentColor" d="M5.11.088c.093-.117.28-.117.398 0l4.898 4.898a.27.27 0 0 1 0 .399l-4.898 4.898c-.117.117-.305.117-.399 0l-.468-.445c-.118-.117-.118-.305 0-.399l3.632-3.656H.281A.27.27 0 0 1 0 5.502v-.656c0-.14.117-.282.281-.282h7.992L4.641.932c-.118-.094-.118-.282 0-.399z" />
                     </svg>
                     <span class="dashboard__log-pair-to">EUR</span>
                   </div>
@@ -1348,31 +1076,14 @@
                     <span class="dashboard__log-receive-amount">123,853.02</span>
                   </div>
                   <button class="dashboard__log-delete-btn">
-                    <svg
-                      class="dashboard__log-delete-icon dashboard__log-delete-icon--outline"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      viewBox="0 0 16 16"
-                    >
+                    <svg class="dashboard__log-delete-icon dashboard__log-delete-icon--outline" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
                       <path
                         fill="currentColor"
                         d="M12.875 3.875c.188 0 .375.188.375.375v.375c0 .21-.187.375-.375.375H12.5l-.516 7.945c-.023.586-.539 1.055-1.125 1.055H5.117c-.586 0-1.101-.469-1.125-1.055L3.5 5h-.375a.37.37 0 0 1-.375-.375V4.25c0-.187.164-.375.375-.375h1.922l.797-1.312c.187-.305.61-.563.96-.563h2.368c.351 0 .773.258.96.563l.798 1.312zm-6.07-.75-.446.75h3.258l-.445-.75zm4.054 9.75L11.352 5H4.625l.492 7.875z"
                       />
                     </svg>
-                    <svg
-                      class="dashboard__log-delete-icon dashboard__log-delete-icon--filled"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M12.875 2.75c.188 0 .375.188.375.375v.75c0 .21-.187.375-.375.375h-9.75a.37.37 0 0 1-.375-.375v-.75c0-.187.164-.375.375-.375h2.813l.21-.422c.07-.187.305-.328.493-.328h2.695c.187 0 .398.14.492.328l.235.422zM3.992 12.945 3.5 5h9l-.516 7.945c-.023.586-.539 1.055-1.125 1.055H5.117c-.586 0-1.101-.469-1.125-1.055"
-                      />
+                    <svg class="dashboard__log-delete-icon dashboard__log-delete-icon--filled" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                      <path fill="currentColor" d="M12.875 2.75c.188 0 .375.188.375.375v.75c0 .21-.187.375-.375.375h-9.75a.37.37 0 0 1-.375-.375v-.75c0-.187.164-.375.375-.375h2.813l.21-.422c.07-.187.305-.328.493-.328h2.695c.187 0 .398.14.492.328l.235.422zM3.992 12.945 3.5 5h9l-.516 7.945c-.023.586-.539 1.055-1.125 1.055H5.117c-.586 0-1.101-.469-1.125-1.055" />
                     </svg>
                   </button>
                 </div>
@@ -1382,18 +1093,8 @@
                   <span class="dashboard__log-time">20M May</span>
                   <div class="dashboard__log-pair">
                     <span class="dashboard__log-pair-from">USD</span>
-                    <svg
-                      class="dashboard__log-arrow"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="11"
-                      height="11"
-                      fill="none"
-                      viewBox="0 0 11 11"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M5.11.088c.093-.117.28-.117.398 0l4.898 4.898a.27.27 0 0 1 0 .399l-4.898 4.898c-.117.117-.305.117-.399 0l-.468-.445c-.118-.117-.118-.305 0-.399l3.632-3.656H.281A.27.27 0 0 1 0 5.502v-.656c0-.14.117-.282.281-.282h7.992L4.641.932c-.118-.094-.118-.282 0-.399z"
-                      />
+                    <svg class="dashboard__log-arrow" xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 11 11">
+                      <path fill="currentColor" d="M5.11.088c.093-.117.28-.117.398 0l4.898 4.898a.27.27 0 0 1 0 .399l-4.898 4.898c-.117.117-.305.117-.399 0l-.468-.445c-.118-.117-.118-.305 0-.399l3.632-3.656H.281A.27.27 0 0 1 0 5.502v-.656c0-.14.117-.282.281-.282h7.992L4.641.932c-.118-.094-.118-.282 0-.399z" />
                     </svg>
                     <span class="dashboard__log-pair-to">EUR</span>
                   </div>
@@ -1404,31 +1105,14 @@
                     <span class="dashboard__log-receive-amount">123,853.02</span>
                   </div>
                   <button class="dashboard__log-delete-btn">
-                    <svg
-                      class="dashboard__log-delete-icon dashboard__log-delete-icon--outline"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      viewBox="0 0 16 16"
-                    >
+                    <svg class="dashboard__log-delete-icon dashboard__log-delete-icon--outline" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
                       <path
                         fill="currentColor"
                         d="M12.875 3.875c.188 0 .375.188.375.375v.375c0 .21-.187.375-.375.375H12.5l-.516 7.945c-.023.586-.539 1.055-1.125 1.055H5.117c-.586 0-1.101-.469-1.125-1.055L3.5 5h-.375a.37.37 0 0 1-.375-.375V4.25c0-.187.164-.375.375-.375h1.922l.797-1.312c.187-.305.61-.563.96-.563h2.368c.351 0 .773.258.96.563l.798 1.312zm-6.07-.75-.446.75h3.258l-.445-.75zm4.054 9.75L11.352 5H4.625l.492 7.875z"
                       />
                     </svg>
-                    <svg
-                      class="dashboard__log-delete-icon dashboard__log-delete-icon--filled"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M12.875 2.75c.188 0 .375.188.375.375v.75c0 .21-.187.375-.375.375h-9.75a.37.37 0 0 1-.375-.375v-.75c0-.187.164-.375.375-.375h2.813l.21-.422c.07-.187.305-.328.493-.328h2.695c.187 0 .398.14.492.328l.235.422zM3.992 12.945 3.5 5h9l-.516 7.945c-.023.586-.539 1.055-1.125 1.055H5.117c-.586 0-1.101-.469-1.125-1.055"
-                      />
+                    <svg class="dashboard__log-delete-icon dashboard__log-delete-icon--filled" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                      <path fill="currentColor" d="M12.875 2.75c.188 0 .375.188.375.375v.75c0 .21-.187.375-.375.375h-9.75a.37.37 0 0 1-.375-.375v-.75c0-.187.164-.375.375-.375h2.813l.21-.422c.07-.187.305-.328.493-.328h2.695c.187 0 .398.14.492.328l.235.422zM3.992 12.945 3.5 5h9l-.516 7.945c-.023.586-.539 1.055-1.125 1.055H5.117c-.586 0-1.101-.469-1.125-1.055" />
                     </svg>
                   </button>
                 </div>
@@ -1438,18 +1122,8 @@
                   <span class="dashboard__log-time">20M May</span>
                   <div class="dashboard__log-pair">
                     <span class="dashboard__log-pair-from">USD</span>
-                    <svg
-                      class="dashboard__log-arrow"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="11"
-                      height="11"
-                      fill="none"
-                      viewBox="0 0 11 11"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M5.11.088c.093-.117.28-.117.398 0l4.898 4.898a.27.27 0 0 1 0 .399l-4.898 4.898c-.117.117-.305.117-.399 0l-.468-.445c-.118-.117-.118-.305 0-.399l3.632-3.656H.281A.27.27 0 0 1 0 5.502v-.656c0-.14.117-.282.281-.282h7.992L4.641.932c-.118-.094-.118-.282 0-.399z"
-                      />
+                    <svg class="dashboard__log-arrow" xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 11 11">
+                      <path fill="currentColor" d="M5.11.088c.093-.117.28-.117.398 0l4.898 4.898a.27.27 0 0 1 0 .399l-4.898 4.898c-.117.117-.305.117-.399 0l-.468-.445c-.118-.117-.118-.305 0-.399l3.632-3.656H.281A.27.27 0 0 1 0 5.502v-.656c0-.14.117-.282.281-.282h7.992L4.641.932c-.118-.094-.118-.282 0-.399z" />
                     </svg>
                     <span class="dashboard__log-pair-to">EUR</span>
                   </div>
@@ -1460,31 +1134,14 @@
                     <span class="dashboard__log-receive-amount">123,853.02</span>
                   </div>
                   <button class="dashboard__log-delete-btn">
-                    <svg
-                      class="dashboard__log-delete-icon dashboard__log-delete-icon--outline"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      viewBox="0 0 16 16"
-                    >
+                    <svg class="dashboard__log-delete-icon dashboard__log-delete-icon--outline" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
                       <path
                         fill="currentColor"
                         d="M12.875 3.875c.188 0 .375.188.375.375v.375c0 .21-.187.375-.375.375H12.5l-.516 7.945c-.023.586-.539 1.055-1.125 1.055H5.117c-.586 0-1.101-.469-1.125-1.055L3.5 5h-.375a.37.37 0 0 1-.375-.375V4.25c0-.187.164-.375.375-.375h1.922l.797-1.312c.187-.305.61-.563.96-.563h2.368c.351 0 .773.258.96.563l.798 1.312zm-6.07-.75-.446.75h3.258l-.445-.75zm4.054 9.75L11.352 5H4.625l.492 7.875z"
                       />
                     </svg>
-                    <svg
-                      class="dashboard__log-delete-icon dashboard__log-delete-icon--filled"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M12.875 2.75c.188 0 .375.188.375.375v.75c0 .21-.187.375-.375.375h-9.75a.37.37 0 0 1-.375-.375v-.75c0-.187.164-.375.375-.375h2.813l.21-.422c.07-.187.305-.328.493-.328h2.695c.187 0 .398.14.492.328l.235.422zM3.992 12.945 3.5 5h9l-.516 7.945c-.023.586-.539 1.055-1.125 1.055H5.117c-.586 0-1.101-.469-1.125-1.055"
-                      />
+                    <svg class="dashboard__log-delete-icon dashboard__log-delete-icon--filled" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                      <path fill="currentColor" d="M12.875 2.75c.188 0 .375.188.375.375v.75c0 .21-.187.375-.375.375h-9.75a.37.37 0 0 1-.375-.375v-.75c0-.187.164-.375.375-.375h2.813l.21-.422c.07-.187.305-.328.493-.328h2.695c.187 0 .398.14.492.328l.235.422zM3.992 12.945 3.5 5h9l-.516 7.945c-.023.586-.539 1.055-1.125 1.055H5.117c-.586 0-1.101-.469-1.125-1.055" />
                     </svg>
                   </button>
                 </div>
