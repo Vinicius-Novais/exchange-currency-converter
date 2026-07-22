@@ -1,8 +1,8 @@
-import { SUPPORTED_CURRENCIES } from "./constants.js";
+import { SUPPORTED_CURRENCIES, BASE_URL } from "./constants.js";
 
-const fetchSupportedCurrencies = async function () {
+export const fetchSupportedCurrencies = async function () {
   try {
-    const response = await fetch(`https://api.frankfurter.dev/v2/currencies`);
+    const response = await fetch(`${BASE_URL}/currencies`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -24,9 +24,9 @@ const fetchSupportedCurrencies = async function () {
 
 fetchSupportedCurrencies();
 
-const fetchRate = async function (fCurrency, sCurrency) {
+export const fetchRate = async function (fCurrency, sCurrency) {
   try {
-    const response = await fetch(`https://api.frankfurter.dev/v2/rate/${fCurrency}/${sCurrency}`);
+    const response = await fetch(`${BASE_URL}/rate/${fCurrency}/${sCurrency}`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -43,9 +43,9 @@ const fetchRate = async function (fCurrency, sCurrency) {
 
 fetchRate("EUR", "BRL");
 
-const fetchAllRates = async function () {
+export const fetchAllRates = async function (base) {
   try {
-    const response = await fetch(`https://api.frankfurter.dev/v2/rates?base=USD&quotes=${SUPPORTED_CURRENCIES.join(",")}`);
+    const response = await fetch(`${BASE_URL}/rates?base=${base}&quotes=${SUPPORTED_CURRENCIES.join(",")}`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -65,6 +65,4 @@ const fetchAllRates = async function () {
   }
 };
 
-fetchAllRates();
-
-// https://api.frankfurter.dev/v2/rates url para o rate daquele par
+fetchAllRates("USD");
