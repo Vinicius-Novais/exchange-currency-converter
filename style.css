@@ -405,9 +405,6 @@
     .converter__chevron {
     }
 
-    .converter__currency-picker {
-    }
-
     .converter__swap-btn {
       background-color: var(--color-send-receive-arrows-bg);
       border: 0.5px solid var(--color-send-receive-arrows-border);

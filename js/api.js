@@ -18,7 +18,7 @@ export const fetchSupportedCurrencies = async function () {
   return currenciesName;
 };
 
-fetchSupportedCurrencies();
+// fetchSupportedCurrencies();
 
 export const fetchRate = async function (fCurrency, sCurrency) {
   const response = await fetch(`${BASE_URL}/rate/${fCurrency}/${sCurrency}`);
@@ -33,7 +33,7 @@ export const fetchRate = async function (fCurrency, sCurrency) {
   return rate;
 };
 
-fetchRate("EUR", "BRL");
+// fetchRate("EUR", "BRL");
 
 export const fetchAllRates = async function (base) {
   const response = await fetch(`${BASE_URL}/rates?base=${base}&quotes=${SUPPORTED_CURRENCIES.join(",")}`);
@@ -53,4 +53,4 @@ export const fetchAllRates = async function (base) {
   return allRates;
 };
 
-fetchAllRates("USD");
+// fetchAllRates("USD");
