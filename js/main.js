@@ -13,13 +13,25 @@ const init = async function () {
 
     //picker.js
 
-    setupPicker(sendBtn, sendPicker, state.currencies, (currency) => {
-      state.sendCurrency = currency;
-    });
+    setupPicker(
+      sendBtn,
+      sendPicker,
+      state.currencies,
+      (currency) => {
+        state.sendCurrency = currency;
+      },
+      () => state.sendCurrency,
+    );
 
-    setupPicker(receiveBtn, receivePicker, state.currencies, (currency) => {
-      state.receiveCurrency = currency;
-    });
+    setupPicker(
+      receiveBtn,
+      receivePicker,
+      state.currencies,
+      (currency) => {
+        state.receiveCurrency = currency;
+      },
+      () => state.receiveCurrency,
+    );
   } catch (err) {
     console.error("Failed to initialize app:", err.message);
   }
