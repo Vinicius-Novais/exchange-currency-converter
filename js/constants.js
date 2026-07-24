@@ -14,4 +14,4 @@ export const SUPPORTED_CURRENCIES = [
 
 export const BASE_URL = `https://api.frankfurter.dev/v2`;
 
-export const POPULAR_CURRENCIES = ["USD", "EUR", "GBP"];
+export const POPULAR_CURRENCIES = ["USD", "EUR", "GBP", "BRL"];
