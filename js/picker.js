@@ -91,6 +91,18 @@ const renderPickerList = function (pickerEl, getCurrentCurrency) {
                 </li>`;
   });
 
+  //add icon on click
+  pickerEl.addEventListener("click", (e) => {
+    console.log(e.target.closest("li").parentElement);
+
+    e.target
+      .closest("li")
+      .parentElement.querySelectorAll("li")
+      .forEach((li) => li.classList.remove("converter__picker-item--selected"));
+
+    e.target.closest("li").classList.add("converter__picker-item--selected");
+  });
+
   pickerEl.querySelector("ul").insertAdjacentHTML("beforeend", otherCurrenciesHTML);
 };
 
@@ -115,6 +127,10 @@ const renderTriggerBtn = function (currencySelectBtn, getCurrentCurrency, setCur
   if (!pickerEl) return;
 
   pickerEl.addEventListener("click", (e) => {
+    //BUG verificação que cliquei no li que é um item e não heading, testar essa verificação na outra fn tbm
+
+    if (!e.target.closest("li").classList.contains("converter__picker-item")) return;
+
     setCurrentCurrency(e.target.closest("li").querySelector(".converter__picker-code").textContent);
 
     const currentCurrency = getCurrentCurrency();
@@ -129,15 +145,6 @@ const renderTriggerBtn = function (currencySelectBtn, getCurrentCurrency, setCur
 
     currencySelectBtn.innerHTML = "";
 
-    // e.target.closest("li").insertAdjacentHTML("beforeend", svg);
-
-    // e.target.closest("li").classList.add("converter__picker-item--selected");
-
     currencySelectBtn.insertAdjacentHTML("afterbegin", btnContent);
   });
 };
-
-// const svg = `
-//  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" class="converter__picker-check">
-// <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2 8l4 4 8-8" />
-//  </svg>`;
