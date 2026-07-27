@@ -1,5 +1,5 @@
 export const state = {
-  sendCurrency: "USD",
+  sendCurrency: "BRL",
   receiveCurrency: "EUR",
   amount: 0,
   rate: null,
