@@ -8,6 +8,8 @@ export const setupPicker = function (triggerBtn, pickerEl, getCurrentCurrency, s
     e.stopPropagation();
     pickerEl.hidden = !pickerEl.hidden;
 
+    pickerEl.querySelector(".converter__picker-input").value = "";
+
     if (pickerEl.hidden) return;
 
     pickerEl.querySelector("ul").innerHTML = "";
@@ -42,6 +44,11 @@ export const setupPicker = function (triggerBtn, pickerEl, getCurrentCurrency, s
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape" || pickerEl.hidden) return;
     pickerEl.hidden = true;
+
+    pickerEl.querySelector(".converter__picker-input").value = "";
+  });
+  pickerEl.querySelector(".converter__picker-input").addEventListener("input", (e) => {
+    handdleInputSearch(e, pickerEl, getCurrentCurrency);
   });
 
   renderTriggerBtn(triggerBtn, getCurrentCurrency);
@@ -79,8 +86,6 @@ const renderPickerList = function (pickerEl, getCurrentCurrency) {
   });
 
   pickerEl.querySelector("ul").insertAdjacentHTML("afterbegin", popularCurrenciesHTML);
-
-  console.log(popularCurrenciesHTML);
 
   //HTML other
   let otherCurrenciesHTML = `
@@ -125,4 +130,35 @@ const renderTriggerBtn = function (currencySelectBtn, getCurrentCurrency) {
 
 //FN
 
-const handdleInputSearch = function () {};
+const handdleInputSearch = function (e, pickerEl, getCurrentCurrency) {
+  const currentCurrency = getCurrentCurrency();
+
+  const typedtext = e.target.value.toUpperCase();
+
+  if (typedtext === "") {
+    pickerEl.querySelector("ul").innerHTML = "";
+    renderPickerList(pickerEl, getCurrentCurrency);
+
+    return;
+  }
+
+  let li = "";
+
+  Object.entries(state.currencies).forEach(([code, name]) => {
+    if (!code.includes(typedtext) && !name.toUpperCase().includes(typedtext)) return;
+    console.log(code, typedtext);
+    li += `  <li class="converter__picker-item ${code === currentCurrency ? "converter__picker-item--selected" : ""}">
+                    <img class="converter__picker-flag" src="assets/images/flags/${code.slice(0, -1).toLowerCase()}.webp" alt="${code.slice(0, -1)} flag" />
+                    <span class="converter__picker-code">${code}</span>
+                    <span class="converter__picker-name">${name}</span>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" class="converter__picker-check">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2 8l4 4 8-8" />
+                     </svg>
+
+                 </li>`;
+  });
+
+  pickerEl.querySelector("ul").innerHTML = "";
+
+  pickerEl.querySelector("ul").insertAdjacentHTML("beforeend", li);
+};
