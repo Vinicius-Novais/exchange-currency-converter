@@ -1,6 +1,7 @@
 import { fetchAllRates, fetchSupportedCurrencies } from "./api.js";
 import { state } from "./state.js";
 import { setupPicker } from "./picker.js";
+import { updateConversion } from "./converter.js";
 const [sendBtn, receiveBtn] = document.querySelectorAll(".converter__currency-btn");
 const [sendPicker, receivePicker] = document.querySelectorAll(".converter__picker");
 
@@ -19,6 +20,8 @@ const init = async function () {
       () => state.sendCurrency,
       (currency) => {
         state.sendCurrency = currency;
+       state.rates = await fetchAllRates(currency);
+        updateConversion();
       },
     );
 
@@ -26,8 +29,10 @@ const init = async function () {
       receiveBtn,
       receivePicker,
       () => state.receiveCurrency,
-      (currency) => {
+      async (currency) => {
         state.receiveCurrency = currency;
+       state.rates = await fetchAllRates(currency);
+        updateConversion();
       },
     );
   } catch (err) {
@@ -36,3 +41,4 @@ const init = async function () {
 };
 
 init();
+//BUG PRECISO FAZER O RATES E VER COMO FUNCIOPNA AS FUNCOES AWAIT FETCHALLRATES PQ A REQUISIÇÃO SO TA SENDO 1 VEZ NO COMEÇO 
