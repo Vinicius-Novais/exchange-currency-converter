@@ -111,7 +111,7 @@ const renderPickerList = function (pickerEl, getCurrentCurrency) {
 };
 
 //FN
-const renderTriggerBtn = function (currencySelectBtn, getCurrentCurrency) {
+export const renderTriggerBtn = function (currencySelectBtn, getCurrentCurrency) {
   const currentCurrency = getCurrentCurrency();
 
   //Render button
