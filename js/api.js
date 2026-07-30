@@ -36,6 +36,7 @@ export const fetchRate = async function (fCurrency, sCurrency) {
 // fetchRate("EUR", "BRL");
 
 export const fetchAllRates = async function (base) {
+  console.log(base);
   const response = await fetch(`${BASE_URL}/rates?base=${base}&quotes=${SUPPORTED_CURRENCIES.join(",")}`);
 
   if (!response.ok) {
