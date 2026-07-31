@@ -1,9 +1,11 @@
 import { state } from "./state.js";
 import { renderTriggerBtn } from "./picker.js";
+import { fetchAllRates } from "./api.js";
 const [sendInput, receiveInput] = document.querySelectorAll(".converter__amount");
 const [sendBtn, receiveBtn] = document.querySelectorAll(".converter__currency-btn");
 const exchangeRateEl = document.querySelector(".converter__rate");
 const swapBtn = document.querySelector(".converter__swap-btn");
+const favBtn = document.querySelector(".converter__fav-btn");
 
 export const setupConverter = function () {
   sendInput.addEventListener("input", () => {
@@ -15,8 +17,12 @@ export const setupConverter = function () {
     if (!allowed.test(e.key)) e.preventDefault();
   });
 
-  swapBtn.addEventListener("click", (e) => {
+  swapBtn.addEventListener("click", () => {
     setupSwap();
+  });
+
+  favBtn.addEventListener("click", (e) => {
+    addFavorite();
   });
 
   //Chamada inicial para carregar o exchangePair
@@ -41,19 +47,41 @@ export const updateConversion = function () {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(result);
-
-  //Swap button
 };
 
 const updateExchangePair = function () {
   //Update exchange pair
   exchangeRateEl.textContent = `1 ${state.sendCurrency} = ${state.rates[state.receiveCurrency]} ${state.receiveCurrency}`;
+
+  const pair = `${state.sendCurrency}/${state.receiveCurrency}`;
+  favBtn.setAttribute("aria-pressed", state.favorites.includes(pair));
 };
 
-const setupSwap = function () {
-  updateConversion();
-  
-  [(state.receiveCurrency, state.sendCurrency)] = [state.sendCurrency, state.receiveCurrency];
+const setupSwap = async function () {
+  [state.receiveCurrency, state.sendCurrency] = [state.sendCurrency, state.receiveCurrency];
+
   renderTriggerBtn(sendBtn, () => state.sendCurrency);
   renderTriggerBtn(receiveBtn, () => state.receiveCurrency);
+
+  state.rates = await fetchAllRates(state.sendCurrency);
+
+  updateConversion();
+};
+
+export const addFavorite = function () {
+  const pair = `${state.sendCurrency}/${state.receiveCurrency}`;
+  const isFavorite = state.favorites.includes(pair);
+
+  if (!isFavorite) {
+    state.favorites.push(pair);
+    favBtn.setAttribute("aria-pressed", "true");
+  } else {
+    favBtn.setAttribute("aria-pressed", "false");
+
+    state.favorites.splice(state.favorites.indexOf(pair), 1);
+  }
+
+  console.log(isFavorite);
+
+  console.log(state);
 };

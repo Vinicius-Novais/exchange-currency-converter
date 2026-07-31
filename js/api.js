@@ -33,7 +33,7 @@ export const fetchRate = async function (fCurrency, sCurrency) {
   return rate;
 };
 
-// fetchRate("EUR", "BRL");
+fetchRate("BRL", "EUR");
 
 export const fetchAllRates = async function (base) {
   console.log(base);
