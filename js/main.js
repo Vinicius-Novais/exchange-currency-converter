@@ -2,6 +2,8 @@ import { fetchAllRates, fetchSupportedCurrencies } from "./api.js";
 import { state } from "./state.js";
 import { setupPicker } from "./picker.js";
 import { setupConverter, updateConversion } from "./converter.js";
+import { setupVisibility } from "./visibility.js";
+import { setupLogTab } from "./log.js";
 const [sendBtn, receiveBtn] = document.querySelectorAll(".converter__currency-btn");
 const [sendPicker, receivePicker] = document.querySelectorAll(".converter__picker");
 
@@ -36,6 +38,13 @@ const init = async function () {
         updateConversion();
       },
     );
+
+    //Setup visibility os tabs
+    setupVisibility();
+
+    //Log tab
+
+    setupLogTab();
   } catch (err) {
     console.error("Failed to initialize app:", err.message);
   }
