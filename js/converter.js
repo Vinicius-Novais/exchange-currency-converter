@@ -6,6 +6,7 @@ const [sendBtn, receiveBtn] = document.querySelectorAll(".converter__currency-bt
 const exchangeRateEl = document.querySelector(".converter__rate");
 const swapBtn = document.querySelector(".converter__swap-btn");
 const favBtn = document.querySelector(".converter__fav-btn");
+const logBtn = document.querySelector(".converter__log-btn");
 
 export const setupConverter = function () {
   sendInput.addEventListener("input", () => {
@@ -25,6 +26,10 @@ export const setupConverter = function () {
     addFavorite();
   });
 
+  logBtn.addEventListener("click", (e) => {
+    addLogConversion();
+  });
+
   //Chamada inicial para carregar o exchangePair
   updateConversion();
 };
@@ -33,8 +38,13 @@ export const updateConversion = function () {
   updateExchangePair();
   if (!Number.isFinite(Number(sendInput.value)) || Number(sendInput.value) === 0) {
     receiveInput.value = "";
+    logBtn.setAttribute("disabled", "");
     return;
   }
+
+  //Enable log Button
+
+  logBtn.removeAttribute("disabled");
 
   state.amount = Number(sendInput.value);
   console.log(state.amount);
@@ -82,6 +92,12 @@ export const addFavorite = function () {
   }
 
   console.log(isFavorite);
+
+  console.log(state);
+};
+
+const addLogConversion = function () {
+  state.log.push({ id: crypto.randomUUID(), send: { code: state.sendCurrency, amount: sendInput.value }, receive: { code: state.receiveCurrency, amount: receiveInput.value }, timeStamp: Date.now() });
 
   console.log(state);
 };
