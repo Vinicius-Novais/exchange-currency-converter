@@ -1,6 +1,7 @@
 import { state } from "./state.js";
 import { renderTriggerBtn } from "./picker.js";
 import { fetchAllRates } from "./api.js";
+import { renderBadge } from "./visibility.js";
 const [sendInput, receiveInput] = document.querySelectorAll(".converter__amount");
 const [sendBtn, receiveBtn] = document.querySelectorAll(".converter__currency-btn");
 const exchangeRateEl = document.querySelector(".converter__rate");
@@ -28,6 +29,7 @@ export const setupConverter = function () {
 
   logBtn.addEventListener("click", (e) => {
     addLogConversion();
+    renderBadge();
   });
 
   //Chamada inicial para carregar o exchangePair
@@ -85,10 +87,11 @@ export const addFavorite = function () {
   if (!isFavorite) {
     state.favorites.push(pair);
     favBtn.setAttribute("aria-pressed", "true");
+    renderBadge();
   } else {
     favBtn.setAttribute("aria-pressed", "false");
-
     state.favorites.splice(state.favorites.indexOf(pair), 1);
+    renderBadge();
   }
 
   console.log(isFavorite);
