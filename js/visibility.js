@@ -38,49 +38,40 @@ export const setupVisibility = function () {
 };
 
 export const renderBadge = function () {
+  const countType = {
+    favorites: state.favorites.length,
+    log: state.log.length,
+  };
   badgeCountEl.forEach((badge) => {
     const type = badge.dataset.badgeCount;
-
-    if (type === "favorite") {
-      if (state.favorites.length > 0) {
-        badge.textContent = state.favorites.length;
-        badge.hidden = false;
-      } else {
-        badge.hidden = true;
-      }
-    }
-    if (type === "log") {
-      if (state.log.length > 0) {
-        badge.textContent = state.log.length;
-        badge.hidden = false;
-      } else {
-        badge.hidden = true;
-      }
-    }
+    console.log(type);
 
     if (type === "selected") {
       renderSelectedBadge();
+      return;
     }
 
-    // console.log(type);
-    // console.log(badge);
+    if (countType[type] > 0) {
+      console.log("oi");
+      badge.textContent = countType[type];
+      badge.hidden = false;
+    } else {
+      badge.hidden = true;
+    }
   });
 };
 
 const renderSelectedBadge = function () {
+  const countType = {
+    favorites: state.favorites.length,
+    log: state.log.length,
+  };
   const badgeSelected = document.querySelector('[data-badge-count="selected"]');
-  if (state.activeTab === "favorites") {
-    if (state.favorites.length > 0) {
-      badgeSelected.textContent = state.favorites.length;
-      badgeSelected.hidden = false;
-    }
-  } else if (state.activeTab === "log") {
-    if (state.log.length > 0) {
-      badgeSelected.textContent = state.log.length;
-      badgeSelected.hidden = false;
-    }
+
+  if (countType[state.activeTab] > 0) {
+    badgeSelected.textContent = countType[state.activeTab];
+    badgeSelected.hidden = false;
   } else {
-    badgeSelected.textContent = "";
     badgeSelected.hidden = true;
   }
 };
