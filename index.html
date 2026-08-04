@@ -756,31 +756,31 @@
         <div class="dashboard__nav">
           <div class="dashboard__dd">
             <button class="dashboard__dd-trigger-btn" aria-expanded="false">
-              <span class="dashboard__place-holder">FAVORITES</span>
+              <span class="dashboard__place-holder">HISTORY</span>
               <!--badge hidden mostrar apenas quando escolhr fav e log caso tenha já salvos-->
-              <span hidden class="dashboard__badge">10</span>
+              <span data-badge-count="selected" hidden class="dashboard__badge">10</span>
             </button>
             <!--remover o hidden ao click-->
             <ul hidden class="dashboard__dd-list">
-              <li class="dashboard__dd-item">HISTORY</li>
-              <li class="dashboard__dd-item">COMPARE</li>
-              <li class="dashboard__dd-item">FAVORITES <span class="dashboard__badge">10</span></li>
-              <li class="dashboard__dd-item">LOG <span class="dashboard__badge">8</span></li>
+              <li data-tab="history" class="dashboard__dd-item">HISTORY</li>
+              <li data-tab="compare" class="dashboard__dd-item">COMPARE</li>
+              <li data-tab="favorites" class="dashboard__dd-item">FAVORITES <span data-badge-count="favorite" class="dashboard__badge">10</span></li>
+              <li data-tab="log" class="dashboard__dd-item">LOG <span data-badge-count="log" class="dashboard__badge">8</span></li>
             </ul>
           </div>
 
           <!--desktop: tabs-->
           <div class="dashboard__tabs">
-            <button class="dashboard__tab dashboard__history-btn" aria-selected="true">HISTORY</button>
-            <button class="dashboard__tab dashboard__compare-btn" aria-selected="false">COMPARE</button>
-            <button class="dashboard__tab dashboard__favorites-btn" aria-selected="false">FAVORITES <span hidden class="dashboard__badge" aria-selected="false">10</span></button>
-            <button class="dashboard__tab dashboard__log-btn">LOG <span hidden class="dashboard__badge">8</span></button>
+            <button data-tab="history" class="dashboard__tab dashboard__history-btn" aria-selected="true">HISTORY</button>
+            <button data-tab="compare" class="dashboard__tab dashboard__compare-btn" aria-selected="false">COMPARE</button>
+            <button data-tab="favorites" class="dashboard__tab dashboard__favorites-btn" aria-selected="false">FAVORITES <span hidden class="dashboard__badge" aria-selected="false">10</span></button>
+            <button data-tab="log" class="dashboard__tab dashboard__log-btn">LOG <span hidden class="dashboard__badge">8</span></button>
           </div>
         </div>
 
         <div class="dashboard__panels">
           <!--HISTORY: panel padrão sem hidden-->
-          <div class="dashboard__panel--history" data-tab="history">
+          <div class="dashboard__panel--history" data-panels="history">
             <div class="dashboard__chart-header">
               <div class="dashboard__info-cards">
                 <div class="dashboard__info-card dashboard__open-card">
@@ -823,7 +823,7 @@
             </div>
           </div>
           <!--COMPARE (hidden)-->
-          <div hidden class="dashboard__panel dashboard__panel--compare" data-tab="compare">
+          <div hidden class="dashboard__panel dashboard__panel--compare" data-panels="compare">
             <div class="dashboard__compare-header">
               <div class="dashboard__compare-title-from">
                 <span class="dashboard__compare-title">MULTI-CURRENCY</span>
@@ -939,7 +939,7 @@
             </ul>
           </div>
           <!--FAVORITES (hidden)-->
-          <div hidden class="dashboard__panel dashboard__panel--favorites" data-tab="favorites">
+          <div hidden class="dashboard__panel dashboard__panel--favorites" data-panels="favorites">
             <div class="dashboard__favorites-header">
               <span class="dashboard__favorites-title">PINNED PAIRS</span>
               <span class="dashboard__favorites-count">10 FAVORITES</span>
@@ -1020,7 +1020,7 @@
             </ul>
           </div>
           <!--LOG (hidden)-->
-          <div hidden class="dashboard__panel dashboard__panel--log" data-tab="log">
+          <div hidden class="dashboard__panel dashboard__panel--log" data-panels="log">
             <div class="dashboard__log-header">
               <span class="dashboard__log-title">CONVERSION LOG</span>
               <div class="dashboard__log-header-logged-btn">

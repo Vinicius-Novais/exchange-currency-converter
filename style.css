@@ -731,6 +731,7 @@
       z-index: 10;
       border-radius: calc(10 / 16 * 1rem);
       padding: 8px;
+      border: 1px solid var(--c-neutral-400);
     }
 
     .dashboard__dd-item {
@@ -740,6 +741,8 @@
       justify-content: space-between;
       padding-block: calc(8 / 16 * 1rem);
       padding-inline: calc(10 / 16 * 1rem);
+
+      cursor: pointer;
     }
 
     .dashboard__badge {
