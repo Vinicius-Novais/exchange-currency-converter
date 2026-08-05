@@ -1220,7 +1220,7 @@
 
         @media (width >= calc(768 / 16 * 1rem)) {
           flex-direction: row;
-          gap: 2rem;
+          gap: 1rem;
         }
       }
 

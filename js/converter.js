@@ -2,6 +2,7 @@ import { state } from "./state.js";
 import { renderTriggerBtn } from "./picker.js";
 import { fetchAllRates } from "./api.js";
 import { renderBadge } from "./visibility.js";
+import { renderPanel } from "./log.js";
 const [sendInput, receiveInput] = document.querySelectorAll(".converter__amount");
 const [sendBtn, receiveBtn] = document.querySelectorAll(".converter__currency-btn");
 const exchangeRateEl = document.querySelector(".converter__rate");
@@ -99,8 +100,10 @@ export const addFavorite = function () {
   console.log(state);
 };
 
-const addLogConversion = function () {
+export const addLogConversion = function () {
   state.log.push({ id: crypto.randomUUID(), send: { code: state.sendCurrency, amount: sendInput.value }, receive: { code: state.receiveCurrency, amount: receiveInput.value }, timeStamp: Date.now() });
 
   console.log(state);
+
+  renderPanel();
 };

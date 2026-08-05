@@ -3,7 +3,7 @@ import { state } from "./state.js";
 import { setupPicker } from "./picker.js";
 import { setupConverter, updateConversion } from "./converter.js";
 import { setupVisibility } from "./visibility.js";
-import { setupLogTab } from "./log.js";
+import { setupLogPanel } from "./log.js";
 const [sendBtn, receiveBtn] = document.querySelectorAll(".converter__currency-btn");
 const [sendPicker, receivePicker] = document.querySelectorAll(".converter__picker");
 
@@ -43,8 +43,7 @@ const init = async function () {
     setupVisibility();
 
     //Log tab
-
-    setupLogTab();
+    setupLogPanel();
   } catch (err) {
     console.error("Failed to initialize app:", err.message);
   }
