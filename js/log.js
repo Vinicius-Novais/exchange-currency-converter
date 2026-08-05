@@ -12,7 +12,7 @@ export const setupLogPanel = function () {
     listContainer.innerHTML = "";
     state.log.length = [];
     renderBadge();
-    loggedCount.textContent = "";
+    loggedCount.textContent = `${state.log.length} LOGGED`;
   });
 
   logTabButton.addEventListener("click", () => {
