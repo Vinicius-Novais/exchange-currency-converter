@@ -79,20 +79,18 @@ const getDate = function (timeStamp) {
 
   const day = new Date(timeStamp).getDate();
 
-  const daysPassed = calcDaysPassed(timeStamp);
+  const minutesPassed = calcMinutesPassed(timeStamp);
 
-  if (daysPassed === 0) {
-    return "Today";
+  if (minutesPassed < 60) {
+    return `${minutesPassed}M`;
   }
 
-  if (daysPassed === 1) {
-    return "yesterday";
-  }
+  if (minutesPassed < 1440) return `${Math.floor(minutesPassed / 60)}H`;
 
   return `${day} ${month}`;
 };
 
-const calcDaysPassed = (timeStamp) => Math.round(Math.abs(new Date() - timeStamp) / (1000 * 60 * 60 * 24));
+const calcMinutesPassed = (timeStamp) => Math.round((new Date() - new Date(timeStamp)) / 1000 / 60);
 
 const deleteLog = function (e) {
   const btn = e.target.closest("button");

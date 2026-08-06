@@ -9,12 +9,12 @@ const [sendPicker, receivePicker] = document.querySelectorAll(".converter__picke
 
 const init = async function () {
   try {
-    // Api.js
+    // api.js
     [state.currencies, state.rates] = await Promise.all([fetchSupportedCurrencies(), fetchAllRates(state.sendCurrency)]);
 
     console.log(state);
 
-    //Converter.js
+    //converter.js
     setupConverter();
 
     //picker.js
@@ -42,7 +42,9 @@ const init = async function () {
     //Setup visibility os tabs
     setupVisibility();
 
-    //Log tab
+    //compare.js
+
+    //log.js
     setupLogPanel();
   } catch (err) {
     console.error("Failed to initialize app:", err.message);
