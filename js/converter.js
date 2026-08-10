@@ -2,7 +2,8 @@ import { state } from "./state.js";
 import { renderTriggerBtn } from "./picker.js";
 import { fetchAllRates } from "./api.js";
 import { renderBadge } from "./visibility.js";
-import { renderPanel } from "./log.js";
+import { renderLogPanel } from "./log.js";
+import { renderComparePanel } from "./compare.js";
 const [sendInput, receiveInput] = document.querySelectorAll(".converter__amount");
 const [sendBtn, receiveBtn] = document.querySelectorAll(".converter__currency-btn");
 const exchangeRateEl = document.querySelector(".converter__rate");
@@ -57,7 +58,6 @@ export const updateConversion = function () {
   const result = state.amount * rate;
 
   receiveInput.value = new Intl.NumberFormat(navigator.language, {
-    minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(result);
 };
@@ -98,6 +98,7 @@ export const addFavorite = function () {
   console.log(isFavorite);
 
   console.log(state);
+  renderComparePanel();
 };
 
 export const addLogConversion = function () {
@@ -105,5 +106,5 @@ export const addLogConversion = function () {
 
   console.log(state);
 
-  renderPanel();
+  renderLogPanel();
 };
