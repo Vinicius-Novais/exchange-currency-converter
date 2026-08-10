@@ -5,6 +5,7 @@ import { setupConverter, updateConversion } from "./converter.js";
 import { setupVisibility } from "./visibility.js";
 import { setupLogPanel } from "./log.js";
 import { setupCompare } from "./compare.js";
+import { setupFavorites } from "./favorites.js";
 const [sendBtn, receiveBtn] = document.querySelectorAll(".converter__currency-btn");
 const [sendPicker, receivePicker] = document.querySelectorAll(".converter__picker");
 
@@ -45,6 +46,9 @@ const init = async function () {
 
     //compare.js
     setupCompare();
+
+    //favorites.js
+    setupFavorites();
 
     //log.js
     setupLogPanel();
