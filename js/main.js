@@ -4,6 +4,7 @@ import { setupPicker } from "./picker.js";
 import { setupConverter, updateConversion } from "./converter.js";
 import { setupVisibility } from "./visibility.js";
 import { setupLogPanel } from "./log.js";
+import { setupCompare } from "./compare.js";
 const [sendBtn, receiveBtn] = document.querySelectorAll(".converter__currency-btn");
 const [sendPicker, receivePicker] = document.querySelectorAll(".converter__picker");
 
@@ -43,6 +44,7 @@ const init = async function () {
     setupVisibility();
 
     //compare.js
+    setupCompare();
 
     //log.js
     setupLogPanel();
