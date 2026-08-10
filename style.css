@@ -1073,6 +1073,7 @@
       }
 
       .dashboard__compare-fav-btn {
+        height: calc(34 / 16 * 1rem);
         .dashboard__compare-icon-filled {
           display: none;
         }
