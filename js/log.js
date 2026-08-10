@@ -16,12 +16,12 @@ export const setupLogPanel = function () {
   });
 
   logTabButton.addEventListener("click", () => {
-    renderPanel();
+    renderLogPanel();
   });
   logDDButton.addEventListener("click", () => {
     if (state.activeTab !== "log") return;
 
-    renderPanel();
+    renderLogPanel();
   });
 
   listContainer.addEventListener("click", (e) => {
@@ -29,7 +29,7 @@ export const setupLogPanel = function () {
   });
 };
 
-export const renderPanel = function () {
+export const renderLogPanel = function () {
   let li = "";
 
   listContainer.innerHTML = "";
@@ -49,7 +49,6 @@ export const renderPanel = function () {
                 <div class="dashboard__log-right">
                   <div class="dashboard__log-receive">
                     <span class="dashboard__log-send-amount">${new Intl.NumberFormat(navigator.language, {
-                      minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
                     }).format(log.send.amount)}</span>
                     <span class="dashboard__log-receive-amount">${log.receive.amount}</span>
@@ -103,6 +102,6 @@ const deleteLog = function (e) {
 
   state.log.splice(index, 1);
 
-  renderPanel();
+  renderLogPanel();
   renderBadge();
 };
