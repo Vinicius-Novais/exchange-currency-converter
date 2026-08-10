@@ -1,0 +1,111 @@
+import { state } from "./state.js";
+import { addFavorite } from "./converter.js";
+import { renderBadge } from "./visibility.js";
+const compareTabButton = document.querySelector(".dashboard__compare-btn");
+const compareDDButton = document.querySelector('[data-tab="compare"]');
+const compareUl = document.querySelector(".dashboard__compare-list");
+const comparePair = document.querySelector(".dashboard__compare-pairs");
+const sendInput = document.querySelector("#send-input");
+const favBtn = document.querySelector(".converter__fav-btn");
+
+export const setupCompare = function () {
+  compareTabButton.addEventListener("click", () => {
+    renderComparePanel();
+  });
+
+  compareDDButton.addEventListener("click", () => {
+    if (state.activeTab !== "compare") return;
+
+    renderComparePanel();
+  });
+
+  sendInput.addEventListener("input", () => {
+    if (state.activeTab !== "compare") return;
+    renderComparePanel();
+
+    //Ao apagar tudo colocar a página de empty state
+  });
+
+  compareUl.addEventListener("click", (e) => {
+    addFavoriteCompare(e);
+  });
+};
+
+export const renderComparePanel = function () {
+  renderCompareHeader();
+  let li = "";
+
+  compareUl.innerHTML = "";
+
+  Object.entries(state.rates)
+    .filter(([code]) => code !== state.sendCurrency)
+    .forEach(([code, rate]) => {
+      const isFavorite = state.favorites.includes(`${state.sendCurrency}/${code}`);
+
+      li += `
+    <li class="dashboard__compare-item dashboard__item">
+                <div class="dashboard__compare-left">
+                  <img src="/assets/images/flags/${code.slice(0, -1).toLowerCase()}.webp" alt="${code} flag" class="dashboard__compare-flag" />
+                  <div class="dashboard__compare-currency">
+                    <span class="dashboard__compare-code">${code}</span>
+                    <span class="dashboard__compare-name">${state.currencies[code]}</span>
+                  </div>
+                </div>
+                <div class="dashboard__compare-right">
+                  <div class="dashboard__compare-value-rate">
+                    <span class="dashboard__compare-value">${new Intl.NumberFormat(navigator.language, {
+                      maximumFractionDigits: 2,
+                    }).format(state.amount * rate)}</span>
+                    <span class="dashboard__compare-rate">@ ${rate}</span>
+                  </div>
+                  <button aria-pressed="${isFavorite}" class="dashboard__compare-fav-btn dashboard__fav-btn">
+                    <svg class="dashboard__compare-icon-empty" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                      <path
+                        fill="currentColor"
+                        d="M13.637 6.02c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492 1.523-3.117c.281-.563 1.078-.54 1.336 0l1.547 3.117zm-3.282 3.305 2.368-2.297-3.258-.469-1.453-2.953L6.535 6.56l-3.258.469 2.367 2.297-.562 3.234 2.93-1.523 2.906 1.523z"
+                      />
+                    </svg>
+                    <svg class="dashboard__compare-icon-filled" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                      <path fill="#cef739" d="M7.332 2.41c.281-.562 1.078-.538 1.336 0l1.547 3.118 3.422.492c.61.094.843.844.398 1.29l-2.46 2.413.585 3.399c.094.61-.562 1.078-1.101.797l-3.047-1.617-3.07 1.617c-.54.28-1.196-.188-1.102-.797l.586-3.399L1.965 7.31c-.446-.445-.211-1.195.398-1.289l3.446-.492z" />
+                    </svg>
+                  </button>
+                </div>
+              </li>
+    
+    
+    
+    `;
+    });
+
+  compareUl.insertAdjacentHTML("beforeend", li);
+};
+
+const renderCompareHeader = function () {
+  //Render header
+  document.querySelector(".dashboard__compare-from").textContent = `${new Intl.NumberFormat(navigator.language, {
+    maximumFractionDigits: 2,
+  }).format(state.amount)} FROM ${state.sendCurrency}`;
+};
+
+const addFavoriteCompare = function (e) {
+  const btn = e.target.closest("button");
+
+  if (!btn) return;
+
+  const pair = `${state.sendCurrency}/${btn.closest("li").querySelector(".dashboard__compare-code").textContent}`;
+  const isFavorite = state.favorites.includes(pair);
+
+  if (!isFavorite) {
+    state.favorites.push(pair);
+    btn.setAttribute("aria-pressed", "true");
+    favBtn.setAttribute("aria-pressed", "true");
+    renderBadge();
+  } else {
+    btn.setAttribute("aria-pressed", "false");
+    favBtn.setAttribute("aria-pressed", "false");
+    state.favorites.splice(state.favorites.indexOf(pair), 1);
+    renderBadge();
+  }
+
+  console.log(state);
+};
