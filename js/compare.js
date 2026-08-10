@@ -89,22 +89,31 @@ const renderCompareHeader = function () {
 
 const addFavoriteCompare = function (e) {
   const btn = e.target.closest("button");
+  const clickedBtnCode = btn.closest("li").querySelector(".dashboard__compare-code").textContent;
 
   if (!btn) return;
 
-  const pair = `${state.sendCurrency}/${btn.closest("li").querySelector(".dashboard__compare-code").textContent}`;
+  const pair = `${state.sendCurrency}/${clickedBtnCode}`;
   const isFavorite = state.favorites.includes(pair);
 
   if (!isFavorite) {
     state.favorites.push(pair);
     btn.setAttribute("aria-pressed", "true");
-    favBtn.setAttribute("aria-pressed", "true");
+
     renderBadge();
+
+    if (state.receiveCurrency !== clickedBtnCode) return;
+
+    favBtn.setAttribute("aria-pressed", "true");
   } else {
     btn.setAttribute("aria-pressed", "false");
-    favBtn.setAttribute("aria-pressed", "false");
+
     state.favorites.splice(state.favorites.indexOf(pair), 1);
     renderBadge();
+
+    if (state.receiveCurrency !== clickedBtnCode) return;
+
+    favBtn.setAttribute("aria-pressed", "false");
   }
 
   console.log(state);
