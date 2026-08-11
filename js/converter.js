@@ -3,7 +3,7 @@ import { renderTriggerBtn } from "./picker.js";
 import { fetchAllRates } from "./api.js";
 import { renderBadge } from "./visibility.js";
 import { renderLogPanel } from "./log.js";
-import { renderComparePanel } from "./compare.js";
+import { renderComparePanel, renderCompareHeader } from "./compare.js";
 const [sendInput, receiveInput] = document.querySelectorAll(".converter__amount");
 const [sendBtn, receiveBtn] = document.querySelectorAll(".converter__currency-btn");
 const exchangeRateEl = document.querySelector(".converter__rate");
@@ -79,6 +79,11 @@ const setupSwap = async function () {
   state.rates = await fetchAllRates(state.sendCurrency);
 
   updateConversion();
+
+  if (state.activeTab !== "compare") return;
+
+  renderCompareHeader();
+  renderComparePanel();
 };
 
 export const addFavorite = function () {
