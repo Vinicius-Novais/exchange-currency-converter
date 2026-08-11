@@ -820,6 +820,7 @@
 
         &:hover {
           border-color: var(--color-compare-fav-log-cards-border-hover);
+          cursor: pointer;
         }
       }
 
