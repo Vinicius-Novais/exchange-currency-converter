@@ -1,5 +1,5 @@
 import { state } from "./state.js";
-import { addFavorite } from "./converter.js";
+import { addFavorite, updateConversion } from "./converter.js";
 import { renderBadge } from "./visibility.js";
 const compareTabButton = document.querySelector(".dashboard__compare-btn");
 const compareDDButton = document.querySelector('[data-tab="compare"]');
@@ -7,6 +7,8 @@ const compareUl = document.querySelector(".dashboard__compare-list");
 const comparePair = document.querySelector(".dashboard__compare-pairs");
 const sendInput = document.querySelector("#send-input");
 const favBtn = document.querySelector(".converter__fav-btn");
+const receiveBtn = document.querySelectorAll(".converter__currency-btn")[1];
+const converterEl = document.querySelector(".converter");
 
 export const setupCompare = function () {
   compareTabButton.addEventListener("click", () => {
@@ -28,6 +30,7 @@ export const setupCompare = function () {
 
   compareUl.addEventListener("click", (e) => {
     addFavoriteCompare(e);
+    setConverterPair(e);
   });
 };
 
@@ -80,7 +83,7 @@ export const renderComparePanel = function () {
   compareUl.insertAdjacentHTML("beforeend", li);
 };
 
-const renderCompareHeader = function () {
+export const renderCompareHeader = function () {
   //Render header
   document.querySelector(".dashboard__compare-from").textContent = `${new Intl.NumberFormat(navigator.language, {
     maximumFractionDigits: 2,
@@ -89,9 +92,9 @@ const renderCompareHeader = function () {
 
 const addFavoriteCompare = function (e) {
   const btn = e.target.closest("button");
-  const clickedBtnCode = btn.closest("li").querySelector(".dashboard__compare-code").textContent;
 
   if (!btn) return;
+  const clickedBtnCode = btn.closest("li").querySelector(".dashboard__compare-code").textContent;
 
   const pair = `${state.sendCurrency}/${clickedBtnCode}`;
   const isFavorite = state.favorites.includes(pair);
@@ -117,4 +120,29 @@ const addFavoriteCompare = function (e) {
   }
 
   console.log(state);
+};
+
+const setConverterPair = function (e) {
+  if (e.target.closest("button")) return;
+
+  const li = e.target.closest("li");
+
+  if (!li) return;
+
+  const clickedBtnCode = li.querySelector(".dashboard__compare-code").textContent;
+  state.receiveCurrency = clickedBtnCode;
+  updateConversion();
+
+  const btnContent = `
+   <img class="converter__flag-btn" src="assets/images/flags/${clickedBtnCode.slice(0, -1).toLowerCase()}.webp" alt="${clickedBtnCode.slice(0, -1)} flag" />
+                <span class="converter__currency-name">${clickedBtnCode}</span>
+                <svg class="converter__chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+                  <path fill="#fff" d="M2.988 4.02h6.024c.422 0 .633.515.328.82l-3 3a.48.48 0 0 1-.68 0l-3-3c-.304-.305-.093-.82.328-.82" />
+                </svg>
+  `;
+
+  receiveBtn.innerHTML = "";
+
+  receiveBtn.insertAdjacentHTML("afterbegin", btnContent);
+  converterEl.scrollIntoView({ behavior: "smooth" });
 };
