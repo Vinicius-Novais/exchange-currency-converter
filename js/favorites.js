@@ -25,6 +25,7 @@ export const renderFavoritePanel = function () {
   state.favorites.forEach((pair) => {
     const baseCurrency = pair.split("/")[0];
     const quoteCurrency = pair.split("/")[1];
+    const rate = baseCurrency === state.sendCurrency ? state.rates[quoteCurrency] : state.rates[quoteCurrency] / state.rates[baseCurrency];
 
     li += `
         <li class="dashboard__favorites-item dashboard__item">
@@ -36,7 +37,7 @@ export const renderFavoritePanel = function () {
                   ${quoteCurrency}</span
                 >
                 <div class="dashboard__favorites-data">
-                  <span class="dashboard__favorites-rate">${state.rates[quoteCurrency]}</span>
+                  <span class="dashboard__favorites-rate">${rate}</span>
                   <span class="dashboard__favorites-change dashboard__value--positive">+0.16%</span>
                 </div>
                 <button aria-pressed="true" class="dashboard__favorites-fav-btn dashboard__fav-btn">
