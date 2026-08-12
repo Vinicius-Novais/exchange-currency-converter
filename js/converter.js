@@ -4,6 +4,7 @@ import { fetchAllRates } from "./api.js";
 import { renderBadge } from "./visibility.js";
 import { renderLogPanel } from "./log.js";
 import { renderComparePanel, renderCompareHeader } from "./compare.js";
+import { renderFavoritePanel } from "./favorites.js";
 const [sendInput, receiveInput] = document.querySelectorAll(".converter__amount");
 const [sendBtn, receiveBtn] = document.querySelectorAll(".converter__currency-btn");
 const exchangeRateEl = document.querySelector(".converter__rate");
@@ -32,6 +33,9 @@ export const setupConverter = function () {
   logBtn.addEventListener("click", (e) => {
     addLogConversion();
     renderBadge();
+
+    logBtn.setAttribute("data-logged", "");
+    setTimeout(() => logBtn.removeAttribute("data-logged"), 700);
   });
 
   //Chamada inicial para carregar o exchangePair
@@ -103,7 +107,14 @@ export const addFavorite = function () {
   console.log(isFavorite);
 
   console.log(state);
-  renderComparePanel();
+
+  if (state.activeTab === "compare") {
+    renderComparePanel();
+  }
+
+  if (state.activeTab === "favorites") {
+    renderFavoritePanel();
+  }
 };
 
 export const addLogConversion = function () {
