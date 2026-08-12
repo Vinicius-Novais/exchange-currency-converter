@@ -56,7 +56,18 @@ export const fetchAllRates = async function (base, date = "") {
 };
 
 export const fetchRatesYesterday = async function (base) {
-  const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().split("T")[0];
+  const yesterday = getLastBusinessDay();
 
   return fetchAllRates(base, yesterday);
+};
+
+const getLastBusinessDay = () => {
+  const date = new Date();
+  date.setDate(date.getDate() - 1);
+
+  while (date.getDay() === 0 || date.getDay() === 6) {
+    date.setDate(date.getDate() - 1);
+  }
+
+  return date.toISOString().split("T")[0];
 };
