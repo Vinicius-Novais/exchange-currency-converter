@@ -1,6 +1,7 @@
 import { state } from "./state.js";
 import { addFavorite, updateConversion } from "./converter.js";
 import { renderBadge } from "./visibility.js";
+import { formatRate } from "./utils.js";
 const compareTabButton = document.querySelector(".dashboard__compare-btn");
 const compareDDButton = document.querySelector('[data-tab="compare"]');
 const compareUl = document.querySelector(".dashboard__compare-list");
@@ -56,9 +57,7 @@ export const renderComparePanel = function () {
                 </div>
                 <div class="dashboard__compare-right">
                   <div class="dashboard__compare-value-rate">
-                    <span class="dashboard__compare-value">${new Intl.NumberFormat(navigator.language, {
-                      maximumFractionDigits: 2,
-                    }).format(state.amount * rate)}</span>
+                    <span class="dashboard__compare-value">${formatRate(state.amount * rate)}</span>
                     <span class="dashboard__compare-rate">@ ${rate}</span>
                   </div>
                   <button aria-pressed="${isFavorite}" class="dashboard__compare-fav-btn dashboard__fav-btn">

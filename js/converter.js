@@ -5,6 +5,7 @@ import { renderBadge } from "./visibility.js";
 import { renderLogPanel } from "./log.js";
 import { renderComparePanel, renderCompareHeader } from "./compare.js";
 import { renderFavoritePanel } from "./favorites.js";
+import { formatRate } from "./utils.js";
 const [sendInput, receiveInput] = document.querySelectorAll(".converter__amount");
 const [sendBtn, receiveBtn] = document.querySelectorAll(".converter__currency-btn");
 const exchangeRateEl = document.querySelector(".converter__rate");
@@ -61,9 +62,7 @@ export const updateConversion = function () {
   const rate = state.rates[state.receiveCurrency];
   const result = state.amount * rate;
 
-  receiveInput.value = new Intl.NumberFormat(navigator.language, {
-    maximumFractionDigits: 2,
-  }).format(result);
+  receiveInput.value = formatRate(result);
 };
 
 const updateExchangePair = function () {

@@ -1,5 +1,6 @@
 import { state } from "./state.js";
 import { renderBadge } from "./visibility.js";
+import { formatRate } from "./utils.js";
 const favoritesTabButton = document.querySelector(".dashboard__favorites-btn");
 const favoritesDDButton = document.querySelector("[data-tab='favorites']");
 const favoritesUl = document.querySelector(".dashboard__favorites-list");
@@ -37,7 +38,7 @@ export const renderFavoritePanel = function () {
                   ${quoteCurrency}</span
                 >
                 <div class="dashboard__favorites-data">
-                  <span class="dashboard__favorites-rate">${rate}</span>
+                  <span class="dashboard__favorites-rate">${formatRate(rate)}</span>
                   <span class="dashboard__favorites-change dashboard__value--positive">+0.16%</span>
                 </div>
                 <button aria-pressed="true" class="dashboard__favorites-fav-btn dashboard__fav-btn">
