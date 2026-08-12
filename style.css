@@ -527,7 +527,7 @@
         content: "LOG CONVERSION";
       }
 
-      &:active:not(:disabled) {
+      &[data-logged] {
         background-color: var(--color-log-btn-selected-bg);
         border-color: var(--color-log-btn-border);
         color: var(--c-neutral-900);
@@ -536,7 +536,6 @@
           content: "✓ LOGGED";
         }
       }
-
       &:not(:disabled) {
         border-color: var(--color-log-btn-border);
       }
