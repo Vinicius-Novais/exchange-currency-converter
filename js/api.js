@@ -35,9 +35,10 @@ export const fetchRate = async function (fCurrency, sCurrency) {
 
 fetchRate("BRL", "EUR");
 
-export const fetchAllRates = async function (base) {
-  console.log(base);
-  const response = await fetch(`${BASE_URL}/rates?base=${base}&quotes=${SUPPORTED_CURRENCIES.join(",")}`);
+export const fetchAllRates = async function (base, date = "") {
+  const dateParam = date ? `&date=${date}` : "";
+
+  const response = await fetch(`${BASE_URL}/rates?base=${base}&quotes=${SUPPORTED_CURRENCIES.join(",")}${dateParam}`);
 
   if (!response.ok) {
     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -54,4 +55,8 @@ export const fetchAllRates = async function (base) {
   return allRates;
 };
 
-// fetchAllRates("USD");
+export const fetchRatesYesterday = async function (base) {
+  const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().split("T")[0];
+
+  return fetchAllRates(base, yesterday);
+};
