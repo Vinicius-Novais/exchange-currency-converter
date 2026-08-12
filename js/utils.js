@@ -9,3 +9,12 @@ export const formatRate = (rate) => {
     maximumSignificantDigits: 2,
   }).format(rate);
 };
+
+export const getDailyVariation = function (rateToday, rateYesterday) {
+  const change = ((rateToday - rateYesterday) / rateYesterday) * 100;
+  console.log(rateToday);
+  console.log(rateYesterday);
+  console.log(change);
+  const sign = change >= 0 ? "+" : "";
+  return `${sign}${change.toFixed(2)}%`;
+};
