@@ -1303,6 +1303,25 @@
         }
       }
     }
+
+    .dashboard__panel--empty {
+      display: grid;
+      align-items: center;
+      place-items: center;
+      padding-block: calc(40 / 16 * 1rem);
+      gap: 1rem;
+
+      .dashboard__empty-title {
+        color: var(--c-neutral-100);
+        font-size: var(--fs-20);
+      }
+
+      .dashboard__empty-paragraph {
+        font-size: var(--fs-14);
+        color: var(--c-neutral-200);
+        padding-inline: 148px;
+      }
+    }
   }
 }
 
