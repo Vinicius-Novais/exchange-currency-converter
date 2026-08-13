@@ -31,7 +31,7 @@ export const setupCompare = function () {
 
   compareUl.addEventListener("click", (e) => {
     addFavoriteCompare(e);
-    setConverterPair(e);
+    setConverterPairCompare(e);
   });
 };
 
@@ -121,7 +121,7 @@ const addFavoriteCompare = function (e) {
   console.log(state);
 };
 
-const setConverterPair = function (e) {
+const setConverterPairCompare = function (e) {
   if (e.target.closest("button")) return;
 
   const li = e.target.closest("li");
