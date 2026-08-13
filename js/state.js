@@ -7,6 +7,8 @@ export const state = {
   activeTab: "history",
   currencies: {},
   rates: {},
+  ratesEUR: {},
+  ratesEURYesterday: {},
   favorites: [],
   log: [],
 };
