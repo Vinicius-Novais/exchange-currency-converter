@@ -1,11 +1,19 @@
 import { state } from "./state.js";
 import { renderBadge } from "./visibility.js";
-import { formatRate } from "./utils.js";
+import { formatRate, getDailyVariation } from "./utils.js";
+
 const favoritesTabButton = document.querySelector(".dashboard__favorites-btn");
 const favoritesDDButton = document.querySelector("[data-tab='favorites']");
 const favoritesUl = document.querySelector(".dashboard__favorites-list");
 const favoritesCount = document.querySelector(".dashboard__favorites-count");
 const favConverterBtn = document.querySelector(".converter__fav-btn");
+//
+import { updateConversion } from "./converter.js";
+import { fetchAllRates } from "./api.js";
+const sendBtn = document.querySelectorAll(".converter__currency-btn")[0];
+const receiveBtn = document.querySelectorAll(".converter__currency-btn")[1];
+const converterEl = document.querySelector(".converter");
+const sendInput = document.querySelector(".converter__amount");
 
 export const setupFavorites = function () {
   favoritesTabButton.addEventListener("click", (e) => {
@@ -17,29 +25,39 @@ export const setupFavorites = function () {
 
   favoritesUl.addEventListener("click", (e) => {
     removeFavorite(e);
+    setConverterPairFavorites(e);
   });
 };
 
 export const renderFavoritePanel = function () {
+  if (Object.keys(state.ratesEURYesterday).length === 0) {
+    //Criar a renderização da página empty depois
+    return;
+  }
+  console.log("Taxa de hoje do EUR:", state.ratesEUR["EUR"]);
+  console.log("Taxa de ontem do EUR:", state.ratesEURYesterday["EUR"]);
   favoritesCount.textContent = `${state.favorites.length} FAVORITES`;
   let li = "";
   state.favorites.forEach((pair) => {
-    const baseCurrency = pair.split("/")[0];
-    const quoteCurrency = pair.split("/")[1];
-    const rate = baseCurrency === state.sendCurrency ? state.rates[quoteCurrency] : state.rates[quoteCurrency] / state.rates[baseCurrency];
+    const [send, receive] = pair.split("/");
 
+    const rateToday = state.ratesEUR[receive] / state.ratesEUR[send];
+    const rateYesterday = state.ratesEURYesterday[receive] / state.ratesEURYesterday[send];
+
+    const variation = getDailyVariation(rateToday, rateYesterday);
+    console.log(parseFloat(variation));
     li += `
-        <li class="dashboard__favorites-item dashboard__item">
+        <li data-pair="${send}/${receive}" class="dashboard__favorites-item dashboard__item">
                 <span class="dashboard__favorites-pair"
-                  >${baseCurrency}
+                  >${send}
                   <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 11 11">
                     <path fill="#9d9d9d" d="M5.11.088c.093-.117.28-.117.398 0l4.898 4.898a.27.27 0 0 1 0 .399l-4.898 4.898c-.117.117-.305.117-.399 0l-.468-.445c-.118-.117-.118-.305 0-.399l3.632-3.656H.281A.27.27 0 0 1 0 5.502v-.656c0-.14.117-.282.281-.282h7.992L4.641.932c-.118-.094-.118-.282 0-.399z" />
                   </svg>
-                  ${quoteCurrency}</span
+                  ${receive}</span
                 >
                 <div class="dashboard__favorites-data">
-                  <span class="dashboard__favorites-rate">${formatRate(rate)}</span>
-                  <span class="dashboard__favorites-change dashboard__value--positive">+0.16%</span>
+                  <span class="dashboard__favorites-rate">${formatRate(rateToday)}</span>
+                  <span class="dashboard__favorites-change dashboard__value--${parseFloat(variation) >= 0 ? "positive" : "negative"}">${variation}</span>
                 </div>
                 <button aria-pressed="true" class="dashboard__favorites-fav-btn dashboard__fav-btn">
                   <svg class="dashboard__favorites-icon-empty" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -68,7 +86,7 @@ const removeFavorite = function (e) {
 
   const li = btn.closest("li");
 
-  const pair = `${li.querySelector(".dashboard__favorites-pair").firstChild.textContent.trim()}/${li.querySelector(".dashboard__favorites-pair").lastChild.textContent.trim()}`;
+  const pair = li.dataset.pair;
 
   console.log(pair);
 
@@ -80,4 +98,50 @@ const removeFavorite = function (e) {
   renderBadge();
 
   console.log(state);
+};
+
+const setConverterPairFavorites = async function (e) {
+  if (e.target.closest("button")) return;
+
+  const li = e.target.closest("li");
+
+  if (!li) return;
+
+  const pair = li.dataset.pair;
+  const [sendCode, receiveCode] = pair.split("/");
+  [state.sendCurrency, state.receiveCurrency] = [sendCode, receiveCode];
+  sendInput.value = 1;
+
+  try {
+    state.rates = await fetchAllRates(sendCode);
+    updateConversion();
+    console.log(state);
+  } catch (error) {
+    console.error("Error during fetch of all rates through favorites item:", error);
+
+    return;
+  }
+
+  const btnContentSend = `
+   <img class="converter__flag-btn" src="assets/images/flags/${sendCode.slice(0, -1).toLowerCase()}.webp" alt="${sendCode} flag" />
+                <span class="converter__currency-name">${sendCode}</span>
+                <svg class="converter__chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+                  <path fill="#fff" d="M2.988 4.02h6.024c.422 0 .633.515.328.82l-3 3a.48.48 0 0 1-.68 0l-3-3c-.304-.305-.093-.82.328-.82" />
+                </svg>
+  `;
+
+  const btnContentReceive = `
+   <img class="converter__flag-btn" src="assets/images/flags/${receiveCode.slice(0, -1).toLowerCase()}.webp" alt="${receiveCode.slice(0, -1)} flag" />
+                <span class="converter__currency-name">${receiveCode}</span>
+                <svg class="converter__chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+                  <path fill="#fff" d="M2.988 4.02h6.024c.422 0 .633.515.328.82l-3 3a.48.48 0 0 1-.68 0l-3-3c-.304-.305-.093-.82.328-.82" />
+                </svg>
+  `;
+
+  sendBtn.innerHTML = "";
+  receiveBtn.innerHTML = "";
+
+  sendBtn.insertAdjacentHTML("beforeend", btnContentSend);
+  receiveBtn.insertAdjacentHTML("beforeend", btnContentReceive);
+  converterEl.scrollIntoView({ behavior: "smooth" });
 };
