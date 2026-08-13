@@ -1,4 +1,4 @@
-import { fetchAllRates, fetchSupportedCurrencies } from "./api.js";
+import { fetchAllRates, fetchSupportedCurrencies, fetchRatesYesterday } from "./api.js";
 import { state } from "./state.js";
 import { setupPicker } from "./picker.js";
 import { setupConverter, updateConversion } from "./converter.js";
@@ -6,13 +6,14 @@ import { setupVisibility } from "./visibility.js";
 import { setupLogPanel } from "./log.js";
 import { setupCompare, renderCompareHeader, renderComparePanel } from "./compare.js";
 import { setupFavorites } from "./favorites.js";
+
 const [sendBtn, receiveBtn] = document.querySelectorAll(".converter__currency-btn");
 const [sendPicker, receivePicker] = document.querySelectorAll(".converter__picker");
 
 const init = async function () {
   try {
     // api.js
-    [state.currencies, state.rates] = await Promise.all([fetchSupportedCurrencies(), fetchAllRates(state.sendCurrency)]);
+    [state.currencies, state.rates, state.ratesEUR, state.ratesEURYesterday] = await Promise.all([fetchSupportedCurrencies(), fetchAllRates(state.sendCurrency), fetchAllRates("EUR"), fetchRatesYesterday("EUR")]);
 
     console.log(state);
 
