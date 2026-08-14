@@ -15,3 +15,10 @@ export const SUPPORTED_CURRENCIES = [
 export const BASE_URL = `https://api.frankfurter.dev/v2`;
 
 export const POPULAR_CURRENCIES = ["USD", "EUR", "GBP", "BRL"];
+
+export const EMPTY_STATES = {
+  history: { title: "No chart data available", message: "We couldn't load rate history right now. This usually clears up in a minute." },
+  compare: { title: "No data to compare", message: "Enter an amount in SEND above to see what your money is worth in other currencies." },
+  favorites: { title: "No pinned pairs yet", message: "Pin a pair to track its rate here. Tap the star icon on any conversion or comparison row." },
+  log: { title: "No conversions logged yet", message: "Every conversion is recorded here automatically when you tap LOG CONVERSION. Your log is private to this session and this browser." },
+};
