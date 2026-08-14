@@ -2,6 +2,7 @@ import { state } from "./state.js";
 import { addFavorite, updateConversion } from "./converter.js";
 import { renderBadge } from "./visibility.js";
 import { formatRate } from "./utils.js";
+import { renderEmptyState, hideEmptyState } from "./utils.js";
 const compareTabButton = document.querySelector(".dashboard__compare-btn");
 const compareDDButton = document.querySelector('[data-tab="compare"]');
 const compareUl = document.querySelector(".dashboard__compare-list");
@@ -36,6 +37,13 @@ export const setupCompare = function () {
 };
 
 export const renderComparePanel = function () {
+  if (state.amount === 0) {
+    renderEmptyState("compare");
+    return;
+  }
+
+  hideEmptyState("compare");
+
   renderCompareHeader();
   let li = "";
 
