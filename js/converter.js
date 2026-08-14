@@ -121,5 +121,7 @@ export const addLogConversion = function () {
 
   console.log(state);
 
+  if (state.activeTab !== "log") return;
+
   renderLogPanel();
 };
