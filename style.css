@@ -1308,18 +1308,22 @@
       display: grid;
       align-items: center;
       place-items: center;
-      padding-block: calc(40 / 16 * 1rem);
-      gap: 1rem;
+      padding-block: clamp(0.625rem, -0.28rem + 3.87vw, 2.5rem);
+      gap: 0.5rem;
 
       .dashboard__empty-title {
         color: var(--c-neutral-100);
-        font-size: var(--fs-20);
+
+        font-size: clamp(1rem, 0.87rem + 0.51vw, 1.25rem);
       }
 
       .dashboard__empty-paragraph {
-        font-size: var(--fs-14);
+        font-size: clamp(0.625rem, 0.5rem + 0.51vw, 0.875rem);
         color: var(--c-neutral-200);
-        padding-inline: 148px;
+        letter-spacing: 0.0625rem;
+        max-width: 90ch;
+        line-height: 1.2;
+        text-align: center;
       }
     }
   }
