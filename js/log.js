@@ -1,5 +1,6 @@
 import { state } from "./state.js";
 import { renderBadge } from "./visibility.js";
+import { renderEmptyState, hideEmptyState } from "./utils.js";
 
 const clearAll = document.querySelector(".dashboard__log-clear-btn");
 const listContainer = document.querySelector(".dashboard__log-list");
@@ -12,6 +13,7 @@ export const setupLogPanel = function () {
     listContainer.innerHTML = "";
     state.log.length = [];
     renderBadge();
+    renderLogPanel();
     loggedCount.textContent = `${state.log.length} LOGGED`;
   });
 
@@ -30,6 +32,13 @@ export const setupLogPanel = function () {
 };
 
 export const renderLogPanel = function () {
+  if (state.log.length === 0) {
+    renderEmptyState("log");
+    return;
+  }
+
+  hideEmptyState("log");
+
   let li = "";
 
   listContainer.innerHTML = "";
