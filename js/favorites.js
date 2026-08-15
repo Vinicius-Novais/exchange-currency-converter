@@ -1,6 +1,7 @@
 import { state } from "./state.js";
 import { renderBadge } from "./visibility.js";
 import { formatRate, getDailyVariation } from "./utils.js";
+import { renderEmptyState, hideEmptyState } from "./utils.js";
 
 const favoritesTabButton = document.querySelector(".dashboard__favorites-btn");
 const favoritesDDButton = document.querySelector("[data-tab='favorites']");
@@ -30,10 +31,13 @@ export const setupFavorites = function () {
 };
 
 export const renderFavoritePanel = function () {
-  if (Object.keys(state.ratesEURYesterday).length === 0) {
-    //Criar a renderização da página empty depois
+  if (state.favorites.length === 0) {
+    renderEmptyState("favorites");
     return;
   }
+
+  hideEmptyState("favorites");
+
   console.log("Taxa de hoje do EUR:", state.ratesEUR["EUR"]);
   console.log("Taxa de ontem do EUR:", state.ratesEURYesterday["EUR"]);
   favoritesCount.textContent = `${state.favorites.length} FAVORITES`;
