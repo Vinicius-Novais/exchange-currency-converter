@@ -1,4 +1,5 @@
 import { SUPPORTED_CURRENCIES, BASE_URL } from "./constants.js";
+import { getLastBusinessDay } from "./utils.js";
 
 export const fetchSupportedCurrencies = async function () {
   const response = await fetch(`${BASE_URL}/currencies`);
@@ -61,13 +62,9 @@ export const fetchRatesYesterday = async function (base) {
   return fetchAllRates(base, yesterday);
 };
 
-const getLastBusinessDay = () => {
-  const date = new Date();
-  date.setDate(date.getDate() - 1);
+export const fetchSeries = async function (base, quote, from) {
+  const series = await fetch(`${BASE_URL}/rates?from=${from}&base=${base}&quotes=${quote}`);
+  if (!series.ok) throw new Error(`HTTP Error! Status: ${series.status}`);
 
-  while (date.getDay() === 0 || date.getDay() === 6) {
-    date.setDate(date.getDate() - 1);
-  }
-
-  return date.toISOString().split("T")[0];
+  return await series.json();
 };
