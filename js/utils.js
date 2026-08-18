@@ -21,6 +21,17 @@ export const getDailyVariation = function (rateToday, rateYesterday) {
   return `${sign}${change.toFixed(2)}%`;
 };
 
+export const getLastBusinessDay = () => {
+  const date = new Date();
+  date.setDate(date.getDate() - 1);
+
+  while (date.getDay() === 0 || date.getDay() === 6) {
+    date.setDate(date.getDate() - 1);
+  }
+
+  return date.toISOString().split("T")[0];
+};
+
 export const renderEmptyState = function (type) {
   const { title, message } = EMPTY_STATES[type];
 
