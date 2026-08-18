@@ -2,15 +2,14 @@ import { state } from "./state.js";
 import { renderBadge } from "./visibility.js";
 import { formatRate, getDailyVariation } from "./utils.js";
 import { renderEmptyState, hideEmptyState } from "./utils.js";
+import { updateConversion } from "./converter.js";
+import { fetchAllRates } from "./api.js";
 
 const favoritesTabButton = document.querySelector(".dashboard__favorites-btn");
 const favoritesDDButton = document.querySelector("[data-tab='favorites']");
 const favoritesUl = document.querySelector(".dashboard__favorites-list");
 const favoritesCount = document.querySelector(".dashboard__favorites-count");
 const favConverterBtn = document.querySelector(".converter__fav-btn");
-//
-import { updateConversion } from "./converter.js";
-import { fetchAllRates } from "./api.js";
 const sendBtn = document.querySelectorAll(".converter__currency-btn")[0];
 const receiveBtn = document.querySelectorAll(".converter__currency-btn")[1];
 const converterEl = document.querySelector(".converter");
