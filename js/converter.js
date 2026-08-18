@@ -35,8 +35,13 @@ export const setupConverter = function () {
     addLogConversion();
     renderBadge();
 
+    logBtn.style.pointerEvents = "none";
+
     logBtn.setAttribute("data-logged", "");
-    setTimeout(() => logBtn.removeAttribute("data-logged"), 700);
+    setTimeout(() => {
+      logBtn.style.pointerEvents = "auto";
+      logBtn.removeAttribute("data-logged");
+    }, 700);
   });
 
   //Chamada inicial para carregar o exchangePair
@@ -47,6 +52,7 @@ export const updateConversion = function () {
   updateExchangePair();
   if (!Number.isFinite(Number(sendInput.value)) || Number(sendInput.value) === 0) {
     receiveInput.value = "";
+    state.amount = 0;
     logBtn.setAttribute("disabled", "");
     return;
   }
@@ -85,7 +91,6 @@ const setupSwap = async function () {
 
   if (state.activeTab !== "compare") return;
 
-  renderCompareHeader();
   renderComparePanel();
 };
 
