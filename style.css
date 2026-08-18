@@ -668,16 +668,18 @@
 
     .dashboard__value--positive {
       color: var(--c-green-500);
-
-      &::before {
-        content: "▲ ";
-      }
     }
+
     .dashboard__value--negative {
       color: var(--c-red-500);
+    }
 
-      &::before {
-        content: "▼  ";
+    .dashboard__percentage-card {
+      .dashboard__value--positive::before {
+        content: "▲ ";
+      }
+      .dashboard__value--negative::before {
+        content: "▼ ";
       }
     }
 
