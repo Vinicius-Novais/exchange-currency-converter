@@ -1,9 +1,10 @@
 export const state = {
-  sendCurrency: "BRL",
+  sendCurrency: "USD",
   receiveCurrency: "EUR",
   amount: 0,
   rate: null,
   range: "1M",
+  rangeData: {},
   activeTab: "history",
   currencies: {},
   rates: {},
