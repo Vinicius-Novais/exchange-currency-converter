@@ -2,12 +2,12 @@ import { EMPTY_STATES } from "./constants.js";
 
 export const formatRate = (rate) => {
   if (rate >= 1)
-    return new Intl.NumberFormat(navigator.language, {
+    return new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     }).format(rate);
 
-  return new Intl.NumberFormat(navigator.language, {
+  return new Intl.NumberFormat("en-US", {
     maximumSignificantDigits: 2,
   }).format(rate);
 };
