@@ -7,7 +7,7 @@ import { setupLogPanel } from "./log.js";
 import { setupCompare, renderCompareHeader, renderComparePanel } from "./compare.js";
 import { setupFavorites } from "./favorites.js";
 import { setupHistory } from "./history.js";
-import { setupCards, setupChartHeader } from "./history.js";
+import { setupCards, setupChartHeader, setupChart, selectRange } from "./history.js";
 
 const [sendBtn, receiveBtn] = document.querySelectorAll(".converter__currency-btn");
 const [sendPicker, receivePicker] = document.querySelectorAll(".converter__picker");
@@ -34,6 +34,11 @@ const init = async function () {
         setupCards();
         setupChartHeader();
 
+        selectRange("1M").then((rangeData) => {
+          state.rangeData = rangeData;
+          setupChart();
+        });
+
         if (state.activeTab !== "compare") return;
 
         renderCompareHeader();
@@ -50,6 +55,12 @@ const init = async function () {
         updateConversion();
         setupCards();
         setupChartHeader();
+        selectRange("1M").then((rangeData) => {
+          document.querySelectorAll("[data-range]").forEach((rangeBtn) => (rangeBtn.ariaSelected = false));
+          document.querySelector("[data-range='1M']").ariaSelected = true;
+          state.rangeData = rangeData;
+          setupChart();
+        });
       },
     );
 
