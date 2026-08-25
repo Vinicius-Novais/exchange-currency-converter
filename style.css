@@ -944,10 +944,9 @@
       .dashboard__chart {
         display: grid;
         gap: calc(20 / 16 * 1rem);
-
         background-color: var(--color-chart-bg);
         border: 1px solid var(--color-chart-border);
-        padding-block: clamp(1rem, 0.82rem + 0.892vw, 1.25rem);
+        padding-block: clamp(0.2rem, 0.82rem + 0.892vw, 1.25rem);
         padding-inline: clamp(0.75rem, 0.39rem + 1.78vw, 1.25rem);
         border-radius: 1rem;
       }
@@ -974,6 +973,7 @@
       .dashboard__chart-canvas {
         height: calc(298 / 16 * 1rem);
         width: 100%;
+        cursor: crosshair;
       }
     }
 
