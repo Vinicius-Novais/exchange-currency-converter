@@ -1,7 +1,9 @@
 import { state } from "./state.js";
 import { fetchSeries } from "./api.js";
-import { getDailyVariation, getLastBusinessDay, formatRate } from "./utils.js";
+import { getDailyVariation, getLastBusinessDay, formatRate, hideEmptyState } from "./utils.js";
 
+const historyTabButton = document.querySelector(".dashboard__history-btn");
+const historyDDButton = document.querySelector("[data-tab='history']");
 const openCardEl = document.querySelector(".dashboard__open-card .dashboard__value-card");
 const lastCardEl = document.querySelector(".dashboard__last-card .dashboard__value-card");
 const changeCardEl = document.querySelector(".dashboard__change-card .dashboard__value-card");
@@ -25,6 +27,51 @@ const gradientPlugin = {
     chart.data.datasets[0].backgroundColor = gradient;
   },
 };
+const crosshairPlugin = {
+  id: "crosshair",
+  afterDraw: function (chart) {
+    if (!chart.tooltip || !chart.tooltip._active || !chart.tooltip._active.length) return;
+
+    const ctx = chart.ctx;
+    const activePoint = chart.tooltip._active[0];
+    const x = activePoint.element.x;
+    const topY = chart.chartArea.top;
+    const bottomY = chart.chartArea.bottom;
+    const y = activePoint.element.y;
+
+    ctx.save();
+
+    // linha vertical tracejada
+    ctx.beginPath();
+    ctx.setLineDash([4, 4]);
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
+    ctx.lineWidth = 1;
+    ctx.moveTo(x, topY);
+    ctx.lineTo(x, bottomY);
+    ctx.stroke();
+
+    // ponto de intersecção
+    ctx.beginPath();
+    ctx.setLineDash([]);
+    ctx.arc(x, y, 4, 0, Math.PI * 2);
+    ctx.fillStyle = "#cef739";
+    ctx.fill();
+    ctx.strokeStyle = "#000";
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    // linha horizontal tracejada
+    ctx.beginPath();
+    ctx.setLineDash([4, 4]);
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
+    ctx.lineWidth = 1;
+    ctx.moveTo(chart.chartArea.left, y);
+    ctx.lineTo(chart.chartArea.right, y);
+    ctx.stroke();
+
+    ctx.restore();
+  },
+};
 const fractionDigits = {
   "1D": 4,
   "1W": 3,
@@ -33,8 +80,6 @@ const fractionDigits = {
   "1Y": 2,
   "5Y": 2,
 };
-
-console.log(rangeSelectorBtns.textContent);
 
 export const setupHistory = function () {
   //Setup cards ao carregar o site
@@ -64,6 +109,14 @@ export const setupHistory = function () {
     chartCurrentValue.textContent = formatRate(currentRangeData.rates[currentRangeData.rates.length - 1]);
     chartDate.textContent = formatHeaderDate(currentRangeData.rawDates[currentRangeData.rawDates.length - 1], state.range);
   });
+
+  historyTabButton.addEventListener("click", () => {
+    hideEmptyState("history");
+  });
+
+  historyDDButton.addEventListener("click", () => {
+    hideEmptyState("history");
+  });
 };
 
 export const setupCards = async function () {
@@ -72,8 +125,6 @@ export const setupCards = async function () {
   const lastRate = daysArr[daysArr.length - 1].rate;
 
   const dayliVariation = getDailyVariation(lastRate, openRate);
-
-  console.log(dayliVariation);
 
   openCardEl.textContent = openRate;
   lastCardEl.textContent = lastRate;
@@ -84,16 +135,12 @@ export const setupCards = async function () {
 
   const variation = parseFloat(dayliVariation) > 0 ? "positive" : parseFloat(dayliVariation) < 0 ? "negative" : "";
 
-  console.log(variation);
-
   percentageCardEl.classList.remove("dashboard__value--positive", "dashboard__value--negative");
   changeCardEl.classList.remove("dashboard__value--positive", "dashboard__value--negative");
   if (!variation) return;
 
   percentageCardEl.classList.add(`dashboard__value--${variation}`);
   changeCardEl.classList.add(`dashboard__value--${variation}`);
-
-  console.log(openRate, lastRate);
 };
 
 // Chart
@@ -107,9 +154,6 @@ export const setupChartHeader = function () {
 };
 
 export const setupChart = function () {
-  console.log("setupChart executou");
-  console.log("rangeData:", state.rangeData);
-  console.log("rates:", state.rates);
   if (chart) {
     chart.destroy();
   }
@@ -125,12 +169,19 @@ export const setupChart = function () {
           data: state.rangeData.rates,
           borderWidth: 1,
           pointRadius: 0,
+          pointHitRadius: 10,
           borderColor: "#cef739",
           fill: true,
         },
       ],
     },
     options: {
+      interaction: {
+        mode: "index",
+        intersect: false,
+      },
+      responsive: true,
+
       scales: {
         x: {
           ticks: {
@@ -138,7 +189,7 @@ export const setupChart = function () {
             minRotation: 0,
             includeBounds: true,
             autoSkip: state.range === "5Y" ? false : true,
-            maxTicksLimit: state.range === "5Y" ? undefined : 7,
+            maxTicksLimit: state.range === "5Y" ? undefined : window.innerWidth < 768 ? 4.1 : 7.1,
             callback: function (value, index) {
               const date = new Date(state.rangeData.rawDates[index]);
 
@@ -165,19 +216,18 @@ export const setupChart = function () {
           },
           border: {
             display: false,
-
             dash: [5, 5],
           },
+          afterBuildTicks(axis) {
+            const min = axis.min;
+            const max = axis.max;
+            const mid = (min + max) / 2;
+            axis.ticks = [{ value: max }, { value: mid }, { value: min }];
+          },
           ticks: {
-            precision: fractionDigits[state.range] ?? 2,
-            maxTicksLimit: 5,
-            callback: function (value) {
+            callback(value) {
               const digits = fractionDigits[state.range] ?? 2;
-
-              return new Intl.NumberFormat("en-US", {
-                minimumSignificantDigits: 2,
-                maximumFractionDigits: digits,
-              }).format(value);
+              return value.toFixed(digits);
             },
           },
         },
@@ -191,6 +241,7 @@ export const setupChart = function () {
         },
         tooltip: {
           enabled: false,
+          opacity: 0,
           external: function (context) {
             const { tooltip } = context;
 
@@ -199,7 +250,6 @@ export const setupChart = function () {
               const rate = dataPoint.raw;
               const date = state.rangeData.rawDates[dataPoint.dataIndex];
 
-              // atualiza o header com rate e date
               chartCurrentValue.textContent = formatRate(rate);
               chartDate.textContent = formatHeaderDate(date, state.range);
             }
@@ -207,13 +257,12 @@ export const setupChart = function () {
         },
       },
     },
-    plugins: [gradientPlugin],
+    plugins: [gradientPlugin, crosshairPlugin],
   });
 };
 
 export const selectRange = async function (range) {
   state.range = range;
-  console.log(state);
   const to = new Date();
   const from = new Date();
 
@@ -269,5 +318,3 @@ const formatHeaderDate = function (dateStr, range) {
   }
   return date.toLocaleString("en-US", { month: "short", day: "numeric" }).toUpperCase() + " 16:00 CET";
 };
-
-//To tentando colocar o rangeData dentro do objeto state para poder chamar com o picker
