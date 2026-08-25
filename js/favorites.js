@@ -16,10 +16,10 @@ const converterEl = document.querySelector(".converter");
 const sendInput = document.querySelector(".converter__amount");
 
 export const setupFavorites = function () {
-  favoritesTabButton.addEventListener("click", (e) => {
+  favoritesTabButton.addEventListener("click", () => {
     renderFavoritePanel();
   });
-  favoritesDDButton.addEventListener("click", (e) => {
+  favoritesDDButton.addEventListener("click", () => {
     renderFavoritePanel();
   });
 
