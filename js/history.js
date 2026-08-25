@@ -17,10 +17,11 @@ let chart;
 let currentRangeData = null;
 const gradientPlugin = {
   id: "customGradient",
-  beforeDatasetsDraw: function (chart) {
-    const ctx = chart.ctx;
-    const height = chart.height;
-    const gradient = ctx.createLinearGradient(0, 0, 0, height);
+  afterLayout: function (chart) {
+    const { ctx, chartArea } = chart;
+    if (!chartArea) return;
+
+    const gradient = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
     gradient.addColorStop(0, "rgba(206, 247, 57, 1)");
     gradient.addColorStop(0.6, "rgba(206, 247, 57, 0.3)");
     gradient.addColorStop(1, "rgba(206, 247, 57, 0)");
@@ -181,10 +182,12 @@ export const setupChart = function () {
         intersect: false,
       },
       responsive: true,
+      maintainAspectRatio: false,
 
       scales: {
         x: {
           ticks: {
+            color: " hsla(0, 0%, 78%, 0.75)",
             maxRotation: 0,
             minRotation: 0,
             includeBounds: true,
@@ -225,6 +228,7 @@ export const setupChart = function () {
             axis.ticks = [{ value: max }, { value: mid }, { value: min }];
           },
           ticks: {
+            color: " hsla(0, 0%, 78%, 0.75)",
             callback(value) {
               const digits = fractionDigits[state.range] ?? 2;
               return value.toFixed(digits);
