@@ -969,10 +969,15 @@
       }
       .dashboard__chart-date {
       }
+      .chart-container {
+        position: relative;
+        width: 100%;
+        min-width: 0;
+        overflow: hidden;
+        height: calc(400 / 16 * 1rem);
+      }
 
       .dashboard__chart-canvas {
-        height: calc(298 / 16 * 1rem);
-        width: 100%;
         cursor: crosshair;
       }
     }
