@@ -1,4 +1,5 @@
 import { EMPTY_STATES } from "./constants.js";
+import { state } from "./state.js";
 
 export const formatRate = (rate) => {
   if (rate >= 1)
@@ -14,11 +15,13 @@ export const formatRate = (rate) => {
 
 export const getDailyVariation = function (rateToday, rateYesterday) {
   const change = ((rateToday - rateYesterday) / rateYesterday) * 100;
-  console.log(rateToday);
-  console.log(rateYesterday);
-  console.log(change);
-  const sign = change >= 0 ? "+" : "";
-  return `${sign}${change.toFixed(2)}%`;
+  const rounded = parseFloat(change.toFixed(2));
+
+  if (rounded === 0) return change !== 0 ? "< 0.01%" : "0.00%";
+  if (Math.abs(rounded) < 0.01) return "0.00%";
+
+  const sign = rounded > 0 ? "+" : "";
+  return `${sign}${rounded.toFixed(2)}%`;
 };
 
 export const getLastBusinessDay = () => {
@@ -52,3 +55,7 @@ export const hideEmptyState = function (type) {
   activePanel.removeAttribute("hidden");
   emptyPanel.setAttribute("hidden", "");
 };
+
+export function setStatus(status) {
+  state.status = status;
+}
