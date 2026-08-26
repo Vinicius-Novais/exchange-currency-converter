@@ -17,21 +17,20 @@ const renderTicker = function () {
       const rateYesterday = state.ratesEURYesterday[quote] / state.ratesEURYesterday[base];
       const variation = getDailyVariation(rateToday, rateYesterday);
 
-      console.log(variation);
+      if (variation === "< 0.01%" || variation === "0.00%") return null;
+
       return ` <li class="ticker__li">
             <span class="ticker__pair">${base}/${quote}</span>
             <span class="ticker__price">${formatRate(rateToday)}</span>
-            <span class="ticker__daily-change ticker__daily-change--${parseFloat(variation) === 0 ? "" : parseFloat(variation) >= 0 ? "up" : "down"}">${variation}</span>
+            <span class="ticker__daily-change ticker__daily-change--${parseFloat(variation) >= 0 ? "up" : "down"}">${variation}</span>
           </li>`;
     })
+    .filter(Boolean)
     .join("");
 
   document.querySelectorAll(".ticker__ul").forEach((ul) => {
-    ul.innerHTML = li;
+    ul.innerHTML = li + li;
   });
-
-  console.log(li);
-  document.querySelector(".ticker__ul").insertAdjacentHTML("afterbegin", li);
 };
 const generatePairs = () => {
   const pairs = [];
