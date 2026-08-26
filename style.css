@@ -261,10 +261,10 @@
       list-style: none;
       flex-shrink: 0;
       min-width: 100%;
-      animation: scroll 80s linear infinite;
+      animation: scroll 190s linear infinite;
 
       @media (width >= calc(768/16 * 1rem)) {
-        animation: scroll 100s linear infinite;
+        animation: scroll 300s linear infinite;
       }
     }
 
@@ -910,6 +910,7 @@
       }
 
       .dashboard__value-card {
+        min-height: 1.5rem;
         font-size: 1.25rem;
       }
 
@@ -1338,9 +1339,3 @@
     }
   }
 }
-
-/* Cria uma borda colorida em absolutamente TUDO no projeto */
-
-/* * {
-  outline: 1px solid magenta !important;
-} */
