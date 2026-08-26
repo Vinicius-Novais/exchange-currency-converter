@@ -48,6 +48,7 @@ export const renderFavoritePanel = function () {
     const rateYesterday = state.ratesEURYesterday[receive] / state.ratesEURYesterday[send];
 
     const variation = getDailyVariation(rateToday, rateYesterday);
+    const variationClass = variation === "0.00%" ? "" : parseFloat(variation) >= 0 ? "positive" : "negative";
     console.log(parseFloat(variation));
     li += `
         <li data-pair="${send}/${receive}" class="dashboard__favorites-item dashboard__item">
@@ -60,7 +61,7 @@ export const renderFavoritePanel = function () {
                 >
                 <div class="dashboard__favorites-data">
                   <span class="dashboard__favorites-rate">${formatRate(rateToday)}</span>
-                  <span class="dashboard__favorites-change dashboard__value--${parseFloat(variation) >= 0 ? "positive" : "negative"}">${variation}</span>
+                  <span class="dashboard__favorites-change dashboard__value--${variationClass}">${variation}</span>
                 </div>
                 <button aria-pressed="true" class="dashboard__favorites-fav-btn dashboard__fav-btn">
                   <svg class="dashboard__favorites-icon-empty" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
