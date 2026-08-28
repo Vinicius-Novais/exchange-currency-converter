@@ -56,6 +56,12 @@ export const hideEmptyState = function (type) {
   emptyPanel.setAttribute("hidden", "");
 };
 
-export function setStatus(status) {
-  state.status = status;
-}
+export const saveLocalStorageState = function (key, value) {
+  const currentItems = JSON.parse(localStorage.getItem(key)) || [];
+
+  currentItems.push(value);
+  localStorage.setItem(key, JSON.stringify(value));
+};
+export const getLocalStorageItems = function (key) {
+  return JSON.parse(localStorage.getItem(key));
+};
