@@ -1,6 +1,6 @@
 import { state } from "./state.js";
 import { renderBadge } from "./visibility.js";
-import { renderEmptyState, hideEmptyState } from "./utils.js";
+import { renderEmptyState, hideEmptyState, saveLocalStorageState } from "./utils.js";
 
 const clearAll = document.querySelector(".dashboard__log-clear-btn");
 const listContainer = document.querySelector(".dashboard__log-list");
@@ -110,6 +110,7 @@ const deleteLog = function (e) {
   if (index === -1) return;
 
   state.log.splice(index, 1);
+  saveLocalStorageState("log", state.log);
 
   renderLogPanel();
   renderBadge();
