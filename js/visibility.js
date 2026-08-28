@@ -9,6 +9,7 @@ console.log(badgeCountEl[0].dataset.badgeCount);
 
 console.log(panels);
 export const setupVisibility = function () {
+  renderBadge();
   //tabs and panels visibility (desktop)
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
