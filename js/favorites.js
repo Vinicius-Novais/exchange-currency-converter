@@ -1,7 +1,6 @@
 import { state } from "./state.js";
 import { renderBadge } from "./visibility.js";
-import { formatRate, getDailyVariation } from "./utils.js";
-import { renderEmptyState, hideEmptyState } from "./utils.js";
+import { formatRate, getDailyVariation, renderEmptyState, hideEmptyState, saveLocalStorageState } from "./utils.js";
 import { updateConversion } from "./converter.js";
 import { fetchAllRates } from "./api.js";
 
@@ -97,6 +96,8 @@ const removeFavorite = function (e) {
   state.favorites.splice(state.favorites.indexOf(pair), 1);
 
   favConverterBtn.setAttribute("aria-pressed", "false");
+
+  saveLocalStorageState("favorites", state.favorites);
 
   renderFavoritePanel();
   renderBadge();
