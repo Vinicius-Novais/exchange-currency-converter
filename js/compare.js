@@ -1,7 +1,7 @@
 import { state } from "./state.js";
 import { addFavorite, updateConversion } from "./converter.js";
 import { renderBadge } from "./visibility.js";
-import { formatRate } from "./utils.js";
+import { formatRate, saveLocalStorageState } from "./utils.js";
 import { renderEmptyState, hideEmptyState } from "./utils.js";
 const compareTabButton = document.querySelector(".dashboard__compare-btn");
 const compareDDButton = document.querySelector('[data-tab="compare"]');
@@ -109,7 +109,7 @@ const addFavoriteCompare = function (e) {
   if (!isFavorite) {
     state.favorites.push(pair);
     btn.setAttribute("aria-pressed", "true");
-
+    saveLocalStorageState("favorites", state.favorites);
     renderBadge();
 
     if (state.receiveCurrency !== clickedBtnCode) return;
@@ -120,6 +120,7 @@ const addFavoriteCompare = function (e) {
 
     state.favorites.splice(state.favorites.indexOf(pair), 1);
     renderBadge();
+    saveLocalStorageState("favorites", state.favorites);
 
     if (state.receiveCurrency !== clickedBtnCode) return;
 
