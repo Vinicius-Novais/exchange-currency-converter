@@ -36,8 +36,6 @@ export const renderFavoritePanel = function () {
 
   hideEmptyState("favorites");
 
-  console.log("Taxa de hoje do EUR:", state.ratesEUR["EUR"]);
-  console.log("Taxa de ontem do EUR:", state.ratesEURYesterday["EUR"]);
   favoritesCount.textContent = `${state.favorites.length} FAVORITES`;
   let li = "";
   state.favorites.forEach((pair) => {
@@ -48,7 +46,7 @@ export const renderFavoritePanel = function () {
 
     const variation = getDailyVariation(rateToday, rateYesterday);
     const variationClass = variation === "0.00%" ? "" : parseFloat(variation) >= 0 ? "positive" : "negative";
-    console.log(parseFloat(variation));
+
     li += `
         <li data-pair="${send}/${receive}" class="dashboard__favorites-item dashboard__item">
                 <span class="dashboard__favorites-pair"
@@ -91,8 +89,6 @@ const removeFavorite = function (e) {
 
   const pair = li.dataset.pair;
 
-  console.log(pair);
-
   state.favorites.splice(state.favorites.indexOf(pair), 1);
 
   favConverterBtn.setAttribute("aria-pressed", "false");
@@ -101,8 +97,6 @@ const removeFavorite = function (e) {
 
   renderFavoritePanel();
   renderBadge();
-
-  console.log(state);
 };
 
 const setConverterPairFavorites = async function (e) {
@@ -120,7 +114,6 @@ const setConverterPairFavorites = async function (e) {
   try {
     state.rates = await fetchAllRates(sendCode);
     updateConversion();
-    console.log(state);
   } catch (error) {
     console.error("Error during fetch of all rates through favorites item:", error);
 

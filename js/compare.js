@@ -1,5 +1,5 @@
 import { state } from "./state.js";
-import { addFavorite, updateConversion } from "./converter.js";
+import { updateConversion } from "./converter.js";
 import { renderBadge } from "./visibility.js";
 import { formatRate, saveLocalStorageState } from "./utils.js";
 import { renderEmptyState, hideEmptyState } from "./utils.js";
@@ -126,8 +126,6 @@ const addFavoriteCompare = function (e) {
 
     favBtn.setAttribute("aria-pressed", "false");
   }
-
-  console.log(state);
 };
 
 const setConverterPairCompare = function (e) {

@@ -5,9 +5,7 @@ const dd = document.querySelector(".dashboard__dd");
 const ddUl = document.querySelector(".dashboard__dd-list");
 const ddItens = document.querySelectorAll(".dashboard__dd-item");
 const badgeCountEl = document.querySelectorAll("[data-badge-count]");
-console.log(badgeCountEl[0].dataset.badgeCount);
 
-console.log(panels);
 export const setupVisibility = function () {
   renderBadge();
   //tabs and panels visibility (desktop)
@@ -45,7 +43,6 @@ export const renderBadge = function () {
   };
   badgeCountEl.forEach((badge) => {
     const type = badge.dataset.badgeCount;
-    console.log(type);
 
     if (type === "selected") {
       renderSelectedBadge();
@@ -53,7 +50,6 @@ export const renderBadge = function () {
     }
 
     if (countType[type] > 0) {
-      console.log("oi");
       badge.textContent = countType[type];
       badge.hidden = false;
     } else {

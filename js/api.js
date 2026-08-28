@@ -15,7 +15,6 @@ export const fetchSupportedCurrencies = async function () {
       return acc;
     }, {});
 
-  console.log(currenciesName);
   return currenciesName;
 };
 
@@ -30,7 +29,6 @@ export const fetchRate = async function (fCurrency, sCurrency) {
 
   const rate = await response.json();
 
-  console.log(rate);
   return rate;
 };
 
@@ -52,7 +50,6 @@ export const fetchAllRates = async function (base, date = "") {
       return acc;
     }, {});
 
-  console.log(allRates);
   return allRates;
 };
 

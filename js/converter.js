@@ -62,7 +62,6 @@ export const updateConversion = function () {
   logBtn.removeAttribute("disabled");
 
   state.amount = Number(sendInput.value);
-  console.log(state.amount);
 
   //converterInput
   const rate = state.rates[state.receiveCurrency];
@@ -110,10 +109,6 @@ export const addFavorite = function () {
 
   saveLocalStorageState("favorites", state.favorites);
 
-  console.log(isFavorite);
-
-  console.log(state);
-
   if (state.activeTab === "compare") {
     renderComparePanel();
   }
@@ -126,7 +121,6 @@ export const addFavorite = function () {
 export const addLogConversion = function () {
   state.log.push({ id: crypto.randomUUID(), send: { code: state.sendCurrency, amount: sendInput.value }, receive: { code: state.receiveCurrency, amount: receiveInput.value }, timeStamp: Date.now() });
   saveLocalStorageState("log", state.log);
-  console.log(state);
 
   if (state.activeTab !== "log") return;
 
