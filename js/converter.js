@@ -5,7 +5,7 @@ import { renderBadge } from "./visibility.js";
 import { renderLogPanel } from "./log.js";
 import { renderComparePanel, renderCompareHeader } from "./compare.js";
 import { renderFavoritePanel } from "./favorites.js";
-import { formatRate } from "./utils.js";
+import { formatRate, saveLocalStorageState } from "./utils.js";
 const [sendInput, receiveInput] = document.querySelectorAll(".converter__amount");
 const [sendBtn, receiveBtn] = document.querySelectorAll(".converter__currency-btn");
 const exchangeRateEl = document.querySelector(".converter__rate");
@@ -108,6 +108,8 @@ export const addFavorite = function () {
     renderBadge();
   }
 
+  saveLocalStorageState("favorites", state.favorites);
+
   console.log(isFavorite);
 
   console.log(state);
@@ -123,7 +125,7 @@ export const addFavorite = function () {
 
 export const addLogConversion = function () {
   state.log.push({ id: crypto.randomUUID(), send: { code: state.sendCurrency, amount: sendInput.value }, receive: { code: state.receiveCurrency, amount: receiveInput.value }, timeStamp: Date.now() });
-
+  saveLocalStorageState("log", state.log);
   console.log(state);
 
   if (state.activeTab !== "log") return;
