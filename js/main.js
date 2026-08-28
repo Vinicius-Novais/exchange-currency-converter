@@ -7,8 +7,8 @@ import { setupVisibility } from "./visibility.js";
 import { setupLogPanel } from "./log.js";
 import { setupCompare, renderCompareHeader, renderComparePanel } from "./compare.js";
 import { setupFavorites } from "./favorites.js";
-import { setupHistory } from "./history.js";
-import { setupCards, setupChartHeader, setupChart, selectRange } from "./history.js";
+import { setupCards, setupChartHeader, setupChart, selectRange, setupHistory } from "./history.js";
+import { getLocalStorageItems } from "./utils.js";
 
 const [sendBtn, receiveBtn] = document.querySelectorAll(".converter__currency-btn");
 const [sendPicker, receivePicker] = document.querySelectorAll(".converter__picker");
@@ -16,6 +16,9 @@ const [sendPicker, receivePicker] = document.querySelectorAll(".converter__picke
 const init = async function () {
   try {
     [state.currencies, state.rates, state.ratesEUR, state.ratesEURYesterday] = await Promise.all([fetchSupportedCurrencies(), fetchAllRates(state.sendCurrency), fetchAllRates("EUR"), fetchRatesYesterday("EUR")]);
+
+    state.favorites = getLocalStorageItems("favorites") || [];
+    state.log = getLocalStorageItems("log") || [];
 
     setupTicker();
 
