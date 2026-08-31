@@ -1,5 +1,4 @@
 import { EMPTY_STATES } from "./constants.js";
-import { state } from "./state.js";
 
 export const formatRate = (rate) => {
   if (rate >= 1)
