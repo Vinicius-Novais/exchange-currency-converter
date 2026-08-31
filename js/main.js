@@ -8,7 +8,7 @@ import { setupLogPanel } from "./log.js";
 import { setupCompare, renderCompareHeader, renderComparePanel } from "./compare.js";
 import { setupFavorites } from "./favorites.js";
 import { setupCards, setupChartHeader, setupChart, selectRange, setupHistory } from "./history.js";
-import { getLocalStorageItems } from "./utils.js";
+import { getLocalStorageItems, renderEmptyState } from "./utils.js";
 
 const [sendBtn, receiveBtn] = document.querySelectorAll(".converter__currency-btn");
 const [sendPicker, receivePicker] = document.querySelectorAll(".converter__picker");
@@ -75,6 +75,7 @@ const init = async function () {
 
     setupLogPanel();
   } catch (err) {
+    renderEmptyState("history");
     console.error("Failed to initialize app:", err.message);
   }
 };
