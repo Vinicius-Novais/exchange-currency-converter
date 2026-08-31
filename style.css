@@ -290,9 +290,6 @@
       margin-inline: calc(4 / 16 * 1rem);
     }
 
-    .ticker__daily-change {
-    }
-
     .ticker__daily-change--up {
       color: var(--c-green-500);
 
@@ -402,8 +399,6 @@
       font-size: var(--fs-14);
       letter-spacing: calc(1 / 16 * 1rem);
     }
-    .converter__chevron {
-    }
 
     .converter__swap-btn {
       background-color: var(--color-send-receive-arrows-bg);
@@ -421,9 +416,6 @@
       @media (width >= calc(768 / 16 * 1rem)) {
         transform: rotate(90deg);
       }
-    }
-
-    .converter__swap-icon {
     }
 
     .converter__footer {
@@ -512,8 +504,6 @@
           display: block;
         }
       }
-
-      /*Aria-pressed= 'false' no html do btn, só mudare para true para mudar o estado para ativo*/
     }
 
     .converter__log-btn {
@@ -544,7 +534,6 @@
         cursor: not-allowed;
       }
     }
-    /*Atributo disabled no btn, só remover ele para ficar clicável*/
 
     .converter__picker {
       position: absolute;
@@ -683,9 +672,6 @@
       }
     }
 
-    .dashboard__nav {
-    }
-
     .dashboard__dd {
       position: relative;
       width: 100%;
@@ -716,9 +702,6 @@
       background-position: right calc(12 / 16 * 1rem) center;
       background-size: 1rem;
       cursor: pointer;
-    }
-
-    .dashboard__place-holder {
     }
 
     .dashboard__dd-list {
@@ -779,21 +762,6 @@
       &[aria-selected="true"] {
         border-block-end: 1px solid var(--c-lime-500);
       }
-    }
-
-    .dashboard__history-btn {
-    }
-
-    .dashboard__compare-btn {
-    }
-
-    .dashboard__favorites-btn {
-    }
-
-    .dashboard__log-btn {
-    }
-
-    .dashboard__panels {
     }
 
     .dashboard__panel {
@@ -863,10 +831,6 @@
         gap: clamp(0.625rem, 0.35rem + 1.33vw, 1rem);
 
         @media (width >= calc(768/16 * 1rem)) {
-          /* grid-template-columns: repeat(4, 1fr);
-        width: 65%;
-        white-space: nowrap; */
-
           display: flex;
         }
       }
@@ -884,24 +848,6 @@
         padding-block: calc(12 / 16 * 1rem);
         min-width: calc(145 / 16 * 1rem);
       }
-
-      .dashboard_open-card {
-      }
-      .dashboard_last-card {
-      }
-
-      .dashboard_change-card {
-      }
-
-      /* .dashboard__percentage-card {
-        .dashboard__value--positive::before {
-          content: "▲ ";
-        }
-
-        .dashboard__value--negative::before {
-          content: "▼ ";
-        }
-      } */
 
       .dashboard__title-card {
         font-size: var(--fs-14);
@@ -940,7 +886,6 @@
           color: var(--color-text-med-light);
         }
       }
-      /*chart*/
 
       .dashboard__chart {
         display: grid;
@@ -966,10 +911,7 @@
         letter-spacing: 0.031rem;
         color: var(--color-text-med);
       }
-      .dashboard__chart-current-value {
-      }
-      .dashboard__chart-date {
-      }
+
       .chart-container {
         position: relative;
         width: 100%;
@@ -1018,12 +960,6 @@
         font-size: var(--fs-12);
         color: var(--color-text-med-light);
         letter-spacing: 0.0313rem;
-      }
-
-      .dashboard__compare-list {
-      }
-
-      .dashboard__compare-item {
       }
 
       .dashboard__compare-left {
@@ -1124,12 +1060,6 @@
         letter-spacing: 0.0313rem;
       }
 
-      .dashboard__favorites-list {
-      }
-
-      .dashboard__favorites-item {
-      }
-
       .dashboard__favorites-pair {
         font-size: var(--fs-14);
         letter-spacing: 0.0625rem;
@@ -1218,12 +1148,6 @@
         &:hover {
           border-color: var(--color-text-med);
         }
-      }
-
-      .dashboard__log-list {
-      }
-
-      .dashboard__log-item {
       }
 
       .dashboard__log-left {
