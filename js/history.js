@@ -1,6 +1,6 @@
 import { state } from "./state.js";
 import { fetchSeries } from "./api.js";
-import { getDailyVariation, getLastBusinessDay, formatRate, hideEmptyState } from "./utils.js";
+import { getDailyVariation, getLastBusinessDay, formatRate, hideEmptyState, renderEmptyState } from "./utils.js";
 
 const historyTabButton = document.querySelector(".dashboard__history-btn");
 const historyDDButton = document.querySelector("[data-tab='history']");
@@ -121,27 +121,33 @@ export const setupHistory = function () {
 };
 
 export const setupCards = async function () {
-  const daysArr = await fetchSeries(state.sendCurrency, state.receiveCurrency, getLastBusinessDay());
-  const openRate = daysArr[0].rate;
-  const lastRate = daysArr[daysArr.length - 1].rate;
+  try {
+    const daysArr = await fetchSeries(state.sendCurrency, state.receiveCurrency, getLastBusinessDay());
 
-  const dayliVariation = getDailyVariation(lastRate, openRate);
+    const openRate = daysArr[0].rate;
+    const lastRate = daysArr[daysArr.length - 1].rate;
 
-  openCardEl.textContent = openRate;
-  lastCardEl.textContent = lastRate;
-  const change = lastRate - openRate;
-  changeCardEl.textContent = Math.abs(change) < 0.00005 ? "0.0000" : formatRate(change);
+    const dayliVariation = getDailyVariation(lastRate, openRate);
 
-  percentageCardEl.textContent = dayliVariation;
+    openCardEl.textContent = openRate;
+    lastCardEl.textContent = lastRate;
+    const change = lastRate - openRate;
+    changeCardEl.textContent = Math.abs(change) < 0.00005 ? "0.0000" : formatRate(change);
 
-  const variation = parseFloat(dayliVariation) > 0 ? "positive" : parseFloat(dayliVariation) < 0 ? "negative" : "";
+    percentageCardEl.textContent = dayliVariation;
 
-  percentageCardEl.classList.remove("dashboard__value--positive", "dashboard__value--negative");
-  changeCardEl.classList.remove("dashboard__value--positive", "dashboard__value--negative");
-  if (!variation) return;
+    const variation = parseFloat(dayliVariation) > 0 ? "positive" : parseFloat(dayliVariation) < 0 ? "negative" : "";
 
-  percentageCardEl.classList.add(`dashboard__value--${variation}`);
-  changeCardEl.classList.add(`dashboard__value--${variation}`);
+    percentageCardEl.classList.remove("dashboard__value--positive", "dashboard__value--negative");
+    changeCardEl.classList.remove("dashboard__value--positive", "dashboard__value--negative");
+    if (!variation) return;
+
+    percentageCardEl.classList.add(`dashboard__value--${variation}`);
+    changeCardEl.classList.add(`dashboard__value--${variation}`);
+  } catch (err) {
+    console.log(err);
+    renderEmptyState("history");
+  }
 };
 
 // Chart
