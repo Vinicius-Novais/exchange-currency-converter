@@ -10,8 +10,6 @@ export const SUPPORTED_CURRENCIES = [
   'THB', 'TRY', 'TWD', 'UAH', 'USD', 'VND', 'ZAR'
 ];
 
-// export const TICKER_PAIRS = SUPPORTED_CURRENCIES.filter((code) => code !== "BRL").map((code) => ({ base: "BRL", quote: code }));
-
 export const BASE_URL = `https://api.frankfurter.dev/v2`;
 
 export const POPULAR_CURRENCIES = ["USD", "EUR", "GBP", "BRL"];
