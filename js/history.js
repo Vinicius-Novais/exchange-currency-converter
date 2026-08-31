@@ -83,7 +83,6 @@ const fractionDigits = {
 };
 
 export const setupHistory = function () {
-  //Setup cards ao carregar o site
   setupCards();
 
   setupChartHeader();
